@@ -9,6 +9,6 @@ Communication : Discord
 
 Version Control : Git
 
-Diagram Tools :
-PlantUML https://plantuml-editor.kkeisuke.com/
-StarUML
+Diagram Tools : /
+PlantUML https://plantuml-editor.kkeisuke.com/ /
+StarUML /

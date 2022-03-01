@@ -1,16 +1,68 @@
 @startuml
 
-class Car {
-  color
-  model
-  +start()
-  #run()
-  #stop()
-}
+title MOD4B - Class Diagram
 
-Car <|- Bus
-Car *-down- Tire
-Car *-down- Engine
-Bus o-down- Driver
+package application {
+    
+  class Simulation {
+    - hours: int
+    - passengers: int
+  }
+
+  package menu {
+    
+    interface Menu {
+    }
+
+    class Main implements Menu {
+    }
+
+    class Runway implements Menu {
+    }
+
+    class WaitingPlanes implements Menu {
+    }
+
+    class AdvanceHour implements Menu {
+    }
+  
+  }  
+
+  package request {
+    interface Request {
+      - title: String
+      - description: String
+      - rarity: Double
+    }
+
+    class PlaneLanding implements Request {
+    }
+
+    class EmergencyLanding implements Request {
+    }
+
+    class FundingEvent implements Request {
+    }
+
+    class JumboJet implements Request {
+    }
+
+    class BadWeather implements Request {
+    }
+
+    class SnakesOnThePlane implements Request {
+    }
+
+    class Protests implements Request {
+    }
+
+    class JohnMcClain implements Request {
+    }
+  }
+
+  Menu -up-> Simulation
+  Request -up-> Simulation
+
+}
 
 @enduml

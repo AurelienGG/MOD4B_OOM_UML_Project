@@ -5,12 +5,15 @@ Members
 - Emmie Kieffer
 - Chloé Anglard
 - Chloé Tournoux
+<br>
 
 Communication 
 - Discord
+<br>
 
 Version Control 
 - Git
+<br>
 
 Diagram Tools
 - PlantUML https://plantuml-editor.kkeisuke.com/

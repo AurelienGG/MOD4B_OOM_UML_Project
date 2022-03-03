@@ -5,16 +5,49 @@ title MOD4B - Class Diagram
 package application {
     
   class Simulation {
-    - hours: int
+    - hours: SimulationHour
     - passengers: int
+    - runways: Runway[8]
   }
+  
+  package features {
+    
+    abstract GameTime {
+      - hour: int
+      --
+      + timefly(hour: int): void
+    }
+  
+    class SimulationHour extends GameTime {
+      --
+      + timefly(hour: int): void (time+=hour)
+    }
+  
+    class OccupiedTimeRemaining extends GameTime {
+      --
+      + timefly(hour: int): void (time-=hour)
+    }
+  
+    class Runway {
+      - occupantName: String
+      - timeRemaining: OccupiedTimeRemaining
+    }
+  }
+  
+  
 
   package menu {
     
     interface Menu {
+      --
+      + displayCurrentHour(): void
+      + displayCurrentPassengerKilledCount(): void
+      + goToMenu(Menu menu): void
     }
 
     class Main implements Menu {
+      --
+      + advanceHour(): void
     }
 
     class Runway implements Menu {
@@ -36,7 +69,7 @@ package application {
       - description: String
       - options: Option[] or ArrayList<Option>
     }
-    
+        
     abstract Landing implements Request {
     }
 
@@ -137,6 +170,12 @@ package application {
   Request "1..*" -- "2..*" Option
   Option -- Requirement
   Option -- Consequence
+  Simulation -- SimulationHour
+  Runway -- OccupiedTimeRemaining
+  
+  note top of Request : Interface or Abstract ?
+  note top of Option : Interface or Abstract ?
+  note "Class vs Enum ?" as N1
   
 }
 

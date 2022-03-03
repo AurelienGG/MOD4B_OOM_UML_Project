@@ -3,27 +3,29 @@
 title MOD4B - Class Diagram
 
 package application {
+
+  class MainApplication {
+    --
+    + startSimulation(simulationHours: SimulationHour[24])
+  }
     
   class Simulation {
-    - hours: SimulationHour
+    - hours: SimulationHour[24]
     - passengers: int
     - runways: Runway[8]
   }
   
   package features {
-    
-    abstract GameTime {
-      - hour: int
-      --
-      + timeFly(hour: int): void
+  
+    class SimulationHour {
+        - hour: int
+        - requests: ArrayList<Request>
+        --
+        + startRequest(request: Request): void
+        + hourSummary(): String
     }
   
-    class SimulationHour extends GameTime {
-      --
-      + timeFly(hour: int): void (time+=hour)
-    }
-  
-    class OccupiedTimeRemaining extends GameTime {
+    class OccupiedTimeRemaining {
       --
       + timeFly(hour: int): void (time-=hour)
     }
@@ -36,7 +38,7 @@ package application {
   
   
 
-  package menu {
+  package menus {
     
     interface Menu {
       --
@@ -61,7 +63,7 @@ package application {
   
   }  
 
-  package request {
+  package requests {
     
     interface Request {
       - rarity: Double
@@ -165,6 +167,7 @@ package application {
   
   }
 
+  MainApplication -- Simulation
   Menu -up-> Simulation
   Request -up-> Simulation
   Request "1..*" -- "2..*" Option

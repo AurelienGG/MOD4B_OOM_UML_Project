@@ -31,9 +31,10 @@ package application {
   package request {
     
     interface Request {
+      - rarity: Double
       - title: String
       - description: String
-      - rarity: Double
+      - options: Option[] or ArrayList<Option>
     }
     
     abstract Landing implements Request {
@@ -67,6 +68,21 @@ package application {
   package options {
   
     interface Option {
+      - description: String
+      - requirement: Requirement
+      - consequence: Consequence
+    }
+    
+    class Requirement {
+      - description: String
+      --
+      + checkRequirement(): boolean
+    }
+    
+    class Consequence {
+      - description: String
+      --
+      + applyConsequence(): void
     }
     
     class AllowLanding implements Option {
@@ -113,14 +129,15 @@ package application {
     
     class LetTheManGo implements Option {
     }
-    
-    
   
   }
 
   Menu -up-> Simulation
   Request -up-> Simulation
-
+  Request "1..*" -- "2..*" Option
+  Option -- Requirement
+  Option -- Consequence
+  
 }
 
 @enduml

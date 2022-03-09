@@ -6,22 +6,26 @@ package application {
 
   class MainApplication {
     --
-    + generateRandomNumberRequest(): int
-    + generateRandomRequest(): Request
-    + startSimulation(simulationHours: SimulationHour[24])
+    + main(args: String[]): void
+    - initialiseSimulationHours(): SimulationHour[24]
+    - generateRandomNumberRequest(int maximum): int
+    - generateRandomRequest(): Request
+    + startSimulation(userInput: Scanner, simulationHours: SimulationHour[24])
   }
     
   class Simulation {
-    - hours: SimulationHour[24]
+    - simulationHours: SimulationHour[24]
     - nbDeadPassengers: int
     - runways: Runway[8]
     - waitingPlanes: ArrayList<Plane>
+    --
+    + Simulation(userInput: Scanner, simulationHours: SimulationHour)
   }
   
   package features {
   
     class SimulationHour {
-        - hour: int
+        - currentHour: int
         - requests: ArrayList<Request>
         --
         + startRequest(request: Request): void
@@ -33,7 +37,7 @@ package application {
       - holderPlane: Plane
       --
       + planeLand(Plane plane): void
-      + decreasePlaneHoursFuelLeft(): void
+      + decreasePlaneHoursRunwayNeeded(): void
       + displayRunway(): String
       - checkPlaneFuelLevel(): void
       - planeLeave(): void
@@ -292,6 +296,7 @@ package application {
   }
 
   MainApplication "1" *-- "1" Simulation
+  MainApplication "1" *-- "24" SimulationHour
   Menu "5" -up-* "1" Simulation
   Request "1..3" -up-o "1" SimulationHour
   Request "1..*" o-- "2..*" Option

@@ -7,23 +7,30 @@ package application {
   class MainApplication {
     --
     + main(args: String[]): void
-    - initialiseSimulationHours(): SimulationHour[24]
-    - generateRandomNumberRequest(int maximum): int
-    - generateRandomRequest(): Request
-    + startSimulation(userInput: Scanner, simulationHours: SimulationHour[24])
+    + startSimulation(userInput: Scanner)
   }
-    
+
   class Simulation {
-    - simulationHours: SimulationHour[24]
-    - nbDeadPassengers: int
-    - runways: Runway[8]
-    - waitingPlanes: ArrayList<Plane>
     --
-    + Simulation(userInput: Scanner, simulationHours: SimulationHour)
+    + Simulation(userInput: Scanner)
+  }
+
+  class UserInterface {
+    - userInput: Scanner
   }
   
-  package features {
-  
+  package simulationHour {
+
+    class SimulationHourManager << (S,#FF7700) Singleton >> {
+        - simulationHours: SimulationHour[24]
+        --
+        - SimulationHourManager()
+        + {static} getInstance(): SimulationHourManager
+        - initialiseSimulationHours(): void
+        - generateRandomNumberRequest(int maximum): int
+        - generateRandomRequest(): Request
+    }
+
     class SimulationHour {
         - currentHour: int
         - requests: ArrayList<Request>
@@ -31,7 +38,16 @@ package application {
         + startRequest(request: Request): void
         + hourSummary(): String
     }
-  
+  }
+
+  package runways {
+    class RunwayManager << (S,#FF7700) Singleton >> {
+        - runways: Runway[8]
+        --
+        - RunwayManager()
+        + {static} getInstance(): RunwayManager
+    }
+
     class Runway {
       - occupied: Boolean
       - holderPlane: Plane
@@ -42,8 +58,33 @@ package application {
       - checkPlaneFuelLevel(): void
       - planeLeave(): void
     }
+  }
+
+  package waitingPlanes {
+    class WaitingPlanesManager << (S,#FF7700) Singleton >> {
+        - waitingPlanes: ArrayList<Plane>
+        --
+        - WaitingPlanesManager()
+        + {static} getInstance(): WaitingPlanesManager
+    }
+  }
+
+  package planes {
+    class PlaneManager << (S,#FF7700) Singleton >> {
+        - planesDictionary: HashMap<PlaneType, stack<Plane>>
+        --
+        - PlaneManager()
+        + {static} getInstance(): PlaneManager
+    }
+
+    enum PlaneType {
+        + {static} COMMON = 0
+        + {static} EMERGENCY = 1
+        + {static} JUMBO = 2
+    }
 
     class Plane {
+        - planeType: PlaneType
         - name: String
         - hoursFuelLeft: int
         - hoursRunwayNeeded: int
@@ -51,15 +92,35 @@ package application {
         --
         + displayPlane(): String
     }
+  }
 
+  package passengers {
+    class DeadPassengerCountManager << (S,#FF7700) Singleton >> {
+        - nbDeadPassengers: int
+        --
+        - DeadPassengerCountManager()
+        + {static} getInstance(): DeadPassengerCountManager
+    }
   }
 
   package menus {
+
+    class MenuManager << (S,#FF7700) Singleton >> {
+        - menusDictionary: HashMap<PlaneType, Menu>
+    }
+
+    enum MenuType {
+        + {static} MAIN = 0
+        + {static} RUNWAY = 1
+        + {static} WAITING_PLANES = 2
+        + {static} ADVANCE_HOUR = 3
+        + {static} REQUEST = 4
+    }
     
     abstract Menu {
-      - simulationData: Simulation
+      - menuType: MenuType
       --
-      + Menu(simulation: Simulation)
+      + Menu()
       {abstract} + goToMenu(Menu menu): void
       {abstract} + displayMenu(): String
     }
@@ -296,14 +357,31 @@ package application {
   }
 
   MainApplication "1" *-- "1" Simulation
-  MainApplication "1" *-- "24" SimulationHour
-  Menu "5" -up-* "1" Simulation
+  Menu "5" -up-* "1" UserInterface
   Request "1..3" -up-o "1" SimulationHour
   Request "1..*" o-- "2..*" Option
-  Simulation "1" o-- "24" SimulationHour
-  Simulation "1" o-- "8" Runway
-  Simulation "1" o-- "*" Plane
   Runway "0..1" o-- "0..1" Plane
+
+  PlaneManager "1" *-- "*" Plane
+  PlaneManager *-- PlaneType
+  Plane "*" *-- "1" PlaneType
+
+  Simulation ..> UserInterface : use
+  Simulation ..> DeadPassengerCountManager : use
+  Simulation ..> SimulationHourManager : use
+  Simulation ..> RunwayManager : use
+  Simulation ..> WaitingPlanesManager : use
+
+  Landing ..> PlaneManager : use
+
+  MenuManager -- MenuType
+  MenuManager -- Menu
+
+  Menu "*" -right- "1" MenuType
+
+  SimulationHourManager "1" *-- "24" SimulationHour
+  RunwayManager "1" *-- "8" Runway
+  WaitingPlanesManager "0..1" *-- "*" Plane
 
 }
 

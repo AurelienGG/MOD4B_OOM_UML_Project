@@ -1,4 +1,4 @@
 package userInterface.menus;
 
-public class AdvanceHourMenu {
+public class AdvanceHourMenu extends Menu {
 }

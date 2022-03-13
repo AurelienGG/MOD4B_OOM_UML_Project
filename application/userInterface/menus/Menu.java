@@ -1,4 +1,4 @@
 package userInterface.menus;
 
-public class Menu {
+public abstract class Menu {
 }

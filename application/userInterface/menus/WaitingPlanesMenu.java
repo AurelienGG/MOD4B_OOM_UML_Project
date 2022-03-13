@@ -1,4 +1,4 @@
 package userInterface.menus;
 
-public class WaitingPlanesMenu {
+public class WaitingPlanesMenu extends Menu {
 }

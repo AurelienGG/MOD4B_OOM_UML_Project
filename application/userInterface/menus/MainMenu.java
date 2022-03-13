@@ -1,4 +1,4 @@
 package userInterface.menus;
 
-public class MainMenu {
+public class MainMenu extends Menu {
 }

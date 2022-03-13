@@ -1,0 +1,396 @@
+@startuml
+
+title MOD4B - Class Diagram
+
+package application {
+
+  class MainApplication {
+    --
+    + main(args: String[]): void
+    + startSimulation(userInput: Scanner)
+  }
+
+  class Simulation {
+    --
+    + Simulation(userInput: Scanner)
+  }
+
+  package userInterface {
+
+    class UserInputManager << (S,#FF7700) Singleton >> {
+        - userInput: Scanner
+    }
+
+      package menus {
+
+        class MenuManager << (S,#FF7700) Singleton >> {
+            - menusDictionary: HashMap<MenuType, Menu>
+        }
+
+        enum MenuType {
+            + {static} MAIN = 0
+            + {static} RUNWAY = 1
+            + {static} WAITING_PLANES = 2
+            + {static} ADVANCE_HOUR = 3
+            + {static} REQUEST = 4
+        }
+
+        abstract Menu {
+          - menuType: MenuType
+          --
+          + Menu()
+          {abstract} + goToMenu(Menu menu): void
+          {abstract} + displayMenu(): String
+        }
+
+        class MainMenu extends Menu {
+          - simulationData: Simulation
+          --
+          + MainMenu(simulation: Simulation)
+          + advanceHour(): void
+          + goToMenu(Menu menu): void
+          + displayMenu(): String
+        }
+
+        class RunwayMenu extends Menu {
+            - simulationData: Simulation
+            --
+            + RunwayMenu(simulation: Simulation)
+            + goToMenu(Menu menu): void
+            + displayMenu(): String
+        }
+
+        class WaitingPlanesMenu extends Menu {
+            - simulationData: Simulation
+            --
+            + WaitingPlanesMenu(simulation: Simulation)
+            + goToMenu(Menu menu): void
+            + displayMenu(): String
+        }
+
+        class AdvanceHourMenu extends Menu {
+            - simulationData: Simulation
+            --
+            + AdvanceHourMenu(simulation: Simulation)
+            + goToMenu(Menu menu): void
+            + displayMenu(): String
+        }
+
+        class RequestMenu extends Menu {
+            - simulationData: Simulation
+            --
+            + RequestMenu(simulation: Simulation)
+            + goToMenu(Menu menu): void
+            + displayMenu(): String
+        }
+
+      }
+  }
+  
+  package logic {
+
+    package simulationHour {
+
+        class SimulationHourManager << (S,#FF7700) Singleton >> {
+            - simulationHours: SimulationHour[24]
+            --
+            - SimulationHourManager()
+            + {static} getInstance(): SimulationHourManager
+            - initialiseSimulationHours(): void
+            - generateRandomNumberRequest(int maximum): int
+            - generateRandomRequest(): Request
+        }
+
+        class SimulationHour {
+            - currentHour: int
+            - requests: ArrayList<Request>
+            --
+            + startRequest(request: Request): void
+            + hourSummary(): String
+        }
+      }
+
+      package runways {
+        class RunwayManager << (S,#FF7700) Singleton >> {
+            - runways: Runway[8]
+            --
+            - RunwayManager()
+            + {static} getInstance(): RunwayManager
+        }
+
+        class Runway {
+          - occupied: Boolean
+          - holderPlane: Plane
+          --
+          + planeLand(Plane plane): void
+          + decreasePlaneHoursRunwayNeeded(): void
+          + displayRunway(): String
+          - checkPlaneFuelLevel(): void
+          - planeLeave(): void
+        }
+      }
+
+      package waitingPlanes {
+        class WaitingPlanesManager << (S,#FF7700) Singleton >> {
+            - waitingPlanes: ArrayList<Plane>
+            --
+            - WaitingPlanesManager()
+            + {static} getInstance(): WaitingPlanesManager
+        }
+      }
+
+      package planes {
+        class PlaneManager << (S,#FF7700) Singleton >> {
+            - planesDictionary: HashMap<PlaneType, stack<Plane>>
+            --
+            - PlaneManager()
+            + {static} getInstance(): PlaneManager
+        }
+
+        enum PlaneType {
+            + {static} COMMON = 0
+            + {static} EMERGENCY = 1
+            + {static} JUMBO = 2
+        }
+
+        class Plane {
+            - planeType: PlaneType
+            - name: String
+            - hoursFuelLeft: int
+            - hoursRunwayNeeded: int
+            - nbPassengers: int
+            --
+            + displayPlane(): String
+        }
+      }
+
+      package passengers {
+        class DeadPassengerCountManager << (S,#FF7700) Singleton >> {
+            - nbDeadPassengers: int
+            --
+            - DeadPassengerCountManager()
+            + {static} getInstance(): DeadPassengerCountManager
+        }
+      }
+
+      package requests {
+
+          abstract Request {
+            {abstract} - RARITY: Double
+            {abstract} - TITLE: String
+            {abstract} - DESCRIPTION: String
+            {abstract} - OPTIONS: Option[]
+          }
+
+          abstract Landing extends Request {
+             {abstract} - plane: Plane
+            - OPTIONS: Option[] = ...
+          }
+
+          class PlaneLanding extends Landing {
+            - plane: Plane
+            - RARITY: Double = 0.40
+            - TITLE: String = "Plane Landing"
+            - DESCRIPTION: String = ...
+          }
+
+          class EmergencyLanding extends Landing {
+            - plane: Plane
+            - RARITY: Double = 0.05
+            - TITLE: String = "Emergency landing"
+            - DESCRIPTION: String = ...
+          }
+
+          class FundingEvent extends Request {
+            - RARITY: Double = 0.10
+            - TITLE: String = "Funding Event"
+            - DESCRIPTION: String = ...
+            - OPTIONS: Option[] = ...
+          }
+
+          class JumboJet extends Landing {
+            - plane: Plane
+            - RARITY: Double = 0.15
+            - TITLE: String = "Jumbo jet"
+            - DESCRIPTION: String = ...
+          }
+
+          class BadWeather extends Request {
+            - RARITY: Double = 0.10
+            - TITLE: String = "Bad Weather"
+            - DESCRIPTION: String = ...
+            - OPTIONS: Option[] = ...
+          }
+
+          class SnakesOnThePlane extends Request {
+            - RARITY: Double = 0.10
+            - TITLE: String = "Snakes on the plane"
+            - DESCRIPTION: String = ...
+            - OPTIONS: Option[] = ...
+          }
+
+          class Protests extends Request {
+            - RARITY: Double = 0.05
+            - TITLE: String = "Protests"
+            - DESCRIPTION: String = ...
+            - OPTIONS: Option[] = ...
+          }
+
+          class JohnMcClain extends Request {
+            - RARITY: Double = 0.05
+            - TITLE: String = "John McClain"
+            - DESCRIPTION: String = ...
+            - OPTIONS: Option[] = ...
+          }
+        }
+
+        package options {
+
+          abstract Option {
+            {abstract} - description: String
+            --
+            {abstract} + checkRequirement(): Boolean
+            {abstract} + applyConsequence(): void
+            {abstract} + displayOption(): String
+          }
+
+          class AllowLanding extends Option {
+            - description: String
+            --
+            + checkRequirement(): boolean
+            + applyConsequence(): void
+          }
+
+          class PlaceOnStandby extends Option {
+            - description: String
+            --
+            + checkRequirement(): boolean
+            + applyConsequence(): void
+          }
+
+          class EmptyRandomRunway extends Option {
+            - description: String
+            --
+            + checkRequirement(): boolean
+            + applyConsequence(): void
+          }
+
+          class RescueTeam extends Option {
+            - description: String
+            --
+            + checkRequirement(): boolean
+            + applyConsequence(): void
+          }
+
+          class AirRefueling extends Option {
+            - description: String
+            --
+            + checkRequirement(): boolean
+            + applyConsequence(): void
+          }
+
+          class CrossWinds extends Option {
+            - description: String
+            --
+            + checkRequirement(): boolean
+            + applyConsequence(): void
+          }
+
+          class IcyRunWays extends Option {
+            - description: String
+            --
+            + checkRequirement(): boolean
+            + applyConsequence(): void
+          }
+
+          class IceStorm extends Option {
+            - description: String
+            --
+            + checkRequirement(): boolean
+            + applyConsequence(): void
+          }
+
+          class LetThemLand extends Option {
+            - description: String
+            --
+            + checkRequirement(): boolean
+            + applyConsequence(): void
+          }
+
+          class RefuseThem extends Option {
+            - description: String
+            --
+            + checkRequirement(): boolean
+            + applyConsequence(): void
+          }
+
+          class AllowThemTheSpaceToProtest extends Option {
+            - description: String
+            --
+            + checkRequirement(): boolean
+            + applyConsequence(): void
+          }
+
+          class GetPoliceInvolved extends Option {
+            - description: String
+            --
+            + checkRequirement(): boolean
+            + applyConsequence(): void
+          }
+
+          class LetThePlanesLandAnyways extends Option {
+            - description: String
+            --
+            + checkRequirement(): boolean
+            + applyConsequence(): void
+          }
+
+          class LockdownTheRunway extends Option {
+            - description: String
+            --
+            + checkRequirement(): boolean
+            + applyConsequence(): void
+          }
+
+          class LetTheManGo extends Option {
+            - description: String
+            --
+            + checkRequirement(): boolean
+            + applyConsequence(): void
+          }
+
+        }
+  }
+
+
+
+  MainApplication "1" *-- "1" Simulation
+  Menu ..> UserInputManager : use
+  Request "1..3" -up-o "1" SimulationHour
+  Request "1..*" o-- "2..*" Option
+  Runway "0..1" o-- "0..1" Plane
+
+  PlaneManager "1" *-- "*" Plane
+  PlaneManager *-- PlaneType
+  Plane "*" *-- "1" PlaneType
+
+  Simulation ..> UserInputManager : use
+  Simulation ..> DeadPassengerCountManager : use
+  Simulation ..> SimulationHourManager : use
+  Simulation ..> RunwayManager : use
+  Simulation ..> WaitingPlanesManager : use
+
+  Landing ..> PlaneManager : use
+
+  MenuManager "1" *-- "*" MenuType
+  MenuManager *-- Menu
+
+  Menu "*" -right- "1" MenuType
+
+  SimulationHourManager "1" *-- "24" SimulationHour
+  RunwayManager "1" *-- "8" Runway
+  WaitingPlanesManager "0..1" *-- "*" Plane
+
+}
+
+@enduml

@@ -17,4 +17,3 @@ Version Control
 
 Diagram Tools
 - PlantUML https://plantuml-editor.kkeisuke.com/
-- StarUML 

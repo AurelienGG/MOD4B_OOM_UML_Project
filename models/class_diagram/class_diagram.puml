@@ -18,13 +18,21 @@ package application {
   package userInterface {
 
     class UserInputManager << (S,#FF7700) Singleton >> {
+        - {static} ui_instance: UserInputManager
         - userInput: Scanner
+        --
+        - UserInputManager()
+        + {static} getInstance(): UserInputManager
     }
 
       package menus {
 
         class MenuManager << (S,#FF7700) Singleton >> {
-            - menusDictionary: HashMap<MenuType, Menu>
+            - {static} menuManager_instance: MenuManager
+            - menusDictionary: EnumMap<MenuType, Menu>
+            --
+            - MenuManager()
+            + {static} getInstance(): MenuManager
         }
 
         enum MenuType {
@@ -38,50 +46,45 @@ package application {
         abstract Menu {
           - menuType: MenuType
           --
-          + Menu()
           {abstract} + goToMenu(Menu menu): void
-          {abstract} + displayMenu(): String
+          {abstract} + menuToString(): String
+          + displayMenu(): void
         }
 
         class MainMenu extends Menu {
-          - simulationData: Simulation
           --
-          + MainMenu(simulation: Simulation)
+          + MainMenu()
           + advanceHour(): void
           + goToMenu(Menu menu): void
-          + displayMenu(): String
+          + menuToString(): String
         }
 
         class RunwayMenu extends Menu {
-            - simulationData: Simulation
             --
-            + RunwayMenu(simulation: Simulation)
+            + RunwayMenu()
             + goToMenu(Menu menu): void
-            + displayMenu(): String
+            + menuToString(): String
         }
 
         class WaitingPlanesMenu extends Menu {
-            - simulationData: Simulation
             --
-            + WaitingPlanesMenu(simulation: Simulation)
+            + WaitingPlanesMenu()
             + goToMenu(Menu menu): void
-            + displayMenu(): String
+            + menuToString(): String
         }
 
         class AdvanceHourMenu extends Menu {
-            - simulationData: Simulation
             --
-            + AdvanceHourMenu(simulation: Simulation)
+            + AdvanceHourMenu()
             + goToMenu(Menu menu): void
-            + displayMenu(): String
+            + menuToString(): String
         }
 
         class RequestMenu extends Menu {
-            - simulationData: Simulation
             --
-            + RequestMenu(simulation: Simulation)
+            + RequestMenu()
             + goToMenu(Menu menu): void
-            + displayMenu(): String
+            + menuToString(): String
         }
 
       }
@@ -92,6 +95,7 @@ package application {
     package simulationHour {
 
         class SimulationHourManager << (S,#FF7700) Singleton >> {
+            - {static} simulationHourManager_instance: SimulationHourManager
             - simulationHours: SimulationHour[24]
             --
             - SimulationHourManager()
@@ -113,6 +117,7 @@ package application {
       package runways {
 
         class RunwayManager << (S,#FF7700) Singleton >> {
+            - {static} runwayManager_instance: RunwayManager
             - runways: Runway[8]
             --
             - RunwayManager()
@@ -134,6 +139,7 @@ package application {
       package waitingPlanes {
 
         class WaitingPlanesManager << (S,#FF7700) Singleton >> {
+            - {static} waitingPlanesManager_instance: WaitingPlanesManager
             - waitingPlanes: ArrayList<Plane>
             --
             - WaitingPlanesManager()
@@ -144,7 +150,8 @@ package application {
       package planes {
 
         class PlaneManager << (S,#FF7700) Singleton >> {
-            - planesDictionary: HashMap<PlaneType, stack<Plane>>
+            - {static} planeManager_instance: PlaneManager
+            - planesDictionary: EnumMap<PlaneType, stack<Plane>>
             --
             - PlaneManager()
             + {static} getInstance(): PlaneManager
@@ -170,6 +177,7 @@ package application {
       package passengers {
 
         class DeadPassengerCountManager << (S,#FF7700) Singleton >> {
+            - {static} deadPassengerCountManager_instance: DeadPassengerCountManager
             - nbDeadPassengers: int
             --
             - DeadPassengerCountManager()

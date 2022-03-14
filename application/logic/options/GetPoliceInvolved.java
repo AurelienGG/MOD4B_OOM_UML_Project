@@ -18,6 +18,6 @@ public class GetPoliceInvolved extends Option {
 
     @Override
     public String displayOption() {
-        return null;
+        return description;
     }
 }

@@ -19,6 +19,6 @@ public class RescueTeam extends Option {
 
     @Override
     public String displayOption() {
-        return null;
+        return description;
     }
 }

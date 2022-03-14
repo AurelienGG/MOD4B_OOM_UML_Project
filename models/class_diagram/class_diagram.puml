@@ -18,13 +18,21 @@ package application {
   package userInterface {
 
     class UserInputManager << (S,#FF7700) Singleton >> {
+        - {static} ui_instance: UserInputManager
         - userInput: Scanner
+        --
+        - UserInputManager()
+        + {static} getInstance(): UserInputManager
     }
 
       package menus {
 
         class MenuManager << (S,#FF7700) Singleton >> {
+            - {static} menuManager_instance: MenuManager
             - menusDictionary: EnumMap<MenuType, Menu>
+            --
+            - MenuManager()
+            + {static} getInstance(): MenuManager
         }
 
         enum MenuType {
@@ -87,6 +95,7 @@ package application {
     package simulationHour {
 
         class SimulationHourManager << (S,#FF7700) Singleton >> {
+            - {static} simulationHourManager_instance: SimulationHourManager
             - simulationHours: SimulationHour[24]
             --
             - SimulationHourManager()
@@ -108,6 +117,7 @@ package application {
       package runways {
 
         class RunwayManager << (S,#FF7700) Singleton >> {
+            - {static} runwayManager_instance: RunwayManager
             - runways: Runway[8]
             --
             - RunwayManager()
@@ -129,6 +139,7 @@ package application {
       package waitingPlanes {
 
         class WaitingPlanesManager << (S,#FF7700) Singleton >> {
+            - {static} waitingPlanesManager_instance: WaitingPlanesManager
             - waitingPlanes: ArrayList<Plane>
             --
             - WaitingPlanesManager()
@@ -139,6 +150,7 @@ package application {
       package planes {
 
         class PlaneManager << (S,#FF7700) Singleton >> {
+            - {static} planeManager_instance: PlaneManager
             - planesDictionary: EnumMap<PlaneType, stack<Plane>>
             --
             - PlaneManager()
@@ -165,6 +177,7 @@ package application {
       package passengers {
 
         class DeadPassengerCountManager << (S,#FF7700) Singleton >> {
+            - {static} deadPassengerCountManager_instance: DeadPassengerCountManager
             - nbDeadPassengers: int
             --
             - DeadPassengerCountManager()

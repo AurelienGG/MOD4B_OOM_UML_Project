@@ -2,7 +2,7 @@ package logic.options;
 
 public class PlaceOnStandby extends Option {
 
-    private String description;
+    private final String description = "Place on standby";
 
     public PlaceOnStandby(){}
 

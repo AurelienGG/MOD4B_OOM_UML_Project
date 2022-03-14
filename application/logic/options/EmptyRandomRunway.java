@@ -2,7 +2,7 @@ package logic.options;
 
 public class EmptyRandomRunway extends Option {
 
-    private String description;
+    private final String description = "Empty random runway";
 
     public EmptyRandomRunway(){}
 

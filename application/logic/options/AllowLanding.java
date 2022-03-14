@@ -2,7 +2,7 @@ package logic.options;
 
 public class AllowLanding extends Option {
 
-    private String description;
+    private final String description = "Allow landing";
 
     public AllowLanding(){}
 

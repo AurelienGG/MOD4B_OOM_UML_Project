@@ -2,7 +2,7 @@ package logic.options;
 
 public class LetThePlanesLandAnyways extends Option {
 
-    private String description;
+    private final String description = "Let the planes land anyways";
 
     public LetThePlanesLandAnyways(){}
 

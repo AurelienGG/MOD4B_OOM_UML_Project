@@ -2,7 +2,7 @@ package logic.options;
 
 public class IcyRunWays extends Option {
 
-    private String description;
+    private final String description = "Icy run ways";
 
     public IcyRunWays(){}
 

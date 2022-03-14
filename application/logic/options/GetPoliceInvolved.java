@@ -2,7 +2,7 @@ package logic.options;
 
 public class GetPoliceInvolved extends Option {
 
-    private String description;
+    private final String description = "Get police involved";
 
     public GetPoliceInvolved(){}
 

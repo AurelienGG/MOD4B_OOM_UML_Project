@@ -2,7 +2,7 @@ package logic.options;
 
 public class CrossWinds extends Option {
 
-    private String description;
+    private final String description = "Cross winds";
 
     public CrossWinds(){}
 

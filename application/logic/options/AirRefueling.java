@@ -2,7 +2,7 @@ package logic.options;
 
 public class AirRefueling extends Option {
 
-    private String description;
+    private final String description = "Air refueling";
 
     public AirRefueling(){}
 

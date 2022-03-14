@@ -2,9 +2,10 @@ package logic.options;
 
 public class RescueTeam extends Option {
 
-    private String description;
+    private final String description = "Rescue Team";
 
-    public RescueTeam(){}
+    public RescueTeam(){
+    }
 
     @Override
     public boolean checkRequirement() {

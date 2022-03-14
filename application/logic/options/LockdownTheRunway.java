@@ -2,7 +2,7 @@ package logic.options;
 
 public class LockdownTheRunway extends Option {
 
-    private String description;
+    private final String description = "Lockdown the runway";
 
     public LockdownTheRunway(){}
 

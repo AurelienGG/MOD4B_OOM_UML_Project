@@ -24,7 +24,7 @@ package application {
       package menus {
 
         class MenuManager << (S,#FF7700) Singleton >> {
-            - menusDictionary: HashMap<MenuType, Menu>
+            - menusDictionary: EnumMap<MenuType, Menu>
         }
 
         enum MenuType {
@@ -38,50 +38,45 @@ package application {
         abstract Menu {
           - menuType: MenuType
           --
-          + Menu()
           {abstract} + goToMenu(Menu menu): void
-          {abstract} + displayMenu(): String
+          {abstract} + menuToString(): String
+          + displayMenu(): void
         }
 
         class MainMenu extends Menu {
-          - simulationData: Simulation
           --
-          + MainMenu(simulation: Simulation)
+          + MainMenu()
           + advanceHour(): void
           + goToMenu(Menu menu): void
-          + displayMenu(): String
+          + menuToString(): String
         }
 
         class RunwayMenu extends Menu {
-            - simulationData: Simulation
             --
-            + RunwayMenu(simulation: Simulation)
+            + RunwayMenu()
             + goToMenu(Menu menu): void
-            + displayMenu(): String
+            + menuToString(): String
         }
 
         class WaitingPlanesMenu extends Menu {
-            - simulationData: Simulation
             --
-            + WaitingPlanesMenu(simulation: Simulation)
+            + WaitingPlanesMenu()
             + goToMenu(Menu menu): void
-            + displayMenu(): String
+            + menuToString(): String
         }
 
         class AdvanceHourMenu extends Menu {
-            - simulationData: Simulation
             --
-            + AdvanceHourMenu(simulation: Simulation)
+            + AdvanceHourMenu()
             + goToMenu(Menu menu): void
-            + displayMenu(): String
+            + menuToString(): String
         }
 
         class RequestMenu extends Menu {
-            - simulationData: Simulation
             --
-            + RequestMenu(simulation: Simulation)
+            + RequestMenu()
             + goToMenu(Menu menu): void
-            + displayMenu(): String
+            + menuToString(): String
         }
 
       }
@@ -144,7 +139,7 @@ package application {
       package planes {
 
         class PlaneManager << (S,#FF7700) Singleton >> {
-            - planesDictionary: HashMap<PlaneType, stack<Plane>>
+            - planesDictionary: EnumMap<PlaneType, stack<Plane>>
             --
             - PlaneManager()
             + {static} getInstance(): PlaneManager

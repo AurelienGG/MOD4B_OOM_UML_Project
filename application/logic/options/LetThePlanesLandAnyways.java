@@ -1,11 +1,23 @@
 package logic.options;
 
 public class LetThePlanesLandAnyways extends Option {
+
     private String description;
-    public boolean checkRequirement(){
+
+    public LetThePlanesLandAnyways(){}
+
+    @Override
+    public boolean checkRequirement() {
         return false;
     }
-    public void applyConsequence(){
 
+    @Override
+    public void applyConsequence() {
+
+    }
+
+    @Override
+    public String displayOption() {
+        return null;
     }
 }

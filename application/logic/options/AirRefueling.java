@@ -1,11 +1,23 @@
 package logic.options;
 
 public class AirRefueling extends Option {
+
     private String description;
-    public boolean checkRequirement(){
+
+    public AirRefueling(){}
+
+    @Override
+    public boolean checkRequirement() {
         return false;
     }
-    public void applyConsequence(){
 
+    @Override
+    public void applyConsequence() {
+
+    }
+
+    @Override
+    public String displayOption() {
+        return null;
     }
 }

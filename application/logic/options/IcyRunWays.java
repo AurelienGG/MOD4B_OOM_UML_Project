@@ -18,6 +18,6 @@ public class IcyRunWays extends Option {
 
     @Override
     public String displayOption() {
-        return null;
+        return description;
     }
 }

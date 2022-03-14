@@ -18,6 +18,6 @@ public class LockdownTheRunway extends Option {
 
     @Override
     public String displayOption() {
-        return null;
+        return description;
     }
 }

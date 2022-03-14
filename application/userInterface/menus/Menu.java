@@ -8,5 +8,9 @@ public abstract class Menu {
 
     public abstract void goToMenu(Menu menu);
 
-    public abstract String displayMenu();
+    public abstract String menuToString();
+
+    public void displayMenu() {
+        System.out.println(menuToString());
+    }
 }

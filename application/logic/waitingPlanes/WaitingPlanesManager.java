@@ -43,8 +43,14 @@ public class WaitingPlanesManager {
         decreaseWaitingPlanesFuel();
         ArrayList<Plane> crashingPlanes = checkWaitingPlanesFuel();
 
-        crashWaitingPlane();
-        return 0;
+        for (Plane plane: crashingPlanes) {
+            crashWaitingPlane(plane);
+        }
+
+        int deadPassenger = 0;
+
+
+        return deadPassenger;
     }
 
     /**

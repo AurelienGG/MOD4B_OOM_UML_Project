@@ -14,6 +14,38 @@ public class Plane {
     private int hoursRunwayNeeded;
     private int nbPassengers;
 
+    public Plane(PlaneType planeType, String name, int hoursFuelLeft, int hoursRunwayNeeded, int nbPassengers) {
+        //TODO
+    }
+
+    public PlaneType getPlaneType() {
+        return planeType;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getHoursFuelLeft() {
+        return hoursFuelLeft;
+    }
+
+    public int getHoursRunwayNeeded() {
+        return hoursRunwayNeeded;
+    }
+
+    public int getNbPassengers() {
+        return nbPassengers;
+    }
+
+    public void decreaseFuelLeft() {
+        //TODO
+    }
+
+    public void decreaseHoursRunwayNeeded() {
+        //TODO
+    }
+
     public String displayPlane() {
         //TODO
         return "Plane{" +
@@ -24,4 +56,5 @@ public class Plane {
                 ", nbPassengers=" + nbPassengers +
                 '}';
     }
+
 }

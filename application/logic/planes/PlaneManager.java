@@ -16,8 +16,8 @@ public class PlaneManager {
     private EnumMap<PlaneType, Stack<Plane>> planesDictionary;
 
     private PlaneManager() {
-        //TODO
         EnumMap<PlaneType, Stack<Plane>> planesDictionary =  new EnumMap<>(PlaneType.class);
+        //TODO
     }
 
     public PlaneManager getInstance() {

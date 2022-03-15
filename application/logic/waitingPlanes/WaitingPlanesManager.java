@@ -86,8 +86,8 @@ public class WaitingPlanesManager {
      * @return the number of people dying from the crash
      */
     private int numberDeadPassengersFromCrash(Plane crashingPlane) {
-        //TODO
-        return 0;
+
+        return crashingPlane.getNbPassengers();
     }
 
 

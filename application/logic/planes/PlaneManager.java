@@ -1,5 +1,7 @@
 package logic.planes;
 
+import logic.Tools;
+
 import java.util.EnumMap;
 import java.util.Stack;
 
@@ -12,11 +14,10 @@ import java.util.Stack;
 public class PlaneManager {
 
     private static PlaneManager planeManager_instance = null;
-
     private EnumMap<PlaneType, Stack<Plane>> planesDictionary;
 
     private PlaneManager() {
-        EnumMap<PlaneType, Stack<Plane>> planesDictionary =  new EnumMap<>(PlaneType.class);
+        this.planesDictionary =  new EnumMap<>(PlaneType.class);
 
         Stack<Plane> commonStack = new Stack<>();
         Stack<Plane> emergencyStack = new Stack<>();
@@ -42,34 +43,26 @@ public class PlaneManager {
     private Plane generateCommonPlane(int planeID) {
         return new Plane(PlaneType.COMMON,
                 "CommonPlane" + planeID,
-                generateRandomNumber(3, 5),
-                generateRandomNumber(1, 4),
-                generateRandomNumber(100, 500));
+                Tools.generateRandomNumber(3, 5),
+                Tools.generateRandomNumber(1, 4),
+                Tools.generateRandomNumber(100, 500));
     }
 
     private Plane generateEmergencyPlane(int planeID) {
         return new Plane(PlaneType.EMERGENCY,
                 "EmergencyPlane" + planeID,
-                generateRandomNumber(1,3),
-                generateRandomNumber(3,5),
-                generateRandomNumber(100, 500));
+                Tools.generateRandomNumber(1,3),
+                Tools.generateRandomNumber(3,5),
+                Tools.generateRandomNumber(100, 500));
     }
 
     private Plane generateJumboPlane(int planeID) {
         return new Plane(PlaneType.JUMBO,
                 "JumboJet" + planeID,
-                generateRandomNumber(4,6),
-                generateRandomNumber(3,5), //TODO
-                generateRandomNumber(300,600));
+                Tools.generateRandomNumber(4,6),
+                Tools.generateRandomNumber(1,4),
+                Tools.generateRandomNumber(300,600));
     }
 
-    /**
-     * Generate a random number
-     * @param minimum minimum value
-     * @param maximum maximum value
-     * @return a random number between 2 values
-     */
-    private int generateRandomNumber(int minimum, int maximum) {
-        return (int) (Math.random()*(maximum-minimum)+minimum);
-    }
+
 }

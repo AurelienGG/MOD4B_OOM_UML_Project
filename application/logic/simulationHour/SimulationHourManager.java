@@ -6,7 +6,7 @@ import userInterface.UserInputManager;
 /**
  * Manage program's simulation hours
  *
- * @author Chloé T hgfgh
+ * @author Chloé T
  * @author Aurélien
  */
 public class SimulationHourManager {

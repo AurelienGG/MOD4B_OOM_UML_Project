@@ -40,12 +40,21 @@ public class Runway {
      * @return the plane if its full
      * or null if its still need time
      */
-    private Plane checkPlaneFuelLevel() { //TODO
-        return (holderPlane.getHoursFuelLeft()>0);
+    private Plane checkPlaneFuelLevel() {
+        if (holderPlane.getHoursFuelLeft()<=0){
+            return this.holderPlane;
+        }
+        else{
+            return null;
+        }
     }
 
     private void planeLeave() {
         this.holderPlane=null;
         this.occupied=false;
+    }
+
+    public boolean isOccupied(){
+        return this.occupied;
     }
 }

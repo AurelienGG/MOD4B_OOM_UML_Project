@@ -1,5 +1,11 @@
 package logic.runways;
 
+/**
+ * Manage the program runways
+ *
+ * @author Emmie
+ * @author Aurélien
+ */
 public class RunwayManager {
 
     private static RunwayManager runwayManager_instance = null;

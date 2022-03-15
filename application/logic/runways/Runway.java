@@ -2,6 +2,12 @@ package logic.runways;
 
 import logic.planes.Plane;
 
+/**
+ * Class for the runway object
+ *
+ * @author Emmie
+ * @author Aurélien
+ */
 public class Runway {
 
     private boolean occupied;

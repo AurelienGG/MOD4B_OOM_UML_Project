@@ -3,6 +3,12 @@ package logic.simulationHour;
 import logic.requests.Request;
 import userInterface.UserInputManager;
 
+/**
+ * Manage program's simulation hours
+ *
+ * @author Chloé T
+ * @author Aurélien
+ */
 public class SimulationHourManager {
     
     private static SimulationHourManager simulationHourManager_instance = null;

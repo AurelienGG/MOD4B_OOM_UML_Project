@@ -1,5 +1,11 @@
 package logic.planes;
 
+/**
+ * Class for the plane object
+ *
+ * @author Emmie
+ * @author Aurélien
+ */
 public class Plane {
 
     private PlaneType planeType;

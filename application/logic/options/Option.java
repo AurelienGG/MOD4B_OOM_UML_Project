@@ -1,5 +1,11 @@
 package logic.options;
 
+/**
+ * Abstract class for options, provide the sub-classes template
+ *
+ * @author Emmie
+ * @author Aurélien
+ */
 public abstract class Option {
 
     private final String DESCRIPTION;

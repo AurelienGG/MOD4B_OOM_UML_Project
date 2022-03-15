@@ -1,5 +1,11 @@
 package logic.passengers;
 
+/**
+ * Manage program's number of dead passengers count
+ *
+ * @author Chloé T
+ * @author Aurélien
+ */
 public class DeadPassengerCountManager {
 
     private static DeadPassengerCountManager deadPassengerCountManager_instance = null;

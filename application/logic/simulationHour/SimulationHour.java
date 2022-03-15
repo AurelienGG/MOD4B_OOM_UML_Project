@@ -4,6 +4,12 @@ import logic.requests.Request;
 
 import java.util.ArrayList;
 
+/**
+ * Class for the simulation hour object
+ *
+ * @author Chloé T
+ * @author Aurélien
+ */
 public class SimulationHour {
 
     private int currentHour;

@@ -2,6 +2,12 @@ package logic.requests;
 
 import logic.options.Option;
 
+/**
+ * Class for the request object
+ *
+ * @author Emmie
+ * @author Aurélien
+ */
 public abstract class Request {
 
     private final double RARITY;

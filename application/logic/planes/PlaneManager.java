@@ -3,6 +3,12 @@ package logic.planes;
 import java.util.EnumMap;
 import java.util.Stack;
 
+/**
+ * Manage the program planes
+ *
+ * @author Emmie
+ * @author Aurélien
+ */
 public class PlaneManager {
 
     private static PlaneManager planeManager_instance = null;

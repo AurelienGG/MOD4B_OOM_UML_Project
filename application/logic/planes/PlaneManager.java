@@ -40,4 +40,15 @@ public class PlaneManager {
         //TODO
         return null;
     }
+
+    /**
+     * Generate a random number
+     * @param minimum minimum value
+     * @param maximum maximum value
+     * @return a random number between 2 values
+     */
+    private int generateRandomNumber(int minimum, int maximum) {
+        //TODO
+        return 0;
+    }
 }

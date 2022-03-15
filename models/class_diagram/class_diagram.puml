@@ -125,7 +125,7 @@ package application {
         }
 
         class Runway {
-          - occupied: Boolean
+          - occupied: boolean
           - holderPlane: Plane
           --
           + planeLand(Plane plane): void
@@ -144,6 +144,7 @@ package application {
             --
             - WaitingPlanesManager()
             + {static} getInstance(): WaitingPlanesManager
+            + addPlaneToWaitingPlanes(Plane plane): void
         }
       }
 
@@ -155,6 +156,9 @@ package application {
             --
             - PlaneManager()
             + {static} getInstance(): PlaneManager
+            - generateCommonPlane(): Plane
+            - generateEmergencyPlane(): Plane
+            - generateJumboPlane(): Plane
         }
 
         enum PlaneType {
@@ -188,15 +192,18 @@ package application {
       package requests {
 
           abstract Request {
-            {abstract} - RARITY: Double
-            {abstract} - TITLE: String
-            {abstract} - DESCRIPTION: String
-            {abstract} - OPTIONS: Option[]
+            - RARITY: Double
+            - TITLE: String
+            - DESCRIPTION: String
+            - options: Option[]
+            --
+            # Request(double RARITY, String TITLE, String DESCRIPTION, Option[] options)
           }
 
           abstract Landing extends Request {
-             {abstract} - plane: Plane
-            - OPTIONS: Option[] = ...
+            - plane: Plane
+            --
+            # Landing(double RARITY, String TITLE, String DESCRIPTION, Option[] options, Plane plane)
           }
 
           class PlaneLanding extends Landing {
@@ -217,7 +224,7 @@ package application {
             - RARITY: Double = 0.10
             - TITLE: String = "Funding Event"
             - DESCRIPTION: String = ...
-            - OPTIONS: Option[] = ...
+            - options: Option[] = ...
           }
 
           class JumboJet extends Landing {
@@ -231,35 +238,35 @@ package application {
             - RARITY: Double = 0.10
             - TITLE: String = "Bad Weather"
             - DESCRIPTION: String = ...
-            - OPTIONS: Option[] = ...
+            - options: Option[] = ...
           }
 
           class SnakesOnThePlane extends Request {
             - RARITY: Double = 0.10
             - TITLE: String = "Snakes on the plane"
             - DESCRIPTION: String = ...
-            - OPTIONS: Option[] = ...
+            - options: Option[] = ...
           }
 
           class Protests extends Request {
             - RARITY: Double = 0.05
             - TITLE: String = "Protests"
             - DESCRIPTION: String = ...
-            - OPTIONS: Option[] = ...
+            - options: Option[] = ...
           }
 
           class JohnMcClain extends Request {
             - RARITY: Double = 0.05
             - TITLE: String = "John McClain"
             - DESCRIPTION: String = ...
-            - OPTIONS: Option[] = ...
+            - options: Option[] = ...
           }
         }
 
         package options {
 
           abstract Option {
-            {abstract} - description: String
+            - description: String
             --
             {abstract} + checkRequirement(): Boolean
             {abstract} + applyConsequence(): void

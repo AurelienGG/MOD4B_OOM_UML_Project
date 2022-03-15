@@ -37,10 +37,11 @@ public class WaitingPlanesManager {
      * Decrease the fuel,
      * Check for crash
      * Communicate number of dead passengers from crash
+     * @return number of dead passengers or 0
      */
-    public void waitingPlanesAdvanceHour() {
+    public int waitingPlanesAdvanceHour() {
         //TODO
-        //TODO How to communicate?
+        return 0;
     }
 
     /**

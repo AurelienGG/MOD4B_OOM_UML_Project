@@ -12,7 +12,7 @@ public class DeadPassengerCountManager {
     private int nbDeadPassengers;
 
     private DeadPassengerCountManager() {
-        //TODO
+        this.nbDeadPassengers = 0;
     }
 
     public static DeadPassengerCountManager getInstance() {
@@ -23,9 +23,9 @@ public class DeadPassengerCountManager {
 
     /**
      * Add the number of dead passengers to the count
-     * @param nbDeadPassengersFromCrash the number of passengers dying from the crash
+     * @param nbDeadPassengersFromCrash the number of passengers dead from the crash
      */
     public void addDeadPassengers(int nbDeadPassengersFromCrash) {
-        //TODO
+        nbDeadPassengers += nbDeadPassengersFromCrash;
     }
 }

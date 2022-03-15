@@ -15,7 +15,11 @@ public class Plane {
     private int nbPassengers;
 
     public Plane(PlaneType planeType, String name, int hoursFuelLeft, int hoursRunwayNeeded, int nbPassengers) {
-        //TODO
+        this.planeType=planeType;
+        this.name=name;
+        this.hoursFuelLeft=hoursFuelLeft;
+        this.hoursRunwayNeeded=hoursRunwayNeeded;
+        this.nbPassengers=nbPassengers;
     }
 
     public PlaneType getPlaneType() {
@@ -39,11 +43,11 @@ public class Plane {
     }
 
     public void decreaseFuelLeft() {
-        //TODO
+        this.hoursFuelLeft--;
     }
 
     public void decreaseHoursRunwayNeeded() {
-        //TODO
+        this.hoursRunwayNeeded--;
     }
 
     public String displayPlane() {

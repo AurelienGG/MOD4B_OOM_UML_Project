@@ -4,7 +4,9 @@ public abstract class Menu {
 
     private MenuType menuType;
 
-    //public Menu() {}
+    public Menu(MenuType menuType) {
+        this.menuType = menuType;
+    }
 
     public abstract void goToMenu(Menu menu);
 

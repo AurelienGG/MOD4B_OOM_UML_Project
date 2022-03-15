@@ -4,7 +4,9 @@ public class RefuseThem extends Option {
 
     private final String description = "Refuse them";
 
-    public RefuseThem(){}
+    public RefuseThem(){
+        super("Refuse them");
+    }
 
     @Override
     public boolean checkRequirement() {

@@ -4,7 +4,9 @@ public class LetThePlanesLandAnyways extends Option {
 
     private final String description = "Let the planes land anyways";
 
-    public LetThePlanesLandAnyways(){}
+    public LetThePlanesLandAnyways(){
+        super("Let the planes land anyways");
+    }
 
     @Override
     public boolean checkRequirement() {

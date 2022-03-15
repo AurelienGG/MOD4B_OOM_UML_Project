@@ -4,7 +4,9 @@ public class GetPoliceInvolved extends Option {
 
     private final String description = "Get police involved";
 
-    public GetPoliceInvolved(){}
+    public GetPoliceInvolved(){
+        super("Get police involved");
+    }
 
     @Override
     public boolean checkRequirement() {

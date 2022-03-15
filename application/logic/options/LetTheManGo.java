@@ -4,7 +4,9 @@ public class LetTheManGo extends Option {
 
     private final String description = "Let the man go";
 
-    public LetTheManGo(){}
+    public LetTheManGo(){
+        super("Let the man go");
+    }
 
     @Override
     public boolean checkRequirement() {

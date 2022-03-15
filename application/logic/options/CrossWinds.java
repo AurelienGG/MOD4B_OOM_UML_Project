@@ -4,7 +4,9 @@ public class CrossWinds extends Option {
 
     private final String description = "Cross winds";
 
-    public CrossWinds(){}
+    public CrossWinds(){
+        super("Cross winds");
+    }
 
     @Override
     public boolean checkRequirement() {

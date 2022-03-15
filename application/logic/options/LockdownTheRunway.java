@@ -4,7 +4,9 @@ public class LockdownTheRunway extends Option {
 
     private final String description = "Lockdown the runway";
 
-    public LockdownTheRunway(){}
+    public LockdownTheRunway(){
+        super("Lockdown the runway");
+    }
 
     @Override
     public boolean checkRequirement() {

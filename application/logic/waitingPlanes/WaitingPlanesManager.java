@@ -40,6 +40,7 @@ public class WaitingPlanesManager {
      */
     public void waitingPlanesAdvanceHour() {
         //TODO
+        //TODO How to communicate?
     }
 
     /**

@@ -16,7 +16,7 @@ public class MainMenu extends Menu {
     }
 
     @Override
-    public String menuToString() {
+    public String displayMenu() {
         return "MainMenu";
     }
 }

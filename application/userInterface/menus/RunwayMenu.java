@@ -8,7 +8,7 @@ public class RunwayMenu extends Menu {
     }
 
     @Override
-    public String menuToString() {
+    public String displayMenu() {
         return "RunwayMenu";
     }
 }

@@ -8,7 +8,7 @@ public class WaitingPlanesMenu extends Menu {
     }
 
     @Override
-    public String menuToString() {
+    public String displayMenu() {
         return "WaitingPlanesMenu";
     }
 }

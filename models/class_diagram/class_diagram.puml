@@ -47,8 +47,8 @@ package application {
           - menuType: MenuType
           --
           {abstract} + goToMenu(Menu menu): void
-          {abstract} + menuToString(): String
-          + displayMenu(): void
+          {abstract} + displayMenu(): String
+          + printMenuToOutput(): void
         }
 
         class MainMenu extends Menu {
@@ -56,35 +56,35 @@ package application {
           + MainMenu()
           + advanceHour(): void
           + goToMenu(Menu menu): void
-          + menuToString(): String
+          + displayMenu(): String
         }
 
         class RunwayMenu extends Menu {
             --
             + RunwayMenu()
             + goToMenu(Menu menu): void
-            + menuToString(): String
+            + displayMenu(): String
         }
 
         class WaitingPlanesMenu extends Menu {
             --
             + WaitingPlanesMenu()
             + goToMenu(Menu menu): void
-            + menuToString(): String
+            + displayMenu(): String
         }
 
         class AdvanceHourMenu extends Menu {
             --
             + AdvanceHourMenu()
             + goToMenu(Menu menu): void
-            + menuToString(): String
+            + displayMenu(): String
         }
 
         class RequestMenu extends Menu {
             --
             + RequestMenu()
             + goToMenu(Menu menu): void
-            + menuToString(): String
+            + displayMenu(): String
         }
 
       }

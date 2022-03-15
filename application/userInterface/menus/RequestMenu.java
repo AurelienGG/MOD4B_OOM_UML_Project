@@ -8,7 +8,7 @@ public class RequestMenu extends Menu {
     }
 
     @Override
-    public String menuToString() {
+    public String displayMenu() {
         return "RequestMenu";
     }
 }

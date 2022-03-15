@@ -1,6 +1,7 @@
 package logic.planes;
 
 public class Plane {
+
     private PlaneType planeType;
     private String name;
     private int hoursFuelLeft;
@@ -8,6 +9,7 @@ public class Plane {
     private int nbPassengers;
 
     public String displayPlane() {
+        //TODO
         return "Plane{" +
                 "planeType=" + planeType +
                 ", name='" + name + '\'' +

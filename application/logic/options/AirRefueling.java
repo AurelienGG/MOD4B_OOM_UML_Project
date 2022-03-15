@@ -4,7 +4,9 @@ public class AirRefueling extends Option {
 
     private final String description = "Air refueling";
 
-    public AirRefueling(){}
+    public AirRefueling(){
+        super("Air refueling");
+    }
 
     @Override
     public boolean checkRequirement() {

@@ -47,8 +47,8 @@ package application {
           - menuType: MenuType
           --
           {abstract} + goToMenu(Menu menu): void
-          {abstract} + menuToString(): String
-          + displayMenu(): void
+          {abstract} + displayMenu(): String
+          + printMenuToOutput(): void
         }
 
         class MainMenu extends Menu {
@@ -56,35 +56,35 @@ package application {
           + MainMenu()
           + advanceHour(): void
           + goToMenu(Menu menu): void
-          + menuToString(): String
+          + displayMenu(): String
         }
 
         class RunwayMenu extends Menu {
             --
             + RunwayMenu()
             + goToMenu(Menu menu): void
-            + menuToString(): String
+            + displayMenu(): String
         }
 
         class WaitingPlanesMenu extends Menu {
             --
             + WaitingPlanesMenu()
             + goToMenu(Menu menu): void
-            + menuToString(): String
+            + displayMenu(): String
         }
 
         class AdvanceHourMenu extends Menu {
             --
             + AdvanceHourMenu()
             + goToMenu(Menu menu): void
-            + menuToString(): String
+            + displayMenu(): String
         }
 
         class RequestMenu extends Menu {
             --
             + RequestMenu()
             + goToMenu(Menu menu): void
-            + menuToString(): String
+            + displayMenu(): String
         }
 
       }
@@ -125,7 +125,7 @@ package application {
         }
 
         class Runway {
-          - occupied: Boolean
+          - occupied: boolean
           - holderPlane: Plane
           --
           + planeLand(Plane plane): void
@@ -144,6 +144,7 @@ package application {
             --
             - WaitingPlanesManager()
             + {static} getInstance(): WaitingPlanesManager
+            + addPlaneToWaitingPlanes(Plane plane): void
         }
       }
 
@@ -155,6 +156,9 @@ package application {
             --
             - PlaneManager()
             + {static} getInstance(): PlaneManager
+            - generateCommonPlane(): Plane
+            - generateEmergencyPlane(): Plane
+            - generateJumboPlane(): Plane
         }
 
         enum PlaneType {
@@ -188,15 +192,18 @@ package application {
       package requests {
 
           abstract Request {
-            {abstract} - RARITY: Double
-            {abstract} - TITLE: String
-            {abstract} - DESCRIPTION: String
-            {abstract} - OPTIONS: Option[]
+            - RARITY: Double
+            - TITLE: String
+            - DESCRIPTION: String
+            - options: Option[]
+            --
+            # Request(double RARITY, String TITLE, String DESCRIPTION, Option[] options)
           }
 
           abstract Landing extends Request {
-             {abstract} - plane: Plane
-            - OPTIONS: Option[] = ...
+            - plane: Plane
+            --
+            # Landing(double RARITY, String TITLE, String DESCRIPTION, Option[] options, Plane plane)
           }
 
           class PlaneLanding extends Landing {
@@ -217,7 +224,7 @@ package application {
             - RARITY: Double = 0.10
             - TITLE: String = "Funding Event"
             - DESCRIPTION: String = ...
-            - OPTIONS: Option[] = ...
+            - options: Option[] = ...
           }
 
           class JumboJet extends Landing {
@@ -231,142 +238,143 @@ package application {
             - RARITY: Double = 0.10
             - TITLE: String = "Bad Weather"
             - DESCRIPTION: String = ...
-            - OPTIONS: Option[] = ...
+            - options: Option[] = ...
           }
 
           class SnakesOnThePlane extends Request {
             - RARITY: Double = 0.10
             - TITLE: String = "Snakes on the plane"
             - DESCRIPTION: String = ...
-            - OPTIONS: Option[] = ...
+            - options: Option[] = ...
           }
 
           class Protests extends Request {
             - RARITY: Double = 0.05
             - TITLE: String = "Protests"
             - DESCRIPTION: String = ...
-            - OPTIONS: Option[] = ...
+            - options: Option[] = ...
           }
 
           class JohnMcClain extends Request {
             - RARITY: Double = 0.05
             - TITLE: String = "John McClain"
             - DESCRIPTION: String = ...
-            - OPTIONS: Option[] = ...
+            - options: Option[] = ...
           }
         }
 
         package options {
 
           abstract Option {
-            {abstract} - description: String
+            - DESCRIPTION: String
             --
+            # Option()
             {abstract} + checkRequirement(): Boolean
             {abstract} + applyConsequence(): void
-            {abstract} + displayOption(): String
+            + displayOption(): String
           }
 
           class AllowLanding extends Option {
-            - description: String
             --
+            + AllowLanding()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class PlaceOnStandby extends Option {
-            - description: String
             --
+            + PlaceOnStandby()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class EmptyRandomRunway extends Option {
-            - description: String
             --
+            + EmptyRandomRunway()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class RescueTeam extends Option {
-            - description: String
             --
+            + RescueTeam()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class AirRefueling extends Option {
-            - description: String
             --
+            + AirRefueling()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class CrossWinds extends Option {
-            - description: String
             --
+            + CrossWinds()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class IcyRunWays extends Option {
-            - description: String
             --
+            + IcyRunWays()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class IceStorm extends Option {
-            - description: String
             --
+            + IceStorm()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class LetThemLand extends Option {
-            - description: String
             --
+            + LetThemLand()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class RefuseThem extends Option {
-            - description: String
             --
+            + RefuseThem()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class AllowThemTheSpaceToProtest extends Option {
-            - description: String
             --
+            + AllowThemTheSpaceToProtest()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class GetPoliceInvolved extends Option {
-            - description: String
             --
+            + GetPoliceInvolved()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class LetThePlanesLandAnyways extends Option {
-            - description: String
             --
+            + LetThePlanesLandAnyways()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class LockdownTheRunway extends Option {
-            - description: String
             --
+            + LockdownTheRunway()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class LetTheManGo extends Option {
-            - description: String
             --
+            + LetTheManGo()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }

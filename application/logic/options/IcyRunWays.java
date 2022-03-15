@@ -4,7 +4,9 @@ public class IcyRunWays extends Option {
 
     private final String description = "Icy run ways";
 
-    public IcyRunWays(){}
+    public IcyRunWays(){
+        super("Icy run ways");
+    }
 
     @Override
     public boolean checkRequirement() {

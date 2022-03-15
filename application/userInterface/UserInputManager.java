@@ -2,6 +2,11 @@ package userInterface;
 
 import java.util.Scanner;
 
+/**
+ * Cover user input
+ *
+ * @author Aurélien
+ */
 public class UserInputManager {
 
     private static UserInputManager ui_instance = null;

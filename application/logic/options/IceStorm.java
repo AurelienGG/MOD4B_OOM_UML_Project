@@ -4,7 +4,9 @@ public class IceStorm extends Option {
 
     private final String description = "Ice storm";
 
-    public IceStorm(){}
+    public IceStorm(){
+        super("Ice storm");
+    }
 
     @Override
     public boolean checkRequirement() {

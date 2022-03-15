@@ -3,7 +3,9 @@ package logic.options;
 public class AllowThemTheSpaceToProtest extends Option {
     private final String description ="Allow them the space to protest";
 
-    public AllowThemTheSpaceToProtest(){}
+    public AllowThemTheSpaceToProtest(){
+        super("Allow them the space to protest");
+    }
 
     @Override
     public boolean checkRequirement() {

@@ -2,22 +2,19 @@ package logic.options;
 
 public class AllowLanding extends Option {
 
-    private final String description = "Allow landing";
-
-    public AllowLanding(){}
+    public AllowLanding() {
+        //TODO
+        super("Allow landing");
+    }
 
     @Override
     public boolean checkRequirement() {
+        //TODO
         return false;
     }
 
     @Override
     public void applyConsequence() {
-
-    }
-
-    @Override
-    public String displayOption() {
-        return description;
+        //TODO
     }
 }

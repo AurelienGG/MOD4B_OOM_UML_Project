@@ -5,6 +5,7 @@ public class RescueTeam extends Option {
     private final String description = "Rescue Team";
 
     public RescueTeam(){
+        super("Rescue Team");
     }
 
     @Override

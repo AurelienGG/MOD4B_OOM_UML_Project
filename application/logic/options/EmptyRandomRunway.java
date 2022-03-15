@@ -4,7 +4,9 @@ public class EmptyRandomRunway extends Option {
 
     private final String description = "Empty random runway";
 
-    public EmptyRandomRunway(){}
+    public EmptyRandomRunway(){
+        super("Empty random runway");
+    }
 
     @Override
     public boolean checkRequirement() {

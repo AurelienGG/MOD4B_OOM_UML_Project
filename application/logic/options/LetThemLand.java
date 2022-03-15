@@ -4,7 +4,9 @@ public class LetThemLand extends Option {
 
     private final String description = "Let them land";
 
-    public LetThemLand(){}
+    public LetThemLand(){
+        super("Let them land");
+    }
 
     @Override
     public boolean checkRequirement() {

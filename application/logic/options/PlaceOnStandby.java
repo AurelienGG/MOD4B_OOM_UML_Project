@@ -4,7 +4,9 @@ public class PlaceOnStandby extends Option {
 
     private final String description = "Place on standby";
 
-    public PlaceOnStandby(){}
+    public PlaceOnStandby(){
+        super("Place on standby");
+    }
 
     @Override
     public boolean checkRequirement() {

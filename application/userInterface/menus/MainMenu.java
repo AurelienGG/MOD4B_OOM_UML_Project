@@ -3,7 +3,7 @@ package userInterface.menus;
 public class MainMenu extends Menu {
 
     public MainMenu() {
-
+        super(MenuType.MAIN);
     }
 
     public void advanceHour() {
@@ -16,7 +16,7 @@ public class MainMenu extends Menu {
     }
 
     @Override
-    public String menuToString() {
+    public String displayMenu() {
         return "MainMenu";
     }
 }

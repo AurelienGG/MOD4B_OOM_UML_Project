@@ -29,7 +29,7 @@ public class WaitingPlanesManager {
      * @param plane the plane to add
      */
     public void addPlaneToWaitingPlanes(Plane plane) {
-        //TODO
+        this.waitingPlanes.add(plane);
     }
 
     /**
@@ -40,7 +40,10 @@ public class WaitingPlanesManager {
      * @return number of dead passengers or 0
      */
     public int waitingPlanesAdvanceHour() {
-        //TODO
+        decreaseWaitingPlanesFuel();
+        ArrayList<Plane>
+        checkWaitingPlanesFuel();
+        crashWaitingPlane();
         return 0;
     }
 
@@ -48,7 +51,9 @@ public class WaitingPlanesManager {
      * Decrease the fuel left in every waiting planes in the ArrayList
      */
     private void decreaseWaitingPlanesFuel() {
-        //TODO
+        for (Plane plane: waitingPlanes) {
+            plane.decreaseFuelLeft();
+        }
     }
 
     /**

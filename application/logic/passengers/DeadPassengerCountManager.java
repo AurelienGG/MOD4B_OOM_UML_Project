@@ -3,7 +3,7 @@ package logic.passengers;
 /**
  * Manage program's number of dead passengers count
  *
- * @author Chloé T
+ * @author Chloé A
  * @author Aurélien
  */
 public class DeadPassengerCountManager {

@@ -20,4 +20,14 @@ public class RunwayManager {
             runwayManager_instance = new RunwayManager();
         return runwayManager_instance;
     }
+
+    /**
+     * Hourly checks for runways,
+     * Decrease the time refueling,
+     * Check if planes can leave
+     * Make planes leaves
+     */
+    public void RunwayAdvanceHour() {
+        //TODO
+    }
 }

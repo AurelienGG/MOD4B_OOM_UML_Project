@@ -48,13 +48,19 @@ public class PlaneManager {
     }
 
     private Plane generateEmergencyPlane(int planeID) {
-        //TODO
-        return null;
+        return new Plane(PlaneType.EMERGENCY,
+                "EmergencyPlane" + planeID,
+                generateRandomNumber(1,3),
+                generateRandomNumber(3,5),
+                generateRandomNumber(100, 500));
     }
 
     private Plane generateJumboPlane(int planeID) {
-        //TODO
-        return null;
+        return new Plane(PlaneType.JUMBO,
+                "JumboJet" + planeID,
+                generateRandomNumber(4,6),
+                generateRandomNumber(3,5), //TODO
+                generateRandomNumber(300,600));
     }
 
     /**
@@ -64,7 +70,6 @@ public class PlaneManager {
      * @return a random number between 2 values
      */
     private int generateRandomNumber(int minimum, int maximum) {
-        //TODO
-        return 0;
+        return (int) (Math.random()*(maximum-minimum)+minimum);
     }
 }

@@ -28,11 +28,6 @@ public class SimulationHourManager {
         //TODO
     }
 
-    private int generateRandomNumberRequest(int maximum) {
-        //TODO
-        return 0;
-    }
-
     private Request generateRandomRequest() {
         //TODO
         return null;

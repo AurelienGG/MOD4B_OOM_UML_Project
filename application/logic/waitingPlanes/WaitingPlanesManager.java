@@ -77,7 +77,7 @@ public class WaitingPlanesManager {
      * @param crashingPlane the plane crashing
      */
     private void crashWaitingPlane(Plane crashingPlane) {
-        //TODO
+        this.waitingPlanes.remove(crashingPlane);
     }
 
     /**

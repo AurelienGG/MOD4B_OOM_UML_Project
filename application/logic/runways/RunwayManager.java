@@ -1,5 +1,9 @@
 package logic.runways;
 
+import logic.planes.Plane;
+
+import java.util.ArrayList;
+
 /**
  * Manage the program runways
  *
@@ -28,6 +32,22 @@ public class RunwayManager {
      * Make planes leaves
      */
     public void RunwayAdvanceHour() {
+        //TODO
+    }
+
+    /**
+     * Decrease the time refueling for every plane in a runway
+     */
+    private void decreaseWaitingPlanesFuel() {
+        //TODO
+    }
+
+    /**
+     * Check the fuel left in every waiting planes in the ArrayList
+     * @return an ArrayList of planes out of fuel
+     * or null if there is no crash
+     */
+    private void checkRunwayFuel() {
         //TODO
     }
 }

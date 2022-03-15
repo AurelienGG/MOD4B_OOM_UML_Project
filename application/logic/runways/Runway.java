@@ -35,7 +35,12 @@ public class Runway {
                 '}';
     }
 
-    private boolean checkPlaneFuelLevel() { //TODO
+    /**
+     * Check the hours left for completing the fueling
+     * @return the plane if its full
+     * or null if its still need time
+     */
+    private Plane checkPlaneFuelLevel() { //TODO
         return (holderPlane.getHoursFuelLeft()>0);
     }
 

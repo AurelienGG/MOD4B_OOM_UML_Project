@@ -266,114 +266,115 @@ package application {
         package options {
 
           abstract Option {
-            - description: String
+            - DESCRIPTION: String
             --
+            # Option()
             {abstract} + checkRequirement(): Boolean
             {abstract} + applyConsequence(): void
-            {abstract} + displayOption(): String
+            + displayOption(): String
           }
 
           class AllowLanding extends Option {
-            - description: String
             --
+            + AllowLanding()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class PlaceOnStandby extends Option {
-            - description: String
             --
+            + PlaceOnStandby()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class EmptyRandomRunway extends Option {
-            - description: String
             --
+            + EmptyRandomRunway()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class RescueTeam extends Option {
-            - description: String
             --
+            + RescueTeam()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class AirRefueling extends Option {
-            - description: String
             --
+            + AirRefueling()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class CrossWinds extends Option {
-            - description: String
             --
+            + CrossWinds()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class IcyRunWays extends Option {
-            - description: String
             --
+            + IcyRunWays()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class IceStorm extends Option {
-            - description: String
             --
+            + IceStorm()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class LetThemLand extends Option {
-            - description: String
             --
+            + LetThemLand()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class RefuseThem extends Option {
-            - description: String
             --
+            + RefuseThem()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class AllowThemTheSpaceToProtest extends Option {
-            - description: String
             --
+            + AllowThemTheSpaceToProtest()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class GetPoliceInvolved extends Option {
-            - description: String
             --
+            + GetPoliceInvolved()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class LetThePlanesLandAnyways extends Option {
-            - description: String
             --
+            + LetThePlanesLandAnyways()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class LockdownTheRunway extends Option {
-            - description: String
             --
+            + LockdownTheRunway()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class LetTheManGo extends Option {
-            - description: String
             --
+            + LetTheManGo()
             + checkRequirement(): boolean
             + applyConsequence(): void
           }

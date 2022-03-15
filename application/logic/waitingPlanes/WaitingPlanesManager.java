@@ -41,6 +41,7 @@ public class WaitingPlanesManager {
      */
     public int waitingPlanesAdvanceHour() {
         decreaseWaitingPlanesFuel();
+        //TODO
         ArrayList<Plane>
         checkWaitingPlanesFuel();
         crashWaitingPlane();
@@ -62,8 +63,13 @@ public class WaitingPlanesManager {
      * or null if there is no crash
      */
     private ArrayList<Plane> checkWaitingPlanesFuel() {
-        //TODO
-        return null;
+        ArrayList<Plane> noFuelPlanes = new ArrayList<>();
+        for (Plane plane: waitingPlanes) {
+            if ( plane.getHoursFuelLeft() <= 0) {
+                noFuelPlanes.add(plane);
+            }
+        }
+        return noFuelPlanes;
     }
 
     /**

@@ -24,7 +24,8 @@ public class Runway {
     }
 
     public void decreasePlaneHoursRunwayNeeded() {
-        holderPlane.decreaseHoursRunwayNeeded();
+        if(this.isOccupied())
+            holderPlane.decreaseHoursRunwayNeeded();
     }
 
     public String displayRunway() {
@@ -41,12 +42,10 @@ public class Runway {
      * or null if its still need time
      */
     private Plane checkPlaneFuelLevel() {
-        if (holderPlane.getHoursFuelLeft()<=0){
+        if(this.isOccupied() && holderPlane.getHoursFuelLeft() <= 0)
             return this.holderPlane;
-        }
-        else{
+        else
             return null;
-        }
     }
 
     private void planeLeave() {

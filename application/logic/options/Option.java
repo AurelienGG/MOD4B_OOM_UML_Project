@@ -1,8 +1,18 @@
 package logic.options;
 
 public abstract class Option {
-    private String description;
+
+    private final String DESCRIPTION;
+
+    protected Option(String DESCRIPTION) {
+        this.DESCRIPTION = DESCRIPTION;
+    }
+
     public abstract boolean checkRequirement();
+
     public abstract void applyConsequence();
-    public abstract String displayOption();
+
+    public String displayOption() {
+        return this.DESCRIPTION;
+    }
 }

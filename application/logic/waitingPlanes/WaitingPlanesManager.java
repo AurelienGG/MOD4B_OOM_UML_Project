@@ -15,7 +15,7 @@ public class WaitingPlanesManager {
     private ArrayList<Plane> waitingPlanes;
 
     private WaitingPlanesManager() {
-        //TODO
+        this.waitingPlanes = new ArrayList<>();
     }
 
     public static WaitingPlanesManager getInstance() {

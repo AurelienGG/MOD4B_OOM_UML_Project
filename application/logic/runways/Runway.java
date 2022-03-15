@@ -14,15 +14,17 @@ public class Runway {
     private Plane holderPlane;
 
     public Runway() {
-        //TODO
+        this.occupied=false;
+        this.holderPlane=null;
     }
 
     public void planeLand(Plane plane) {
-        //TODO
+        this.holderPlane=plane;
+        this.occupied=true;
     }
 
     public void decreasePlaneHoursRunwayNeeded() {
-        //TODO
+        holderPlane.decreaseHoursRunwayNeeded();
     }
 
     public String displayRunway() {
@@ -33,11 +35,12 @@ public class Runway {
                 '}';
     }
 
-    private void checkPlaneFuelLevel() {
-        //TODO
+    private boolean checkPlaneFuelLevel() { //TODO
+        return (holderPlane.getHoursFuelLeft()>0);
     }
 
     private void planeLeave() {
-        //TODO
+        this.holderPlane=null;
+        this.occupied=false;
     }
 }

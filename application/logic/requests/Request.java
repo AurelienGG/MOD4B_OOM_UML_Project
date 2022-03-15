@@ -5,7 +5,7 @@ import logic.options.Option;
 /**
  * Class for the request object
  *
- * @author Emmie
+ * @author Chloé A
  * @author Aurélien
  */
 public abstract class Request {

@@ -58,9 +58,9 @@ public class Runway {
     /**
      * TODO
      */
-    protected void increaseTimeBlocked() {
+    protected void increaseTimeBlocked(int hoursTimeBlocked) {
         if(this.runwayStatus == RunwayStatus.OCCUPIED)
-            this.timeBlocked++;
+            this.timeBlocked+=hoursTimeBlocked;
     }
 
     /**
@@ -88,7 +88,7 @@ public class Runway {
     /**
      * TODO
      */
-    private void emptyRunway() {
+    protected void emptyRunway() {
         this.runwayStatus = RunwayStatus.FREE;
         this.timeBlocked = 0;
     }
@@ -113,9 +113,9 @@ public class Runway {
     }
 
     /**
-     * @return true if the runway is free
+     * @return the status of the runway
      */
-    protected boolean isFree(){
-        return runwayStatus==RunwayStatus.FREE;
+    protected RunwayStatus getRunwayStatus(){
+        return this.runwayStatus;
     }
 }

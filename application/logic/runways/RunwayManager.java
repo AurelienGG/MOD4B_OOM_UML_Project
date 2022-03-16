@@ -52,7 +52,7 @@ public class RunwayManager {
     }
 
     /**
-     * TODO IS IT USEFULL ?
+     * TODO IS IT USEFUL ?
      * Decrease the time refueling for every plane occupying a runway
      */
     private void decreaseWaitingPlanesFuel() {
@@ -60,7 +60,7 @@ public class RunwayManager {
     }
 
     /**
-     * TODO IS IT USEFULL ?
+     * TODO IS IT USEFUL ?
      * Check the fuel left in every waiting planes in the ArrayList
      * @return an ArrayList of planes out of fuel
      * or null if there is no crash

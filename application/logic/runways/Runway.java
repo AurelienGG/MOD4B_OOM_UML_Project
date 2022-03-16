@@ -69,7 +69,7 @@ public class Runway {
     }
 
     /**
-     * TODO IS IT USEFULL ?
+     * TODO IS IT USEFUL ?
      * Check the hours left for completing the fueling
      * @return the plane if its full
      * or null if its still need time

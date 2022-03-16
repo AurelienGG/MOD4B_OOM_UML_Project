@@ -15,17 +15,21 @@ public class RunwayManager {
     private static RunwayManager runwayManager_instance = null;
     private ArrayList<Runway> runways;
 
+    final int INFINITY = 30;
+    final int nbRunways = 8;
+
     /**
-     * TODO
+     * Constructor the Runway Manager
      */
     private RunwayManager() {
-        this.runways =  new ArrayList<>(8);
-        //TODO
+        this.runways =  new ArrayList<>(nbRunways);
+        for(int i = 0; i<nbRunways ; i++)
+            runways.add(new Runway());
     }
 
     /**
-     * TODO
-     * @return
+     * get the singleton of the instance of the Runway Manager
+     * @return runwayManager_instance the singleton of the instance of the Runway Manager
      */
     public static RunwayManager getInstance() {
         if (runwayManager_instance == null)
@@ -34,11 +38,15 @@ public class RunwayManager {
     }
 
     /**
-     * TODO
-     * @param plane
+     * Make the plane land on a free runway
+     * @param plane the landing plane
      */
     public void planeLandOnFreeRunway(Plane plane) {
-        //TODO
+        for(Runway r : runways)
+            if(r.getRunwayStatus()==RunwayStatus.FREE) {
+                r.planeLand(plane);
+                break;
+            }
     }
 
     /**
@@ -47,26 +55,9 @@ public class RunwayManager {
      * Check if planes can leave
      * Make planes leaves
      */
-    public void runwayAdvanceHour() {
-        //TODO
-    }
-
-    /**
-     * TODO IS IT USEFUL ?
-     * Decrease the time refueling for every plane occupying a runway
-     */
-    private void decreaseWaitingPlanesFuel() {
-        //TODO
-    }
-
-    /**
-     * TODO IS IT USEFUL ?
-     * Check the fuel left in every waiting planes in the ArrayList
-     * @return an ArrayList of planes out of fuel
-     * or null if there is no crash
-     */
-    private void checkRunwayFuel() {
-        //TODO
+    public void runwayAdvanceHourAll() {
+        for (Runway r : runways)
+            r.runwayAdvanceHour();
     }
 
     /**
@@ -74,30 +65,56 @@ public class RunwayManager {
      * @return the number of occupied runways
      */
     public int getNbFullRunway() {
-        //TODO
-        return 0;
+        int nbFullRunway = 0;
+        for(Runway r : runways)
+            if(!(r.getRunwayStatus()==RunwayStatus.FREE))
+                nbFullRunway++;
+        return nbFullRunway;
+    }
+
+    /**
+     * For all the runways check if they are free
+     * @return the number of free runways
+     */
+    public int getNbFreeRunway() {
+        int nbFreeRunway = 0;
+        for(Runway r : runways)
+            if(r.getRunwayStatus()==RunwayStatus.FREE)
+                nbFreeRunway++;
+        return nbFreeRunway;
     }
 
     /**
      * Empty 1 random runway
      */
     public void emptyRandomRunway() {
-        //TODO
+        for(Runway r : runways)
+            if(!(r.getRunwayStatus()==RunwayStatus.FREE)){
+                r.emptyRunway();
+                break;
+            }
     }
 
     /**
      * Remove a runway
      */
     public void removeRunway() {
-        //TODO
+        for(Runway r : runways)
+            if(r.getRunwayStatus()==RunwayStatus.FREE){
+                r.blockRunway("CLOSED",INFINITY);
+                break;
+            }
     }
 
     /**
      * For every plane in a runway add more wait time
      * @param hoursToWait the added time to wait
      */
-    public void addWaitTimeAllRunways(int hoursToWait) {
-        //TODO
+    public void addTimeBlockedAllPlanes(int hoursToWait) {
+        for(Runway r : runways)
+            if(r.getRunwayStatus()==RunwayStatus.OCCUPIED)
+                r.increaseTimeBlocked(hoursToWait);
+
     }
 
     /**
@@ -106,6 +123,10 @@ public class RunwayManager {
      * @param hoursBlocked
      */
     public void blockFreeRunway(String occupantName, int hoursBlocked) {
-        //TODO
+        for(Runway r : runways)
+            if(r.getRunwayStatus()==RunwayStatus.FREE){
+                r.blockRunway(occupantName,hoursBlocked);
+                break;
+            }
     }
 }

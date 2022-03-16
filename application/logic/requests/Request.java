@@ -15,6 +15,13 @@ public abstract class Request {
     private final String DESCRIPTION;
     private Option[] options;
 
+    /**
+     *
+     * @param RARITY
+     * @param TITLE
+     * @param DESCRIPTION
+     * @param options
+     */
     protected Request(double RARITY, String TITLE, String DESCRIPTION, Option[] options) {
         //TODO
         this.RARITY = RARITY;

@@ -1,15 +1,22 @@
 package logic.options;
 
+import logic.runways.RunwayManager;
+
 public class AllowThemTheSpaceToProtest extends Option {
     private final String description ="Allow them the space to protest";
+    RunwayManager runwayManager;
 
     public AllowThemTheSpaceToProtest(){
         super("Allow them the space to protest");
+        runwayManager= RunwayManager.getInstance();
     }
 
     @Override
     public boolean checkRequirement() {
-        return false;
+        if(runwayManager.getNbFreeRunway()>0)
+            return true;
+        else
+            return false;
     }
 
     @Override

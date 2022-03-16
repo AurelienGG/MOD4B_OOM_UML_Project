@@ -47,7 +47,7 @@ public class RunwayManager {
      * Check if planes can leave
      * Make planes leaves
      */
-    public void RunwayAdvanceHour() {
+    public void runwayAdvanceHour() {
         //TODO
     }
 

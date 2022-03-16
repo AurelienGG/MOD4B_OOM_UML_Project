@@ -38,6 +38,7 @@ public class DeadPassengerCountManager {
      * @param nbRescuedPassengers the number of passengers rescued from the crash
      */
     public void decreaseDeadPassengers(int nbRescuedPassengers) {
-        //TODO
+        nbDeadPassengers -= nbRescuedPassengers;
+
     }
 }

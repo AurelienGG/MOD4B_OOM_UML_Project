@@ -87,5 +87,31 @@ public class PlaneManager {
                 Tools.generateRandomNumber(300,600));
     }
 
+    /**
+     * Give a common plane with random values
+     * @return a common plane from the planesDictionary
+     */
+    public Plane giveCommonPlane() {
+        //TODO
+        return null;
+    }
+
+    /**
+     * Give an emergency plane with random values
+     * @return an emergency plane from the planesDictionary
+     */
+    public Plane giveEmergencyPlane() {
+        //TODO
+        return null;
+    }
+
+    /**
+     * Give a jumbo jet with random values
+     * @return a jumbo jet from the planesDictionary
+     */
+    public Plane giveJumboPlane() {
+        //TODO
+        return null;
+    }
 
 }

@@ -22,7 +22,7 @@ public class EmptyRandomRunway extends Option {
 
     @Override
     public void applyConsequence() {
-
+        runwayManager.emptyRandomRunway();
     }
 
     @Override

@@ -92,7 +92,7 @@ public class WaitingPlanesManager {
      * Crash the waiting plane without fuels left
      * @param crashingPlane the plane crashing
      */
-    private void crashWaitingPlane(Plane crashingPlane) {
+    public void crashWaitingPlane(Plane crashingPlane) {
         this.waitingPlanes.remove(crashingPlane);
     }
 
@@ -119,6 +119,15 @@ public class WaitingPlanesManager {
      */
     public void airRefueling() {
         //TODO
+    }
+
+    /**
+     * Get a random waiting plane
+     * @return the random waiting plane
+     */
+    public Plane getRandomWaitingPlane(){
+        //TODO
+        return null;
     }
 
 }

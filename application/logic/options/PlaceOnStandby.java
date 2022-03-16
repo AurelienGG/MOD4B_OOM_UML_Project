@@ -15,7 +15,7 @@ public class PlaceOnStandby extends Option {
 
     @Override
     public void applyConsequence() {
-
+        //TODO
     }
 
     @Override

@@ -22,7 +22,7 @@ public class IceStorm extends Option {
 
     @Override
     public void applyConsequence() {
-
+        runwayManager.removeRunway();
     }
 
     @Override

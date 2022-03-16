@@ -21,7 +21,7 @@ public class AllowThemTheSpaceToProtest extends Option {
 
     @Override
     public void applyConsequence() {
-
+        runwayManager.blockFreeRunway("PROTEST",10);
     }
 
     @Override

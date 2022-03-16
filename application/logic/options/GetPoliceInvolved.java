@@ -22,7 +22,9 @@ public class GetPoliceInvolved extends Option {
 
     @Override
     public void applyConsequence() {
-
+        for(int i = 0;i<2;i++){
+            runwayManager.blockFreeRunway("POLICE",4);
+        }
     }
 
     @Override

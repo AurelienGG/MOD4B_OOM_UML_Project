@@ -22,7 +22,7 @@ public class LockdownTheRunway extends Option {
 
     @Override
     public void applyConsequence() {
-
+        runwayManager.blockFreeRunway("LOCKDOWN",8);
     }
 
     @Override

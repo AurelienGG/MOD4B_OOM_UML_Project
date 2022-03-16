@@ -1,11 +1,15 @@
 package logic.options;
 
+import logic.waitingPlanes.WaitingPlanesManager;
+
 public class CrossWinds extends Option {
 
     private final String description = "Cross winds";
+    WaitingPlanesManager waitingPlanesManager;
 
     public CrossWinds(){
         super("Cross winds");
+        waitingPlanesManager = WaitingPlanesManager.getInstance();
     }
 
     @Override
@@ -15,7 +19,7 @@ public class CrossWinds extends Option {
 
     @Override
     public void applyConsequence() {
-
+        waitingPlanesManager.decreaseWaitingPlanesFuel();
     }
 
     @Override

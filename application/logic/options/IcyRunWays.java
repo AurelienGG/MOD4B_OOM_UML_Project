@@ -15,7 +15,7 @@ public class IcyRunWays extends Option {
 
     @Override
     public void applyConsequence() {
-
+        //TODO
     }
 
     @Override

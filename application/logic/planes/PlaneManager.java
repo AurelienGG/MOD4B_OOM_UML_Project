@@ -26,16 +26,19 @@ public class PlaneManager {
         Stack<Plane> commonStack = new Stack<>();
         Stack<Plane> emergencyStack = new Stack<>();
         Stack<Plane> jumboStack = new Stack<>();
+        Stack<Plane> snakesStack = new Stack<>();
 
         for(int i = 99; i > 0; i--) {
             commonStack.push(generateCommonPlane(i));
             emergencyStack.push(generateEmergencyPlane(i));
             jumboStack.push(generateJumboPlane(i));
+            snakesStack.push(generateSnakePlane(i));
         }
 
         this.planesDictionary.put(PlaneType.COMMON, commonStack);
         this.planesDictionary.put(PlaneType.EMERGENCY, emergencyStack);
         this.planesDictionary.put(PlaneType.JUMBO, jumboStack);
+        this.planesDictionary.put(PlaneType.SNAKES,snakesStack);
     }
 
     /**
@@ -88,6 +91,19 @@ public class PlaneManager {
     }
 
     /**
+     * Create a snake plane
+     * @param planeID the id of the plane to create
+     * @return the new snake plane created
+     */
+    private Plane generateSnakePlane(int planeID) {
+        return new Plane(PlaneType.SNAKES,
+                "SnakesOnThePlane" + planeID,
+                0,
+                7,
+                0);
+    }
+
+    /**
      * Give a common plane with random values
      * @return a common plane from the planesDictionary
      */
@@ -109,6 +125,14 @@ public class PlaneManager {
      */
     public Plane giveJumboPlane() {
         return planesDictionary.get(PlaneType.JUMBO).pop();
+    }
+
+    /**
+     * Give a snakes plane with random values
+     * @return a snakes plane from the planesDictionary
+     */
+    public Plane giveSnakesPlane() {
+        return planesDictionary.get(PlaneType.SNAKES).pop();
     }
 
 }

@@ -16,6 +16,10 @@ public class PlaneManager {
     private static PlaneManager planeManager_instance = null;
     private EnumMap<PlaneType, Stack<Plane>> planesDictionary;
 
+    /**
+     * Constructor of Plane Manager
+     */
+
     private PlaneManager() {
         this.planesDictionary =  new EnumMap<>(PlaneType.class);
 
@@ -34,12 +38,21 @@ public class PlaneManager {
         this.planesDictionary.put(PlaneType.JUMBO, jumboStack);
     }
 
+    /**
+     * get the singleton of the instance of the Plane Manager
+     * @return planeManager_instance the singleton of the instance of the Plane Manager
+     */
     public PlaneManager getInstance() {
         if (planeManager_instance == null)
             planeManager_instance = new PlaneManager();
         return planeManager_instance;
     }
 
+    /**
+     * Create a common plane
+     * @param planeID the id of the plane to create
+     * @return the new common plane created
+     */
     private Plane generateCommonPlane(int planeID) {
         return new Plane(PlaneType.COMMON,
                 "CommonPlane" + planeID,
@@ -48,6 +61,11 @@ public class PlaneManager {
                 Tools.generateRandomNumber(100, 500));
     }
 
+    /**
+     * Create a emergency plane
+     * @param planeID the id of the plane to create
+     * @return the new emergency plane created
+     */
     private Plane generateEmergencyPlane(int planeID) {
         return new Plane(PlaneType.EMERGENCY,
                 "EmergencyPlane" + planeID,
@@ -56,6 +74,11 @@ public class PlaneManager {
                 Tools.generateRandomNumber(100, 500));
     }
 
+    /**
+     * Create a jumbo plane
+     * @param planeID the id of the plane to create
+     * @return the new jumbo plane created
+     */
     private Plane generateJumboPlane(int planeID) {
         return new Plane(PlaneType.JUMBO,
                 "JumboJet" + planeID,

@@ -92,8 +92,7 @@ public class PlaneManager {
      * @return a common plane from the planesDictionary
      */
     public Plane giveCommonPlane() {
-        //TODO
-        return null;
+        return planesDictionary.get(PlaneType.COMMON).pop();
     }
 
     /**
@@ -101,8 +100,7 @@ public class PlaneManager {
      * @return an emergency plane from the planesDictionary
      */
     public Plane giveEmergencyPlane() {
-        //TODO
-        return null;
+        return planesDictionary.get(PlaneType.EMERGENCY).pop();
     }
 
     /**
@@ -110,8 +108,7 @@ public class PlaneManager {
      * @return a jumbo jet from the planesDictionary
      */
     public Plane giveJumboPlane() {
-        //TODO
-        return null;
+        return planesDictionary.get(PlaneType.JUMBO).pop();
     }
 
 }

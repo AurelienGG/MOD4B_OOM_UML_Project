@@ -42,22 +42,19 @@ public class WaitingPlanesManager {
     public int waitingPlanesAdvanceHour() {
         decreaseWaitingPlanesFuel();
         ArrayList<Plane> crashingPlanes = checkWaitingPlanesFuel();
-
-        for (Plane plane: crashingPlanes) {
+        int deadPassenger = 0;
+        for(Plane plane: crashingPlanes) {
+            deadPassenger += plane.getNbPassengers();
             crashWaitingPlane(plane);
         }
-
-        int deadPassenger = 0;
-
-
         return deadPassenger;
     }
 
     /**
      * Decrease the fuel left in every waiting planes in the ArrayList
      */
-    private void decreaseWaitingPlanesFuel() {
-        for (Plane plane: waitingPlanes) {
+    public void decreaseWaitingPlanesFuel() {
+        for (Plane plane: this.waitingPlanes) {
             plane.decreaseFuelLeft();
         }
     }
@@ -67,20 +64,18 @@ public class WaitingPlanesManager {
      * @return an ArrayList of planes out of fuel
      * or null if there is no crash
      */
-    private ArrayList<Plane> checkWaitingPlanesFuel() {
+    private ArrayList<Plane> checkWaitingPlanesFuel()
+    {
         ArrayList<Plane> noFuelPlanes = new ArrayList<>();
-        for (Plane plane: waitingPlanes) {
-            if ( plane.getHoursFuelLeft() <= 0) {
-                noFuelPlanes.add(plane);
-            }
-        }
-        if (noFuelPlanes.isEmpty()){
-            return null;
-        }
-        else {
-            return noFuelPlanes;
-        }
 
+        for(Plane plane: this.waitingPlanes)
+            if(plane.getHoursFuelLeft() <= 0)
+                noFuelPlanes.add(plane);
+
+        if(noFuelPlanes.isEmpty())
+            return null;
+        else
+            return noFuelPlanes;
     }
 
     /**
@@ -97,9 +92,23 @@ public class WaitingPlanesManager {
      * @return the number of people dying from the crash
      */
     private int numberDeadPassengersFromCrash(Plane crashingPlane) {
-
         return crashingPlane.getNbPassengers();
     }
 
+    /**
+     * Getter for the number of waiting airplanes in air
+     * @return the size of the waitingPlanes ArrayList
+     */
+    public int getNbWaitingPlanes() {
+        //TODO
+        return 0;
+    }
+
+    /**
+     * Refuel all waiting airplanes in air
+     */
+    public void airRefueling() {
+        //TODO
+    }
 
 }

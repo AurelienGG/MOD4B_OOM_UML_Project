@@ -13,12 +13,20 @@ import java.util.ArrayList;
 public class RunwayManager {
 
     private static RunwayManager runwayManager_instance = null;
-    private Runway[] runways;
+    private ArrayList<Runway> runways;
 
+    /**
+     * TODO
+     */
     private RunwayManager() {
-        this.runways =  new Runway[8];
+        this.runways =  new ArrayList<>(8);
+        //TODO
     }
 
+    /**
+     * TODO
+     * @return
+     */
     public static RunwayManager getInstance() {
         if (runwayManager_instance == null)
             runwayManager_instance = new RunwayManager();
@@ -48,6 +56,37 @@ public class RunwayManager {
      * or null if there is no crash
      */
     private void checkRunwayFuel() {
+        //TODO
+    }
+
+    /**
+     * For all the runways check if they are occupied
+     * @return the number of occupied runways
+     */
+    public int getNbFullRunway() {
+        //TODO
+        return 0;
+    }
+
+    /**
+     * Empty 1 random runway
+     */
+    public void emptyRandomRunway() {
+        //TODO
+    }
+
+    /**
+     * Remove a runway
+     */
+    public void removeRunway() {
+        //TODO
+    }
+
+    /**
+     * For every plane in a runway add more wait time
+     * @param hoursToWait the added time to wait
+     */
+    public void addWaitTimeAllRunways(int hoursToWait) {
         //TODO
     }
 }

@@ -13,22 +13,36 @@ public class Runway {
     private boolean occupied;
     private Plane holderPlane;
 
-    public Runway() {
+    /**
+     * TODO
+     */
+    protected Runway() {
         this.occupied=false;
         this.holderPlane=null;
     }
 
-    public void planeLand(Plane plane) {
+    /**
+     * TODO
+     * @param plane
+     */
+    protected void planeLand(Plane plane) {
         this.holderPlane=plane;
         this.occupied=true;
     }
 
-    public void decreasePlaneHoursRunwayNeeded() {
+    /**
+     * TODO
+     */
+    protected void decreasePlaneHoursRunwayNeeded() {
         if(this.isOccupied())
             holderPlane.decreaseHoursRunwayNeeded();
     }
 
-    public String displayRunway() {
+    /**
+     * TODO
+     * @return
+     */
+    protected String displayRunway() {
         //TODO
         return "Runway{" +
                 "occupied=" + occupied +
@@ -48,12 +62,27 @@ public class Runway {
             return null;
     }
 
+    /**
+     * TODO
+     */
     private void planeLeave() {
         this.holderPlane=null;
         this.occupied=false;
     }
 
-    public boolean isOccupied(){
+    /**
+     * TODO
+     * @return
+     */
+    protected boolean isOccupied(){
         return this.occupied;
+    }
+
+    /**
+     * Add more wait time to the plane holding the runway
+     * @param hoursToWait the added time to wait
+     */
+    protected void addWaitTime(int hoursToWait) {
+        //TODO
     }
 }

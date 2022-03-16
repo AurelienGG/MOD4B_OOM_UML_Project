@@ -1,11 +1,15 @@
 package logic.options;
 
+import logic.passengers.DeadPassengerCountManager;
+
 public class RefuseThem extends Option {
 
     private final String description = "Refuse them";
+    DeadPassengerCountManager deadPassengerCountManager;
 
     public RefuseThem(){
         super("Refuse them");
+        deadPassengerCountManager = DeadPassengerCountManager.getInstance();
     }
 
     @Override
@@ -15,7 +19,7 @@ public class RefuseThem extends Option {
 
     @Override
     public void applyConsequence() {
-
+        deadPassengerCountManager.addDeadPassengers(50);
     }
 
     @Override

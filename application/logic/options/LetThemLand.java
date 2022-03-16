@@ -22,7 +22,7 @@ public class LetThemLand extends Option {
 
     @Override
     public void applyConsequence() {
-
+        //TODO
     }
 
     @Override

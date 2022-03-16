@@ -100,8 +100,8 @@ public class WaitingPlanesManager {
      * @return the size of the waitingPlanes ArrayList
      */
     public int getNbWaitingPlanes() {
-        //TODO
-        return 0;
+
+        return waitingPlanes.size();
     }
 
     /**

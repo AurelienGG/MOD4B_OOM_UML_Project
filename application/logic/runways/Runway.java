@@ -13,12 +13,16 @@ public class Runway {
     private boolean occupied;
     private Plane holderPlane;
 
+    private boolean blocked;
+    private int timeBlocked;
+
     /**
      * TODO
      */
     protected Runway() {
-        this.occupied=false;
-        this.holderPlane=null;
+        this.occupied = false;
+        this.holderPlane = null;
+        this.blocked = false;
     }
 
     /**
@@ -36,6 +40,14 @@ public class Runway {
     protected void decreasePlaneHoursRunwayNeeded() {
         if(this.isOccupied())
             holderPlane.decreaseHoursRunwayNeeded();
+    }
+
+    /**
+     * TODO
+     */
+    protected void increasePlaneHoursRunwayNeeded() {
+        if(this.isOccupied())
+            holderPlane.increaseHoursRunwayNeeded();
     }
 
     /**
@@ -83,6 +95,14 @@ public class Runway {
      * @param hoursToWait the added time to wait
      */
     protected void addWaitTime(int hoursToWait) {
+        //TODO
+    }
+
+    /**
+     * Block the runway for a set period of time
+     * @param hoursBlocked the time in hour the runway is blocked
+     */
+    protected void blockRunway(int hoursBlocked) {
         //TODO
     }
 }

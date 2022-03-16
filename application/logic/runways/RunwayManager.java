@@ -44,7 +44,7 @@ public class RunwayManager {
     }
 
     /**
-     * Decrease the time refueling for every plane in a runway
+     * Decrease the time refueling for every plane occupying a runway
      */
     private void decreaseWaitingPlanesFuel() {
         //TODO
@@ -87,6 +87,13 @@ public class RunwayManager {
      * @param hoursToWait the added time to wait
      */
     public void addWaitTimeAllRunways(int hoursToWait) {
+        //TODO
+    }
+
+    /**
+     * Block a free runway
+     */
+    public void blockFreeRunway() {
         //TODO
     }
 }

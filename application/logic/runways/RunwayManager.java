@@ -34,6 +34,14 @@ public class RunwayManager {
     }
 
     /**
+     * TODO
+     * @param plane
+     */
+    public void planeLandOnFreeRunway(Plane plane) {
+        //TODO
+    }
+
+    /**
      * Hourly checks for runways,
      * Decrease the time refueling,
      * Check if planes can leave
@@ -44,6 +52,7 @@ public class RunwayManager {
     }
 
     /**
+     * TODO IS IT USEFULL ?
      * Decrease the time refueling for every plane occupying a runway
      */
     private void decreaseWaitingPlanesFuel() {
@@ -51,6 +60,7 @@ public class RunwayManager {
     }
 
     /**
+     * TODO IS IT USEFULL ?
      * Check the fuel left in every waiting planes in the ArrayList
      * @return an ArrayList of planes out of fuel
      * or null if there is no crash
@@ -92,8 +102,10 @@ public class RunwayManager {
 
     /**
      * Block a free runway
+     * @param occupantName
+     * @param hoursBlocked
      */
-    public void blockFreeRunway() {
+    public void blockFreeRunway(String occupantName, int hoursBlocked) {
         //TODO
     }
 }

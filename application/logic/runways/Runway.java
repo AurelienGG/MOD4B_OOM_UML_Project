@@ -10,19 +10,17 @@ import logic.planes.Plane;
  */
 public class Runway {
 
-    private boolean occupied;
-    private Plane holderPlane;
-
-    private boolean blocked;
+    private RunwayStatus runwayStatus;
+    private String occupantName;
     private int timeBlocked;
 
     /**
      * TODO
      */
     protected Runway() {
-        this.occupied = false;
-        this.holderPlane = null;
-        this.blocked = false;
+        this.runwayStatus = RunwayStatus.FREE;
+        this.occupantName = null;
+        this.timeBlocked = 0;
     }
 
     /**
@@ -30,24 +28,35 @@ public class Runway {
      * @param plane
      */
     protected void planeLand(Plane plane) {
-        this.holderPlane=plane;
-        this.occupied=true;
+        this.runwayStatus = RunwayStatus.OCCUPIED;
+        this.occupantName = plane.getName();
+        this.timeBlocked = plane.getHoursRunwayNeeded();
+    }
+
+    /**
+     * Hourly checks for a runway,
+     * Decrease the time refueling,
+     * Check if plane can leave
+     * Make plane leaves
+     */
+    public void RunwayAdvanceHour() {
+        //TODO
     }
 
     /**
      * TODO
      */
     protected void decreasePlaneHoursRunwayNeeded() {
-        if(this.isOccupied())
-            holderPlane.decreaseHoursRunwayNeeded();
+        if(this.runwayStatus == RunwayStatus.OCCUPIED)
+            this.timeBlocked--;
     }
 
     /**
      * TODO
      */
     protected void increasePlaneHoursRunwayNeeded() {
-        if(this.isOccupied())
-            holderPlane.increaseHoursRunwayNeeded();
+        if(this.runwayStatus == RunwayStatus.OCCUPIED)
+            this.timeBlocked++;
     }
 
     /**
@@ -56,20 +65,18 @@ public class Runway {
      */
     protected String displayRunway() {
         //TODO
-        return "Runway{" +
-                "occupied=" + occupied +
-                ", holderPlane=" + holderPlane +
-                '}';
+        return "Runway";
     }
 
     /**
+     * TODO IS IT USEFULL ?
      * Check the hours left for completing the fueling
      * @return the plane if its full
      * or null if its still need time
      */
     private Plane checkPlaneFuelLevel() {
-        if(this.isOccupied() && holderPlane.getHoursFuelLeft() <= 0)
-            return this.holderPlane;
+        if(this.runwayStatus == RunwayStatus.OCCUPIED && this.timeBlocked <= 0)
+            return null;
         else
             return null;
     }
@@ -78,16 +85,8 @@ public class Runway {
      * TODO
      */
     private void planeLeave() {
-        this.holderPlane=null;
-        this.occupied=false;
-    }
-
-    /**
-     * TODO
-     * @return
-     */
-    protected boolean isOccupied(){
-        return this.occupied;
+        this.runwayStatus = RunwayStatus.FREE;
+        this.timeBlocked = 0;
     }
 
     /**
@@ -99,10 +98,11 @@ public class Runway {
     }
 
     /**
-     * Block the runway for a set period of time
+     * * Block the runway for a set period of time
+     * @param occupantName the name of the occupant
      * @param hoursBlocked the time in hour the runway is blocked
      */
-    protected void blockRunway(int hoursBlocked) {
+    protected void blockRunway(String occupantName, int hoursBlocked) {
         //TODO
     }
 }

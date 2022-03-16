@@ -111,4 +111,11 @@ public class Runway {
         this.occupantName=occupantName;
         this.timeBlocked=hoursBlocked;
     }
+
+    /**
+     * @return true if the runway is free
+     */
+    protected boolean isFree(){
+        return runwayStatus==RunwayStatus.FREE;
+    }
 }

@@ -28,4 +28,12 @@ public class DeadPassengerCountManager {
     public void addDeadPassengers(int nbDeadPassengersFromCrash) {
         nbDeadPassengers += nbDeadPassengersFromCrash;
     }
+
+    /**
+     * Decrease the number of dead passengers to the count
+     * @param nbRescuedPassengers the number of passengers rescued from the crash
+     */
+    public void decreaseDeadPassengers(int nbRescuedPassengers) {
+        //TODO
+    }
 }

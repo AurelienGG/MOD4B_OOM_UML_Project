@@ -40,13 +40,17 @@ public class Runway {
      * Make plane leaves
      */
     public void runwayAdvanceHour() {
-        //TODO
+        if(!(runwayStatus ==RunwayStatus.FREE)){
+            decreaseTimeBlocked();
+            if(checkTimeBlocked())
+                emptyRunway();
+        }
     }
 
     /**
      * TODO
      */
-    protected void decreasePlaneHoursRunwayNeeded() {
+    protected void decreaseTimeBlocked() {
         if(this.runwayStatus == RunwayStatus.OCCUPIED)
             this.timeBlocked--;
     }
@@ -54,7 +58,7 @@ public class Runway {
     /**
      * TODO
      */
-    protected void increasePlaneHoursRunwayNeeded() {
+    protected void increaseTimeBlocked() {
         if(this.runwayStatus == RunwayStatus.OCCUPIED)
             this.timeBlocked++;
     }
@@ -71,20 +75,20 @@ public class Runway {
     /**
      * TODO IS IT USEFUL ?
      * Check the hours left for completing the fueling
-     * @return the plane if its full
-     * or null if its still need time
+     * @return true if time is over
+     * or false if its still need time
      */
-    private Plane checkPlaneFuelLevel() {
+    private boolean checkTimeBlocked() {
         if(this.runwayStatus == RunwayStatus.OCCUPIED && this.timeBlocked <= 0)
-            return null;
+            return true;
         else
-            return null;
+            return false;
     }
 
     /**
      * TODO
      */
-    private void planeLeave() {
+    private void emptyRunway() {
         this.runwayStatus = RunwayStatus.FREE;
         this.timeBlocked = 0;
     }
@@ -93,8 +97,8 @@ public class Runway {
      * Add more wait time to the plane holding the runway
      * @param hoursToWait the added time to wait
      */
-    protected void addWaitTime(int hoursToWait) {
-        //TODO
+    protected void addTimeBlocked(int hoursToWait) {
+        this.timeBlocked+=hoursToWait;
     }
 
     /**
@@ -103,6 +107,8 @@ public class Runway {
      * @param hoursBlocked the time in hour the runway is blocked
      */
     protected void blockRunway(String occupantName, int hoursBlocked) {
-        //TODO
+        this.runwayStatus=RunwayStatus.BLOCKED;
+        this.occupantName=occupantName;
+        this.timeBlocked=hoursBlocked;
     }
 }

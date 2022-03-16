@@ -1,16 +1,23 @@
 package logic.options;
 
+import logic.runways.RunwayManager;
+
 public class LockdownTheRunway extends Option {
 
     private final String description = "Lockdown the runway";
+    RunwayManager runwayManager;
 
     public LockdownTheRunway(){
         super("Lockdown the runway");
+        runwayManager=RunwayManager.getInstance();
     }
 
     @Override
     public boolean checkRequirement() {
-        return false;
+        if(runwayManager.getNbFreeRunway()>0)
+            return true;
+        else
+            return false;
     }
 
     @Override

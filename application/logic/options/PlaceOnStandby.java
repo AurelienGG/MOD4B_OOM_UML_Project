@@ -10,7 +10,7 @@ public class PlaceOnStandby extends Option {
 
     @Override
     public boolean checkRequirement() {
-        return false;
+        return true;
     }
 
     @Override

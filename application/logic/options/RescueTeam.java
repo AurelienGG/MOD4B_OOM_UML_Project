@@ -10,7 +10,7 @@ public class RescueTeam extends Option {
 
     @Override
     public boolean checkRequirement() {
-        return false;
+        return true;
     }
 
     @Override

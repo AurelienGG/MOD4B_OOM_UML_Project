@@ -1,16 +1,23 @@
 package logic.options;
 
+import logic.runways.RunwayManager;
+
 public class LetThemLand extends Option {
 
     private final String description = "Let them land";
+    RunwayManager runwayManager;
 
     public LetThemLand(){
         super("Let them land");
+        runwayManager=RunwayManager.getInstance();
     }
 
     @Override
     public boolean checkRequirement() {
-        return false;
+        if(runwayManager.getNbFreeRunway()>0)
+            return true;
+        else
+            return false;
     }
 
     @Override

@@ -78,6 +78,14 @@ public class Plane {
     }
 
     /**
+     * increase the hours fuel left of the plane by the amount of fuel
+     * @param fuel the number of hours that must be increase
+     */
+    public void increaseFuelLeft(int fuel) {
+        this.hoursFuelLeft+=fuel;
+    }
+
+    /**
      * decrease the hours runway needed of the plane by 1
      */
     public void decreaseHoursRunwayNeeded() {

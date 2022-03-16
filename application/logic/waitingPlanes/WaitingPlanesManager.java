@@ -60,6 +60,16 @@ public class WaitingPlanesManager {
     }
 
     /**
+     * Increase the fuel left in every waiting planes in the ArrayList by the amount of fuel
+     * @param fuel the number of hours that must be increase
+     */
+    public void increaseWaitingPlanesFuel(int fuel) {
+        for (Plane plane: this.waitingPlanes) {
+            plane.increaseFuelLeft(fuel);
+        }
+    }
+
+    /**
      * Check the fuel left in every waiting planes in the ArrayList
      * @return an ArrayList of planes out of fuel
      * or null if there is no crash

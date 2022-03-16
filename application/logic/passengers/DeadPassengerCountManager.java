@@ -21,6 +21,10 @@ public class DeadPassengerCountManager {
         return deadPassengerCountManager_instance;
     }
 
+    public int getNbDeadPassengers() {
+        return nbDeadPassengers;
+    }
+
     /**
      * Add the number of dead passengers to the count
      * @param nbDeadPassengersFromCrash the number of passengers dead from the crash

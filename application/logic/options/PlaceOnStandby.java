@@ -1,11 +1,18 @@
 package logic.options;
 
+import logic.planes.Plane;
+import logic.waitingPlanes.WaitingPlanesManager;
+
 public class PlaceOnStandby extends Option {
 
     private final String description = "Place on standby";
+    Plane plane;
+    WaitingPlanesManager waitingPlanesManager;
 
-    public PlaceOnStandby(){
+    public PlaceOnStandby(Plane plane){
         super("Place on standby");
+        this.plane=plane;
+        waitingPlanesManager=WaitingPlanesManager.getInstance();
     }
 
     @Override
@@ -15,7 +22,7 @@ public class PlaceOnStandby extends Option {
 
     @Override
     public void applyConsequence() {
-        //TODO
+        waitingPlanesManager.addPlaneToWaitingPlanes(plane);
     }
 
     @Override

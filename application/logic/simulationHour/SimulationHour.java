@@ -19,6 +19,10 @@ public class SimulationHour {
         //TODO
     }
 
+    public int getCurrentHour() {
+        return currentHour;
+    }
+
     public void startRequest(Request request) {
         //TODO
     }

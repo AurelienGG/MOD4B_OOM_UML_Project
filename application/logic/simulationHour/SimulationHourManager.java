@@ -13,12 +13,14 @@ public class SimulationHourManager {
     
     private static SimulationHourManager simulationHourManager_instance = null;
     private SimulationHour[] simulationHours;
+    private int pointer;
 
     private SimulationHourManager() {
         this.simulationHours = new SimulationHour[24];
+        this.pointer = 0;
     }
 
-    public SimulationHourManager getInstance() {
+    public static SimulationHourManager getInstance() {
         if (simulationHourManager_instance == null)
             simulationHourManager_instance = new SimulationHourManager();
         return simulationHourManager_instance;
@@ -31,5 +33,9 @@ public class SimulationHourManager {
     private Request generateRandomRequest() {
         //TODO
         return null;
+    }
+
+    public int getCurrentHour() {
+        return pointer + 1;
     }
 }

@@ -22,7 +22,8 @@ public class LetTheManGo extends Option {
 
     @Override
     public void applyConsequence() {
-        waitingPlanesManager.crashWaitingPlane(waitingPlanesManager.getRandomWaitingPlane());
+        if(waitingPlanesManager.getNbWaitingPlanes() >= 1)
+            waitingPlanesManager.crashWaitingPlane(waitingPlanesManager.getRandomWaitingPlane());
         deadPassengerCountManager.addDeadPassengers(100);
     }
 

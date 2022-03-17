@@ -43,10 +43,11 @@ public class WaitingPlanesManager {
         decreaseWaitingPlanesFuel();
         ArrayList<Plane> crashingPlanes = checkWaitingPlanesFuel();
         int deadPassenger = 0;
-        for(Plane plane: crashingPlanes) {
-            deadPassenger += plane.getNbPassengers();
-            crashWaitingPlane(plane);
-        }
+        if(crashingPlanes != null)
+            for(Plane plane: crashingPlanes) {
+                deadPassenger += plane.getNbPassengers();
+                crashWaitingPlane(plane);
+            }
         return deadPassenger;
     }
 
@@ -54,9 +55,8 @@ public class WaitingPlanesManager {
      * Decrease the fuel left in every waiting planes in the ArrayList
      */
     public void decreaseWaitingPlanesFuel() {
-        for (Plane plane: this.waitingPlanes) {
+        for (Plane plane: this.waitingPlanes)
             plane.decreaseFuelLeft();
-        }
     }
 
     /**
@@ -64,9 +64,8 @@ public class WaitingPlanesManager {
      * @param fuel the number of hours that must be increase
      */
     public void increaseWaitingPlanesFuel(int fuel) {
-        for (Plane plane: this.waitingPlanes) {
+        for (Plane plane: this.waitingPlanes)
             plane.increaseFuelLeft(fuel);
-        }
     }
 
     /**
@@ -110,22 +109,14 @@ public class WaitingPlanesManager {
      * @return the size of the waitingPlanes ArrayList
      */
     public int getNbWaitingPlanes() {
-
         return waitingPlanes.size();
-    }
-
-    /**
-     * Refuel all waiting airplanes in air
-     */
-    public void airRefueling() {
-        //TODO
     }
 
     /**
      * Get a random waiting plane
      * @return the random waiting plane
      */
-    public Plane getRandomWaitingPlane(){
+    public Plane getRandomWaitingPlane() {
         //TODO
         return null;
     }

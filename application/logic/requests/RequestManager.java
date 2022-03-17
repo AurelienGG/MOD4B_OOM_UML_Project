@@ -20,10 +20,15 @@ public class RequestManager {
 
     }
 
-    public RequestManager getInstance() {
+    public static RequestManager getInstance() {
         if (requestManager_instance == null)
             requestManager_instance = new RequestManager();
         return requestManager_instance;
+    }
+
+    public Request generateRandomRequest() {
+        //TODO
+        return null;
     }
 
 }

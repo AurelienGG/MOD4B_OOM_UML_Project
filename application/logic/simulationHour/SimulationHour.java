@@ -1,6 +1,8 @@
 package logic.simulationHour;
 
+import logic.Tools;
 import logic.requests.Request;
+import logic.requests.RequestManager;
 
 import java.util.ArrayList;
 
@@ -15,8 +17,13 @@ public class SimulationHour {
     private int currentHour;
     private ArrayList<Request> requests;
 
-    public SimulationHour() {
-        //TODO
+    public SimulationHour(int currentHour) {
+        this.currentHour = currentHour;
+        int randomNbRequests = Tools.generateRandomNumber(1,3);
+        requests = new ArrayList<>(randomNbRequests);
+        RequestManager requestManager = RequestManager.getInstance();
+        for(int i = 0; i < randomNbRequests; i++)
+            requests.add(requestManager.generateRandomRequest());
     }
 
     public int getCurrentHour() {

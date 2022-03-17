@@ -1,5 +1,6 @@
 package logic.waitingPlanes;
 
+import logic.Tools;
 import logic.planes.Plane;
 import java.util.ArrayList;
 
@@ -117,8 +118,7 @@ public class WaitingPlanesManager {
      * @return the random waiting plane
      */
     public Plane getRandomWaitingPlane() {
-        //TODO
-        return null;
+        return waitingPlanes.get(Tools.generateRandomNumber(0, getNbWaitingPlanes()-1));
     }
 
 }

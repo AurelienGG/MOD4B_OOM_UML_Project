@@ -6,12 +6,10 @@ public class JohnMcClain extends Request {
 
     /**
      * TODO
-     * @param RARITY
-     * @param TITLE
-     * @param DESCRIPTION
      */
-    protected JohnMcClain(double RARITY, String TITLE, String DESCRIPTION) {
-        super(RARITY, TITLE, DESCRIPTION);
+    protected JohnMcClain() {
+
+        super("","");
     }
 
     /**

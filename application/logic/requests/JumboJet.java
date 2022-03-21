@@ -1,6 +1,6 @@
 package logic.requests;
 
-import logic.options.Option;
+import logic.options.*;
 import logic.planes.Plane;
 
 public class JumboJet extends Landing {
@@ -16,12 +16,5 @@ public class JumboJet extends Landing {
         super(RARITY, TITLE, DESCRIPTION, plane);
     }
 
-    /**
-     * TODO
-     * @return
-     */
-    protected Option[] generateOptions() {
-        //TODO
-        return null;
-    }
+
 }

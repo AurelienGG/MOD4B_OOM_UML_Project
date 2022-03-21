@@ -1,6 +1,6 @@
 package logic.requests;
 
-import logic.options.Option;
+import logic.options.*;
 
 public class JohnMcClain extends Request {
 
@@ -19,7 +19,6 @@ public class JohnMcClain extends Request {
      * @return
      */
     protected Option[] generateOptions() {
-        //TODO
-        return null;
+        return new Option[] {new LockdownTheRunway(), new LetTheManGo()};
     }
 }

@@ -6,12 +6,10 @@ public class Protests extends Request {
 
     /**
      * TODO
-     * @param RARITY
-     * @param TITLE
-     * @param DESCRIPTION
      */
-    protected Protests(double RARITY, String TITLE, String DESCRIPTION) {
-        super(RARITY, TITLE, DESCRIPTION);
+    protected Protests() {
+
+        super("", "");
     }
 
     /**

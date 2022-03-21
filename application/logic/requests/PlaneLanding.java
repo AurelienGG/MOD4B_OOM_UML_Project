@@ -15,7 +15,7 @@ public class PlaneLanding extends Landing {
 
     //TODO fix
     public PlaneLanding(Plane plane) {
-        super(0.40,
+        super(
                 "Plane Landing",
                 "Plane requests to land. It has [3-5] hours of fuel left to " +
                 "wait. It needs [1-4] hours of runway time. It has [100-500] " +

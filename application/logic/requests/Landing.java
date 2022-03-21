@@ -1,6 +1,6 @@
 package logic.requests;
 
-import logic.options.Option;
+import logic.options.*;
 import logic.planes.Plane;
 
 /**
@@ -29,6 +29,6 @@ public abstract class Landing extends Request {
      */
     protected Option[] generateOptions() {
         //TODO
-        return null;
+        return new Option[] {new AllowLanding(null), new PlaceOnStandby(null)};
     }
 }

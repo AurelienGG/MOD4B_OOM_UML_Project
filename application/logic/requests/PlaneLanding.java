@@ -1,6 +1,6 @@
 package logic.requests;
 
-import logic.options.Option;
+import logic.options.*;
 import logic.planes.Plane;
 
 public class PlaneLanding extends Landing {
@@ -23,12 +23,5 @@ public class PlaneLanding extends Landing {
                 plane);
     }
 
-    /**
-     * TODO
-     * @return
-     */
-    protected Option[] generateOptions() {
-        //TODO
-        return null;
-    }
+
 }

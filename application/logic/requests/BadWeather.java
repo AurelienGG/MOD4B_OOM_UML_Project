@@ -3,7 +3,25 @@ package logic.requests;
 import logic.options.Option;
 
 public class BadWeather extends Request {
-    protected BadWeather(double RARITY, String TITLE, String DESCRIPTION, Option[] options) {
-        super(RARITY, TITLE, DESCRIPTION, options);
+
+    /**
+     * TODO
+     * @param RARITY
+     * @param TITLE
+     * @param DESCRIPTION
+     */
+    protected BadWeather(double RARITY, String TITLE, String DESCRIPTION) {
+        super(RARITY, TITLE, DESCRIPTION);
     }
+
+    /**
+     * TODO
+     * @return
+     */
+    protected Option[] generateOptions() {
+        //TODO
+        return null;
+    }
+
+
 }

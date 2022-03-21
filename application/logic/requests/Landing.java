@@ -15,12 +15,20 @@ public abstract class Landing extends Request {
      * @param RARITY
      * @param TITLE
      * @param DESCRIPTION
-     * @param options
      * @param plane
      */
     //TODO
-    protected Landing(double RARITY, String TITLE, String DESCRIPTION, Option[] options, Plane plane) {
-        super(RARITY, TITLE, DESCRIPTION, options);
+    protected Landing(double RARITY, String TITLE, String DESCRIPTION, Plane plane) {
+        super(RARITY, TITLE, DESCRIPTION);
         this.plane = plane;
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    protected Option[] generateOptions() {
+        //TODO
+        return null;
     }
 }

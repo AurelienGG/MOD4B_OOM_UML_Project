@@ -4,7 +4,24 @@ import logic.options.Option;
 import logic.planes.Plane;
 
 public class JumboJet extends Landing {
-    protected JumboJet(double RARITY, String TITLE, String DESCRIPTION, Option[] options, Plane plane) {
-        super(RARITY, TITLE, DESCRIPTION, options, plane);
+
+    /**
+     * TODO
+     * @param RARITY
+     * @param TITLE
+     * @param DESCRIPTION
+     * @param plane
+     */
+    protected JumboJet(double RARITY, String TITLE, String DESCRIPTION, Plane plane) {
+        super(RARITY, TITLE, DESCRIPTION, plane);
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    protected Option[] generateOptions() {
+        //TODO
+        return null;
     }
 }

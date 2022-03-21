@@ -20,13 +20,14 @@ public abstract class Request {
      * @param RARITY
      * @param TITLE
      * @param DESCRIPTION
-     * @param options
      */
-    protected Request(double RARITY, String TITLE, String DESCRIPTION, Option[] options) {
+    protected Request(double RARITY, String TITLE, String DESCRIPTION) {
         //TODO
         this.RARITY = RARITY;
         this.TITLE = TITLE;
         this.DESCRIPTION = DESCRIPTION;
-        this.options = options;
+        this.options = generateOptions();
     }
+
+    protected abstract Option[] generateOptions();
 }

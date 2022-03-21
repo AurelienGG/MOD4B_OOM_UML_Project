@@ -9,12 +9,9 @@ public class BadWeather extends Request {
 
     /**
      * TODO
-     * @param RARITY
-     * @param TITLE
-     * @param DESCRIPTION
      */
-    protected BadWeather(double RARITY, String TITLE, String DESCRIPTION) {
-        super(RARITY, TITLE, DESCRIPTION);
+    protected BadWeather() {
+        super("","");
     }
 
     /**

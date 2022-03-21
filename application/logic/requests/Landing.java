@@ -12,14 +12,11 @@ public abstract class Landing extends Request {
 
     /**
      *
-     * @param RARITY
-     * @param TITLE
-     * @param DESCRIPTION
      * @param plane
      */
     //TODO
-    protected Landing(double RARITY, String TITLE, String DESCRIPTION, Plane plane) {
-        super(RARITY, TITLE, DESCRIPTION);
+    protected Landing(Plane plane) {
+        super("", "");
         this.plane = plane;
     }
 

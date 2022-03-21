@@ -1,6 +1,6 @@
 package logic.requests;
 
-import logic.options.Option;
+import logic.options.*;
 
 public class Protests extends Request {
 
@@ -19,7 +19,6 @@ public class Protests extends Request {
      * @return
      */
     protected Option[] generateOptions() {
-        //TODO
-        return null;
+        return new Option[] {new AllowThemTheSpaceToProtest(), new GetPoliceInvolved(), new LetThePlanesLandAnyways()};
     }
 }

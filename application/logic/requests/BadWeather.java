@@ -1,5 +1,8 @@
 package logic.requests;
 
+import logic.options.CrossWinds;
+import logic.options.IceStorm;
+import logic.options.IcyRunWays;
 import logic.options.Option;
 
 public class BadWeather extends Request {
@@ -19,8 +22,7 @@ public class BadWeather extends Request {
      * @return
      */
     protected Option[] generateOptions() {
-        //TODO
-        return null;
+        return new Option[] {new CrossWinds(), new IcyRunWays(), new IceStorm()};
     }
 
 

@@ -1,6 +1,6 @@
 package logic.requests;
 
-import logic.options.Option;
+import logic.options.*;
 
 public class SnakesOnThePlane extends Request {
 
@@ -9,7 +9,6 @@ public class SnakesOnThePlane extends Request {
      * @param RARITY
      * @param TITLE
      * @param DESCRIPTION
-     * @param options
      */
     protected SnakesOnThePlane(double RARITY, String TITLE, String DESCRIPTION) {
         super(RARITY, TITLE, DESCRIPTION);
@@ -21,6 +20,6 @@ public class SnakesOnThePlane extends Request {
      */
     protected Option[] generateOptions() {
         //TODO
-        return null;
+        return new Option[] {new LetThemLand(null), new RefuseThem()};
     }
 }

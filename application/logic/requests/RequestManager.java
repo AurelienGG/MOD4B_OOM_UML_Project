@@ -1,10 +1,12 @@
 package logic.requests;
 
+import logic.Tools;
 import logic.options.CrossWinds;
 import logic.options.IceStorm;
 import logic.options.IcyRunWays;
 import logic.options.Option;
 
+import javax.tools.Tool;
 import java.util.EnumMap;
 
 /**
@@ -43,8 +45,30 @@ public class RequestManager {
      * @return
      */
     public Request generateRandomRequest() {
-        //TODO
-        return null;
+        int random = Tools.generateRandomNumber(1, 100);
+        if(random <= 40)
+            return new PlaneLanding();
+        else if (random <= 45)
+            return new EmergencyLanding();
+
+        else if (random <= 55)
+            return new FundingEvent();
+
+        else if (random <= 70)
+            return new JumboJet();
+
+        else if (random <= 80)
+            return new BadWeather();
+
+        else if (random <= 90)
+            return new SnakesOnThePlane();
+
+        else if (random <= 95)
+            return new Protests();
+
+        else if (random <= 100)
+            return new JohnMcClain();
+
     }
 
 }

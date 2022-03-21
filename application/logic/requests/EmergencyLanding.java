@@ -1,5 +1,8 @@
 package logic.requests;
 
+import logic.options.CrossWinds;
+import logic.options.IceStorm;
+import logic.options.IcyRunWays;
 import logic.options.Option;
 import logic.planes.Plane;
 
@@ -16,12 +19,5 @@ public class EmergencyLanding extends Landing {
         super(RARITY, TITLE, DESCRIPTION, plane);
     }
 
-    /**
-     * TODO
-     * @return
-     */
-    protected Option[] generateOptions() {
-        //TODO
-        return null;
-    }
+
 }

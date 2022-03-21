@@ -6,12 +6,10 @@ public class FundingEvent extends Request {
 
     /**
      * TODO
-     * @param RARITY
-     * @param TITLE
-     * @param DESCRIPTION
      */
-    protected FundingEvent(double RARITY, String TITLE, String DESCRIPTION) {
-        super(RARITY, TITLE, DESCRIPTION);
+    protected FundingEvent() {
+
+        super( "", "");
     }
 
     /**

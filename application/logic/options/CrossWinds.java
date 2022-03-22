@@ -2,14 +2,16 @@ package logic.options;
 
 import logic.waitingPlanes.WaitingPlanesManager;
 
+/**
+ * TODO
+ */
 public class CrossWinds extends Option {
 
-    private final String description = "Cross winds";
-    WaitingPlanesManager waitingPlanesManager;
+    private WaitingPlanesManager waitingPlanesManager_instance;
 
-    public CrossWinds(){
+    public CrossWinds() {
         super("Cross winds");
-        waitingPlanesManager = WaitingPlanesManager.getInstance();
+        this.waitingPlanesManager_instance = WaitingPlanesManager.getInstance();
     }
 
     @Override
@@ -19,11 +21,6 @@ public class CrossWinds extends Option {
 
     @Override
     public void applyConsequence() {
-        waitingPlanesManager.decreaseWaitingPlanesFuel();
-    }
-
-    @Override
-    public String displayOption() {
-        return description;
+        this.waitingPlanesManager_instance.decreaseWaitingPlanesFuel();
     }
 }

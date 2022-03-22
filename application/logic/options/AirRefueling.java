@@ -2,19 +2,21 @@ package logic.options;
 
 import logic.waitingPlanes.WaitingPlanesManager;
 
+/**
+ * TODO
+ */
 public class AirRefueling extends Option {
 
-    private final String description = "Air refueling";
-    WaitingPlanesManager waitingPlanesManager;
+    private WaitingPlanesManager waitingPlanesManager_instance;
 
-    public AirRefueling(){
+    public AirRefueling() {
         super("Air refueling");
-        waitingPlanesManager=WaitingPlanesManager.getInstance();
+        this.waitingPlanesManager_instance = WaitingPlanesManager.getInstance();
     }
 
     @Override
     public boolean checkRequirement() {
-        if(waitingPlanesManager.getNbWaitingPlanes()>0)
+        if(this.waitingPlanesManager_instance.getNbWaitingPlanes() > 0)
             return true;
         else
             return false;
@@ -22,11 +24,6 @@ public class AirRefueling extends Option {
 
     @Override
     public void applyConsequence() {
-        waitingPlanesManager.increaseWaitingPlanesFuel(2);
-    }
-
-    @Override
-    public String displayOption() {
-        return description;
+        this.waitingPlanesManager_instance.increaseWaitingPlanesFuel(2);
     }
 }

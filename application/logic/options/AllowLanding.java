@@ -3,20 +3,23 @@ package logic.options;
 import logic.planes.Plane;
 import logic.runways.RunwayManager;
 
+/**
+ * TODO
+ */
 public class AllowLanding extends Option {
 
-    Plane plane;
-    RunwayManager runwayManager;
+    private Plane plane;
+    private RunwayManager runwayManager_instance;
 
     public AllowLanding(Plane plane) {
         super("Allow landing");
-        runwayManager = RunwayManager.getInstance();
+        this.runwayManager_instance = RunwayManager.getInstance();
         this.plane=plane;
     }
 
     @Override
     public boolean checkRequirement() {
-        if(runwayManager.getNbFreeRunway()>0)
+        if(this.runwayManager_instance.getNbFreeRunway()>0)
             return true;
         else
             return false;
@@ -24,6 +27,6 @@ public class AllowLanding extends Option {
 
     @Override
     public void applyConsequence() {
-        runwayManager.planeLandOnFreeRunway(plane);
+        this.runwayManager_instance.planeLandOnFreeRunway(plane);
     }
 }

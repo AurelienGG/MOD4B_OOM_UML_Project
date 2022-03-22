@@ -2,19 +2,21 @@ package logic.options;
 
 import logic.runways.RunwayManager;
 
+/**
+ * TODO
+ */
 public class IceStorm extends Option {
 
-    private final String description = "Ice storm";
-    RunwayManager runwayManager;
+    private RunwayManager runwayManager_instance;
 
-    public IceStorm(){
+    public IceStorm() {
         super("Ice storm");
-        runwayManager=RunwayManager.getInstance();
+        this.runwayManager_instance = RunwayManager.getInstance();
     }
 
     @Override
     public boolean checkRequirement() {
-        if(runwayManager.getNbFreeRunway()>0)
+        if(this.runwayManager_instance.getNbFreeRunway() > 0)
             return true;
         else
             return false;
@@ -22,11 +24,6 @@ public class IceStorm extends Option {
 
     @Override
     public void applyConsequence() {
-        runwayManager.removeRunway();
-    }
-
-    @Override
-    public String displayOption() {
-        return description;
+        this.runwayManager_instance.removeRunway();
     }
 }

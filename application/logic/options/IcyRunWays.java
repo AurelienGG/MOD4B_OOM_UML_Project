@@ -1,16 +1,17 @@
 package logic.options;
 
-import logic.runways.Runway;
 import logic.runways.RunwayManager;
 
+/**
+ * TODO
+ */
 public class IcyRunWays extends Option {
 
-    private final String description = "Icy run ways";
-    RunwayManager runwayManager;
+    private RunwayManager runwayManager_instance;
 
-    public IcyRunWays(){
+    public IcyRunWays() {
         super("Icy run ways");
-        runwayManager=RunwayManager.getInstance();
+        this.runwayManager_instance = RunwayManager.getInstance();
     }
 
     @Override
@@ -20,11 +21,6 @@ public class IcyRunWays extends Option {
 
     @Override
     public void applyConsequence() {
-        runwayManager.addTimeBlockedAllPlanes(2);
-    }
-
-    @Override
-    public String displayOption() {
-        return description;
+        this.runwayManager_instance.addTimeBlockedAllPlanes(2);
     }
 }

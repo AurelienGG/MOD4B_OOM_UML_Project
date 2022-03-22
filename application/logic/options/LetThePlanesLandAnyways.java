@@ -2,14 +2,16 @@ package logic.options;
 
 import logic.passengers.DeadPassengerCountManager;
 
+/**
+ * TODO
+ */
 public class LetThePlanesLandAnyways extends Option {
 
-    private final String description = "Let the planes land anyways";
-    DeadPassengerCountManager deadPassengerCountManager;
+    private DeadPassengerCountManager deadPassengerCountManager_instance;
 
-    public LetThePlanesLandAnyways(){
+    public LetThePlanesLandAnyways() {
         super("Let the planes land anyways");
-        deadPassengerCountManager = DeadPassengerCountManager.getInstance();
+        this.deadPassengerCountManager_instance = DeadPassengerCountManager.getInstance();
     }
 
     @Override
@@ -19,11 +21,6 @@ public class LetThePlanesLandAnyways extends Option {
 
     @Override
     public void applyConsequence() {
-        deadPassengerCountManager.addDeadPassengers(100);
-    }
-
-    @Override
-    public String displayOption() {
-        return description;
+        this.deadPassengerCountManager_instance.addDeadPassengers(100);
     }
 }

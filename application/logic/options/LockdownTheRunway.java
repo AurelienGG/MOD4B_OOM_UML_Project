@@ -2,19 +2,21 @@ package logic.options;
 
 import logic.runways.RunwayManager;
 
+/**
+ * TODO
+ */
 public class LockdownTheRunway extends Option {
 
-    private final String description = "Lockdown the runway";
-    RunwayManager runwayManager;
+    private RunwayManager runwayManager_instance;
 
-    public LockdownTheRunway(){
+    public LockdownTheRunway() {
         super("Lockdown the runway");
-        runwayManager=RunwayManager.getInstance();
+        this.runwayManager_instance =RunwayManager.getInstance();
     }
 
     @Override
     public boolean checkRequirement() {
-        if(runwayManager.getNbFreeRunway()>0)
+        if(this.runwayManager_instance.getNbFreeRunway()>0)
             return true;
         else
             return false;
@@ -22,11 +24,6 @@ public class LockdownTheRunway extends Option {
 
     @Override
     public void applyConsequence() {
-        runwayManager.blockFreeRunway("LOCKDOWN",8);
-    }
-
-    @Override
-    public String displayOption() {
-        return description;
+        this.runwayManager_instance.blockFreeRunway("LOCKDOWN",8);
     }
 }

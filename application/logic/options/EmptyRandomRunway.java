@@ -2,19 +2,21 @@ package logic.options;
 
 import logic.runways.RunwayManager;
 
+/**
+ * TODO
+ */
 public class EmptyRandomRunway extends Option {
 
-    private final String description = "Empty random runway";
-    RunwayManager runwayManager;
+    private RunwayManager runwayManager_instance;
 
-    public EmptyRandomRunway(){
+    public EmptyRandomRunway() {
         super("Empty random runway");
-        runwayManager=RunwayManager.getInstance();
+        this.runwayManager_instance =RunwayManager.getInstance();
     }
 
     @Override
     public boolean checkRequirement() {
-        if(runwayManager.getNbFullRunway()>0)
+        if(this.runwayManager_instance.getNbFullRunway() > 0)
             return true;
         else
             return false;
@@ -22,11 +24,6 @@ public class EmptyRandomRunway extends Option {
 
     @Override
     public void applyConsequence() {
-        runwayManager.emptyRandomRunway();
-    }
-
-    @Override
-    public String displayOption() {
-        return description;
+        this.runwayManager_instance.emptyRandomRunway();
     }
 }

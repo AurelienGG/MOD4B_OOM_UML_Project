@@ -3,21 +3,23 @@ package logic.options;
 import logic.planes.Plane;
 import logic.runways.RunwayManager;
 
+/**
+ * TODO
+ */
 public class LetThemLand extends Option {
 
-    private final String description = "Let them land";
-    RunwayManager runwayManager;
-    Plane plane;
+    private Plane plane;
+    private RunwayManager runwayManager_instance;
 
     public LetThemLand(Plane plane){
         super("Let them land");
-        runwayManager=RunwayManager.getInstance();
+        this.runwayManager_instance =RunwayManager.getInstance();
         this.plane=plane;
     }
 
     @Override
     public boolean checkRequirement() {
-        if(runwayManager.getNbFreeRunway()>0)
+        if(this.runwayManager_instance.getNbFreeRunway() > 0)
             return true;
         else
             return false;
@@ -25,12 +27,7 @@ public class LetThemLand extends Option {
 
     @Override
     public void applyConsequence() {
-        runwayManager.planeLandOnFreeRunway(plane);
+        this.runwayManager_instance.planeLandOnFreeRunway(plane);
         //TODO add snaky plane in planeManager
-    }
-
-    @Override
-    public String displayOption() {
-        return description;
     }
 }

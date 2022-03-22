@@ -2,19 +2,21 @@ package logic.options;
 
 import logic.runways.RunwayManager;
 
+/**
+ * TODO
+ */
 public class GetPoliceInvolved extends Option {
 
-    private final String description = "Get police involved";
-    RunwayManager runwayManager;
+    private RunwayManager runwayManager_instance;
 
-    public GetPoliceInvolved(){
+    public GetPoliceInvolved() {
         super("Get police involved");
-        runwayManager=RunwayManager.getInstance();
+        this.runwayManager_instance = RunwayManager.getInstance();
     }
 
     @Override
     public boolean checkRequirement() {
-        if(runwayManager.getNbFreeRunway()>=2)
+        if(this.runwayManager_instance.getNbFreeRunway() >= 2)
             return true;
         else
             return false;
@@ -22,13 +24,7 @@ public class GetPoliceInvolved extends Option {
 
     @Override
     public void applyConsequence() {
-        for(int i = 0;i<2;i++){
-            runwayManager.blockFreeRunway("POLICE",4);
-        }
-    }
-
-    @Override
-    public String displayOption() {
-        return description;
+        for(int i = 0; i < 2; i++)
+            this.runwayManager_instance.blockFreeRunway("POLICE",4);
     }
 }

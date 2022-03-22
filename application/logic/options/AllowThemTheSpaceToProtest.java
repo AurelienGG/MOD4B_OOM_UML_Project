@@ -2,18 +2,21 @@ package logic.options;
 
 import logic.runways.RunwayManager;
 
+/**
+ * TODO
+ */
 public class AllowThemTheSpaceToProtest extends Option {
-    private final String description ="Allow them the space to protest";
-    RunwayManager runwayManager;
 
-    public AllowThemTheSpaceToProtest(){
+    private RunwayManager runwayManager_instance;
+
+    public AllowThemTheSpaceToProtest() {
         super("Allow them the space to protest");
-        runwayManager= RunwayManager.getInstance();
+        this.runwayManager_instance = RunwayManager.getInstance();
     }
 
     @Override
     public boolean checkRequirement() {
-        if(runwayManager.getNbFreeRunway()>0)
+        if(this.runwayManager_instance.getNbFreeRunway()>0)
             return true;
         else
             return false;
@@ -21,11 +24,6 @@ public class AllowThemTheSpaceToProtest extends Option {
 
     @Override
     public void applyConsequence() {
-        runwayManager.blockFreeRunway("PROTEST",10);
-    }
-
-    @Override
-    public String displayOption() {
-        return description;
+        this.runwayManager_instance.blockFreeRunway("PROTEST",10);
     }
 }

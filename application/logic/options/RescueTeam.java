@@ -2,14 +2,16 @@ package logic.options;
 
 import logic.passengers.DeadPassengerCountManager;
 
+/**
+ * TODO
+ */
 public class RescueTeam extends Option {
 
-    private final String description = "Rescue Team";
-    DeadPassengerCountManager deadPassengerCountManager;
+    private DeadPassengerCountManager deadPassengerCountManager_instance;
 
-    public RescueTeam(){
+    public RescueTeam() {
         super("Rescue Team");
-        deadPassengerCountManager=DeadPassengerCountManager.getInstance();
+        deadPassengerCountManager_instance =DeadPassengerCountManager.getInstance();
     }
 
     @Override
@@ -19,11 +21,6 @@ public class RescueTeam extends Option {
 
     @Override
     public void applyConsequence() {
-        deadPassengerCountManager.decreaseDeadPassengers(100);
-    }
-
-    @Override
-    public String displayOption() {
-        return description;
+        deadPassengerCountManager_instance.decreaseDeadPassengers(100);
     }
 }

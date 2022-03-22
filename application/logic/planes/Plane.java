@@ -22,7 +22,7 @@ public class Plane {
      * @param hoursRunwayNeeded the hours runway needed of the plane
      * @param nbPassengers the number of passengers of the plane
      */
-    public Plane(PlaneType planeType, String name, int hoursFuelLeft, int hoursRunwayNeeded, int nbPassengers) {
+    protected Plane(PlaneType planeType, String name, int hoursFuelLeft, int hoursRunwayNeeded, int nbPassengers) {
         this.planeType=planeType;
         this.name=name;
         this.hoursFuelLeft=hoursFuelLeft;
@@ -34,7 +34,7 @@ public class Plane {
      * get the type of the plane
      * @return the type of the plane
      */
-    public PlaneType getPlaneType() {
+    protected PlaneType getPlaneType() {
         return planeType;
     }
 
@@ -88,14 +88,14 @@ public class Plane {
     /**
      * decrease the hours runway needed of the plane by 1
      */
-    public void decreaseHoursRunwayNeeded() {
+    protected void decreaseHoursRunwayNeeded() {
         this.hoursRunwayNeeded--;
     }
 
     /**
      * increase the hours runway needed of the plane by 1
      */
-    public void increaseHoursRunwayNeeded() {
+    protected void increaseHoursRunwayNeeded() {
         this.hoursRunwayNeeded++;
     }
 
@@ -103,7 +103,7 @@ public class Plane {
      * show the information of the plane
      * @return a string with the information of the plane
      */
-    public String displayPlane() {
+    protected String displayPlane() {
         //TODO
         return "Plane{" +
                 "planeType=" + planeType +

@@ -47,4 +47,26 @@ public abstract class Request {
      * @return
      */
     protected abstract Option[] generateOptions();
+
+    /**
+     * TODO
+     * @return
+     */
+    public String displayRequest() {
+        StringBuilder stringBuilder = new StringBuilder(TITLE + "\n" + DESCRIPTION + "\n");
+
+        char idRequest = 'A';
+        for(Option option: options)
+            stringBuilder.append("Option " + idRequest++ + ") " + option.getDESCRIPTION() + "\n");
+
+        return stringBuilder.toString();
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    public int getNbOptions() {
+        return this.options.length;
+    }
 }

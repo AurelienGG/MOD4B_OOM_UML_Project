@@ -33,7 +33,7 @@ public abstract class Option {
      * TODO
      * @return
      */
-    public String displayOption() {
+    public String getDESCRIPTION() {
         return this.DESCRIPTION;
     }
 }

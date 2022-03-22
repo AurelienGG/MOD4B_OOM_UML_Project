@@ -26,5 +26,25 @@ public abstract class Request {
         this.options = generateOptions();
     }
 
+    /**
+     * TODO
+     * @return
+     */
+    public String getTITLE() {
+        return TITLE;
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    public String getDESCRIPTION() {
+        return DESCRIPTION;
+    }
+
+    /**
+     * TODO
+     * @return
+     */
     protected abstract Option[] generateOptions();
 }

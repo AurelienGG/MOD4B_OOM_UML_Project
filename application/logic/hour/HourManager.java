@@ -35,6 +35,13 @@ public class HourManager {
 
     /**
      * TODO
+     */
+    public void increaseHour() {
+        this.hour++;
+    }
+
+    /**
+     * TODO
      * @return
      */
     public String displayHour() {

@@ -115,7 +115,7 @@ public class Runway {
     /**
      * @return the status of the runway
      */
-    protected RunwayStatus getRunwayStatus(){
+    protected RunwayStatus getRunwayStatus() {
         return this.runwayStatus;
     }
 }

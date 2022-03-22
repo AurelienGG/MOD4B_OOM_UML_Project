@@ -5,6 +5,9 @@ import logic.options.IceStorm;
 import logic.options.IcyRunWays;
 import logic.options.Option;
 
+/**
+ * TODO
+ */
 public class BadWeather extends Request {
 
     /**

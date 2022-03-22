@@ -69,4 +69,17 @@ public abstract class Request {
     public int getNbOptions() {
         return this.options.length;
     }
+
+    /**
+     * TODO
+     * @param idOption
+     * @return
+     */
+    public boolean doOption(int idOption) {
+        if(this.options[idOption].checkRequirement()) {
+            this.options[idOption].applyConsequence();
+            return true;
+        } else
+            return false;
+    }
 }

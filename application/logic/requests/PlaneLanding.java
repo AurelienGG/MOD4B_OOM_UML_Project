@@ -3,25 +3,23 @@ package logic.requests;
 import logic.options.*;
 import logic.planes.Plane;
 
+/**
+ * TODO
+ */
 public class PlaneLanding extends Landing {
-
-    //TODO
-    private final double RARITY = 0.40;
-    private final String TITLE = "Plane Landing";
-    private final String DESCRIPTION = "Plane requests to land. It has [3-5] hours of fuel left to " +
-            "wait. It needs [1-4] hours of runway time. It has [100-500] " +
-            "passengers";
-    private Plane plane; //make final
 
     //TODO fix
     public PlaneLanding(Plane plane) {
-        super(
-                "Plane Landing",
-                "Plane requests to land. It has [3-5] hours of fuel left to " +
-                "wait. It needs [1-4] hours of runway time. It has [100-500] " +
-                "passengers",
-                plane);
+        super("Plane Landing", generateDescription(plane), plane);
     }
 
-
+    /**
+     * TODO
+     * @param plane
+     * @return
+     */
+    private static String generateDescription(Plane plane) {
+        // TODO
+        return "";
+    }
 }

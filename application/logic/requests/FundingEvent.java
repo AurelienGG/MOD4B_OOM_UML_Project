@@ -2,13 +2,16 @@ package logic.requests;
 
 import logic.options.*;
 
+/**
+ * TODO
+ */
 public class FundingEvent extends Request {
 
     /**
      * TODO
      */
     protected FundingEvent() {
-
+        //TODO
         super( "", "");
     }
 

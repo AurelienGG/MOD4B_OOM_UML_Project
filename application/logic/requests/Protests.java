@@ -2,13 +2,16 @@ package logic.requests;
 
 import logic.options.*;
 
+/**
+ * TODO
+ */
 public class Protests extends Request {
 
     /**
      * TODO
      */
     protected Protests() {
-
+        // TODO
         super("", "");
     }
 

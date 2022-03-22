@@ -2,16 +2,17 @@ package logic.requests;
 
 import logic.options.*;
 
+/**
+ * TODO
+ */
 public class SnakesOnThePlane extends Request {
 
     /**
-     *
-     * @param RARITY
-     * @param TITLE
-     * @param DESCRIPTION
+     * TODO
      */
-    protected SnakesOnThePlane(double RARITY, String TITLE, String DESCRIPTION) {
-        super(RARITY, TITLE, DESCRIPTION);
+    protected SnakesOnThePlane() {
+        super("", "");
+        // TODO ADD PLANE
     }
 
     /**

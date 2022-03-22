@@ -15,8 +15,8 @@ public abstract class Landing extends Request {
      * @param plane
      */
     //TODO
-    protected Landing(Plane plane) {
-        super("", "");
+    protected Landing(String TITLE, String DESCRIPTION, Plane plane) {
+        super(TITLE, DESCRIPTION);
         this.plane = plane;
     }
 

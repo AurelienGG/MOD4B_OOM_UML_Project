@@ -14,7 +14,7 @@ public class BadWeather extends Request {
      * TODO
      */
     protected BadWeather() {
-        super("","");
+        super("Bad Weather","Select a bad weather event");
     }
 
     /**

@@ -11,8 +11,7 @@ public class FundingEvent extends Request {
      * TODO
      */
     protected FundingEvent() {
-        //TODO
-        super( "", "");
+        super( "Funding Event", "Increase in funding allows for one of the following bonuses");
     }
 
     /**

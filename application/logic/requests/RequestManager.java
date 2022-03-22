@@ -5,9 +5,11 @@ import logic.options.CrossWinds;
 import logic.options.IceStorm;
 import logic.options.IcyRunWays;
 import logic.options.Option;
+import logic.planes.PlaneManager;
 
 import javax.tools.Tool;
 import java.util.EnumMap;
+import java.util.Stack;
 
 /**
  * Manage program's requests
@@ -18,16 +20,21 @@ import java.util.EnumMap;
 public class RequestManager {
 
     private static RequestManager requestManager_instance = null;
+    private Stack<Request> requestsStack;
     EnumMap<RequestType, Request> requestDictionary;
     EnumMap<RequestType, Double> requestRarityDictionary;
+
+    // TODO fix hard code, use (max nb request per hour * max nb hour)
+    // TODO maybe a class GameSettings with static final fields
+    private static final int NB_REQUESTS_MAX = 75;
 
     /**
      * TODO
      */
     private RequestManager() {
-        this.requestDictionary = new EnumMap<>(RequestType.class);
-
-
+        this.requestsStack = new Stack<>();
+        for(int i = 0; i < NB_REQUESTS_MAX; i++)
+            this.requestsStack.add(generateRandomRequest());
     }
 
     /**
@@ -45,30 +52,27 @@ public class RequestManager {
      * @return
      */
     public Request generateRandomRequest() {
+        PlaneManager planeManager_instance = PlaneManager.getInstance();
         int random = Tools.generateRandomNumber(1, 100);
         if(random <= 40)
-            return new PlaneLanding();
+            return new PlaneLanding(planeManager_instance.giveCommonPlane());
         else if (random <= 45)
-            return new EmergencyLanding();
-
+            return new EmergencyLanding(planeManager_instance.giveEmergencyPlane());
         else if (random <= 55)
             return new FundingEvent();
-
         else if (random <= 70)
-            return new JumboJet();
-
+            return new JumboJet(planeManager_instance.giveJumboPlane());
         else if (random <= 80)
             return new BadWeather();
-
         else if (random <= 90)
-            return new SnakesOnThePlane();
-
+            return new SnakesOnThePlane(planeManager_instance.giveSnakesPlane());
         else if (random <= 95)
             return new Protests();
-
         else if (random <= 100)
             return new JohnMcClain();
-
+        else
+            // If for some reason we get here, Plane Landing will be the default request
+            return new PlaneLanding(planeManager_instance.giveCommonPlane());
     }
 
 }

@@ -8,18 +8,13 @@ import logic.planes.Plane;
  */
 public class PlaneLanding extends Landing {
 
-    //TODO fix
-    public PlaneLanding(Plane plane) {
-        super("Plane Landing", generateDescription(plane), plane);
-    }
-
     /**
      * TODO
      * @param plane
-     * @return
      */
-    private static String generateDescription(Plane plane) {
-        // TODO
-        return "";
+    public PlaneLanding(Plane plane) {
+        super("Plane Landing",
+                "Plane requests to land. It has " + plane.getHoursFuelLeft() + " hours of fuel left to wait. It needs " + plane.getHoursRunwayNeeded() + " hours of runway time. It has " + plane.getNbPassengers() + " passengers",
+                plane);
     }
 }

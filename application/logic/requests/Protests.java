@@ -11,8 +11,7 @@ public class Protests extends Request {
      * TODO
      */
     protected Protests() {
-        // TODO
-        super("", "");
+        super("Protests", "A group of protestors are blocking the runway claiming that your airplanes are dropping chemtrails which has caused the the following health issues: “makes their toothpaste taste like mint.”");
     }
 
     /**

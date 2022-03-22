@@ -25,7 +25,6 @@ public abstract class Landing extends Request {
      * @return
      */
     protected Option[] generateOptions() {
-        //TODO
-        return new Option[] {new AllowLanding(null), new PlaceOnStandby(null)};
+        return new Option[] {new AllowLanding(this.plane), new PlaceOnStandby(this.plane)};
     }
 }

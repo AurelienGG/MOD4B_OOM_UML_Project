@@ -16,16 +16,8 @@ public class EmergencyLanding extends Landing {
      * @param plane
      */
     protected EmergencyLanding(Plane plane) {
-        super("", generateDescription(plane), plane);
-    }
-
-    /**
-     * TODO
-     * @param plane
-     * @return
-     */
-    private static String generateDescription(Plane plane) {
-        // TODO
-        return "";
+        super("Emergency Landing",
+                "Plane requests to land. It has " + plane.getHoursFuelLeft() + " hours of fuel left to wait. It needs " + plane.getHoursRunwayNeeded() + " hours of runway time. It has " + plane.getNbPassengers() + " passengers",
+                plane);
     }
 }

@@ -1,6 +1,5 @@
 package logic.requests;
 
-import logic.options.*;
 import logic.planes.Plane;
 
 /**
@@ -13,17 +12,9 @@ public class JumboJet extends Landing {
      * @param plane
      */
     protected JumboJet(Plane plane) {
-        super("",generateDescription(plane), plane);
+        // Changed the description to show the runway time needed
+        super("Jumbo Jet",
+                "A large aircraft carrying " + plane.getNbPassengers() + " passengers with " + plane.getHoursFuelLeft() + " hours of fuel wishes to land. It requires " + plane.getHoursRunwayNeeded() + " hours of runway time.",
+                plane);
     }
-
-    /**
-     * TODO
-     * @param plane
-     * @return
-     */
-    private static String generateDescription(Plane plane) {
-        // TODO
-        return "";
-    }
-
 }

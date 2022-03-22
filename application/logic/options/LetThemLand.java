@@ -13,8 +13,8 @@ public class LetThemLand extends Option {
 
     public LetThemLand(Plane plane){
         super("Let them land");
-        this.runwayManager_instance =RunwayManager.getInstance();
-        this.plane=plane;
+        this.runwayManager_instance = RunwayManager.getInstance();
+        this.plane = plane;
     }
 
     @Override

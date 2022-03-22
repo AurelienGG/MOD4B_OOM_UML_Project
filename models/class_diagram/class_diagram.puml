@@ -23,6 +23,8 @@ package application {
         --
         - UserInputManager()
         + {static} getInstance(): UserInputManager
+        + displayOptions(): void
+        + readChosedOption(): int
     }
 
       package menus {
@@ -36,16 +38,17 @@ package application {
         }
 
         enum MenuType {
-            + {static} MAIN = 0
-            + {static} RUNWAY = 1
-            + {static} WAITING_PLANES = 2
-            + {static} ADVANCE_HOUR = 3
-            + {static} REQUEST = 4
+            MAIN
+            RUNWAY
+            WAITING_PLANES
+            ADVANCE_HOUR
+            REQUEST
         }
 
         abstract Menu {
           - menuType: MenuType
           --
+          + Menu(MenuType menuType)
           {abstract} + goToMenu(Menu menu): void
           {abstract} + displayMenu(): String
           + printMenuToOutput(): void
@@ -57,6 +60,7 @@ package application {
           + advanceHour(): void
           + goToMenu(Menu menu): void
           + displayMenu(): String
+          + checkVisibility(): boolean
         }
 
         class RunwayMenu extends Menu {
@@ -92,23 +96,31 @@ package application {
   
   package logic {
 
+    class Tools {
+        --
+        + {static} generateRandomNumber(int minimum, int maximum): int
+    }
+
     package simulationHour {
 
         class SimulationHourManager << (S,#FF7700) Singleton >> {
             - {static} simulationHourManager_instance: SimulationHourManager
             - simulationHours: SimulationHour[24]
+            - pointer: int
             --
             - SimulationHourManager()
             + {static} getInstance(): SimulationHourManager
             - initialiseSimulationHours(): void
-            - generateRandomNumberRequest(int maximum): int
             - generateRandomRequest(): Request
+            + getCurrentHour(): int
         }
 
         class SimulationHour {
             - currentHour: int
             - requests: ArrayList<Request>
             --
+            + SimulationHour(currentHour: int)
+            + getCurrentHour(): int
             + startRequest(request: Request): void
             + hourSummary(): String
         }
@@ -119,20 +131,43 @@ package application {
         class RunwayManager << (S,#FF7700) Singleton >> {
             - {static} runwayManager_instance: RunwayManager
             - runways: Runway[8]
+            - INFINITY: int
+            - NB_RUNWAYS: int
             --
             - RunwayManager()
             + {static} getInstance(): RunwayManager
+            + planeLandOnFreeRunway(plane: Plane): void
+            + runwayAdvanceHourAll(): void
+            + getNbFullRunway(): int
+            + getNbFreeRunway(): int
+            + emptyRandomRunway(): void
+            + removeRunway(): void
+            + addTimeBlockedAllPlanes(hoursToWait: int)
+            + blockFreeRunway(occupantName: String, hoursBlocked: int): void
+        }
+
+        enum RunwayStatus {
+            FREE
+            OCCUPIED
+            BLOCKED
         }
 
         class Runway {
-          - occupied: boolean
-          - holderPlane: Plane
+          - runwayStatus: RunwayStatus
+          - occupantName: String
+          - timeBlocked: int
           --
-          + planeLand(Plane plane): void
-          + decreasePlaneHoursRunwayNeeded(): void
-          + displayRunway(): String
-          - checkPlaneFuelLevel(): void
-          - planeLeave(): void
+          # Runway()
+          # planeLand(plane: Plane): void
+          # runwayAdvanceHour(): void
+          # decreaseTimeBlocked(): void
+          # increaseTimeBlocked(hoursTimeBlocked: int): void
+          # displayRunway(): String
+          - checkTimeBlocked(): boolean
+          # emptyRunway(): void
+          # addTimeBlocked(hoursToWait: int): void
+          # blockRunway(occupantName: String, hoursBlocked: int): void
+          # getRunwayStatus(): RunwayStatus
         }
       }
 
@@ -144,7 +179,15 @@ package application {
             --
             - WaitingPlanesManager()
             + {static} getInstance(): WaitingPlanesManager
-            + addPlaneToWaitingPlanes(Plane plane): void
+            + addPlaneToWaitingPlanes(plane: Plane): void
+            + waitingPlanesAdvanceHour(): int
+            + decreaseWaitingPlanesFuel(): void
+            + increaseWaitingPlanesFuel(fuel: int): void
+            - checkWaitingPlanesFuel(): ArrayList<Plane>
+            + crashWaitingPlane(crashingPlane: Plane): void
+            - numberDeadPassengersFromCrash(crashingPlane: Plane): int
+            + getNbWaitingPlanes(): int
+            + getRandomWaitingPlane(): Plane
         }
       }
 
@@ -156,15 +199,21 @@ package application {
             --
             - PlaneManager()
             + {static} getInstance(): PlaneManager
-            - generateCommonPlane(): Plane
-            - generateEmergencyPlane(): Plane
-            - generateJumboPlane(): Plane
+            - generateCommonPlane(planeID: int): Plane
+            - generateEmergencyPlane(planeID: int): Plane
+            - generateJumboPlane(planeID: int): Plane
+            - generateSnakePlane(planeID: int): Plane
+            + giveCommonPlane(): Plane
+            + giveEmergencyPlane(): Plane
+            + giveJumboPlane(): Plane
+            + giveSnakesPlane(): Plane
         }
 
         enum PlaneType {
-            + {static} COMMON = 0
-            + {static} EMERGENCY = 1
-            + {static} JUMBO = 2
+            COMMON
+            EMERGENCY
+            JUMBO
+            SNAKES
         }
 
         class Plane {
@@ -174,7 +223,17 @@ package application {
             - hoursRunwayNeeded: int
             - nbPassengers: int
             --
-            + displayPlane(): String
+            # Plane(planeType: PlaneType, name: String, hoursFuelLeft: int, hoursRunwayNeeded: int, nbPassengers: int)
+            # getPlaneType(): PlaneType
+            + getName(): String
+            + getHoursFuelLeft(): int
+            + getHoursRunwayNeeded(): int
+            + getNbPassengers(): int
+            + decreaseFuelLeft(): void
+            + increaseFuelLeft(fuel: int): void
+            # decreaseHoursRunwayNeeded(): void
+            # increaseHoursRunwayNeeded(): void
+            # displayPlane(): String
         }
       }
 
@@ -186,80 +245,87 @@ package application {
             --
             - DeadPassengerCountManager()
             + {static} getInstance(): DeadPassengerCountManager
+            + getNbDeadPassengers(): int
+            + addDeadPassengers(nbDeadPassengersFromCrash: int): void
+            + decreaseDeadPassengers(nbRescuedPassengers: int)
         }
       }
 
       package requests {
 
           abstract Request {
-            - RARITY: Double
             - TITLE: String
             - DESCRIPTION: String
             - options: Option[]
             --
-            # Request(double RARITY, String TITLE, String DESCRIPTION, Option[] options)
+            # Request(TITLE: String, DESCRIPTION: String, options: Option[])
+            # {abstract} generateOptions(): Option[]
           }
 
           abstract Landing extends Request {
             - plane: Plane
             --
-            # Landing(double RARITY, String TITLE, String DESCRIPTION, Option[] options, Plane plane)
+            # Landing(TITLE: String, DESCRIPTION: String, plane: Plane)
+            # generateOptions(): Option[]
           }
 
           class PlaneLanding extends Landing {
-            - plane: Plane
-            - RARITY: Double = 0.40
-            - TITLE: String = "Plane Landing"
-            - DESCRIPTION: String = ...
+            --
+            + PlaneLanding(plane: Plane)
+            - {static} generateDescription(plane: Plane): String
           }
 
           class EmergencyLanding extends Landing {
-            - plane: Plane
-            - RARITY: Double = 0.05
-            - TITLE: String = "Emergency landing"
-            - DESCRIPTION: String = ...
+            --
+            + EmergencyLanding(plane: Plane)
+            - {static} generateDescription(plane: Plane): String
           }
 
           class FundingEvent extends Request {
-            - RARITY: Double = 0.10
-            - TITLE: String = "Funding Event"
-            - DESCRIPTION: String = ...
-            - options: Option[] = ...
+            --
+            # FundingEvent()
+            # generateOptions(): Option[]
           }
 
           class JumboJet extends Landing {
-            - plane: Plane
-            - RARITY: Double = 0.15
-            - TITLE: String = "Jumbo jet"
-            - DESCRIPTION: String = ...
+            --
+            + JumboJet(plane: Plane)
+            - {static} generateDescription(plane: Plane): String
           }
 
           class BadWeather extends Request {
-            - RARITY: Double = 0.10
-            - TITLE: String = "Bad Weather"
-            - DESCRIPTION: String = ...
-            - options: Option[] = ...
+            --
+            # BadWeather()
+            # generateOptions(): Option[]
           }
 
           class SnakesOnThePlane extends Request {
-            - RARITY: Double = 0.10
-            - TITLE: String = "Snakes on the plane"
-            - DESCRIPTION: String = ...
-            - options: Option[] = ...
+            --
+            # SnakesOnThePlane()
+            # generateOptions(): Option[]
           }
 
           class Protests extends Request {
-            - RARITY: Double = 0.05
-            - TITLE: String = "Protests"
-            - DESCRIPTION: String = ...
-            - options: Option[] = ...
+            --
+            # Protests()
+            # generateOptions(): Option[]
           }
 
           class JohnMcClain extends Request {
-            - RARITY: Double = 0.05
-            - TITLE: String = "John McClain"
-            - DESCRIPTION: String = ...
-            - options: Option[] = ...
+            --
+            # JohnMcClain()
+            # generateOptions(): Option[]
+          }
+
+          enum RequestType {
+            PLANE_LANDING
+            EMERGENCY_LANDING
+            FUNDING_EVENT
+            JUMBO_JET
+            BAD_WEATHER
+            SNAKES_ON_THE_PLANE
+            PROTESTS
+            JOHN_MCCLAIN
           }
         }
 
@@ -268,27 +334,32 @@ package application {
           abstract Option {
             - DESCRIPTION: String
             --
-            # Option()
-            {abstract} + checkRequirement(): Boolean
-            {abstract} + applyConsequence(): void
+            # Option(DESCRIPTION: String)
+            + {abstract} checkRequirement(): Boolean
+            + {abstract} applyConsequence(): void
             + displayOption(): String
           }
 
           class AllowLanding extends Option {
+            - plane: Plane
+            - runwayManager_instance: RunwayManager
             --
-            + AllowLanding()
+            + AllowLanding(plane: Plane)
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class PlaceOnStandby extends Option {
+            - plane: Plane
+            - waitingPlanesManager_instance: WaitingPlanesManager
             --
-            + PlaceOnStandby()
+            + PlaceOnStandby(plane: Plane)
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class EmptyRandomRunway extends Option {
+            - runwayManager_instance: RunwayManager
             --
             + EmptyRandomRunway()
             + checkRequirement(): boolean
@@ -296,6 +367,7 @@ package application {
           }
 
           class RescueTeam extends Option {
+            - deadPassengerCountManager_instance: DeadPassengerCountManager
             --
             + RescueTeam()
             + checkRequirement(): boolean
@@ -303,6 +375,7 @@ package application {
           }
 
           class AirRefueling extends Option {
+            - waitingPlanesManager_instance: WaitingPlanesManager
             --
             + AirRefueling()
             + checkRequirement(): boolean
@@ -310,6 +383,7 @@ package application {
           }
 
           class CrossWinds extends Option {
+            - waitingPlanesManager_instance: WaitingPlanesManager
             --
             + CrossWinds()
             + checkRequirement(): boolean
@@ -317,6 +391,7 @@ package application {
           }
 
           class IcyRunWays extends Option {
+            - runwayManager_instance: RunwayManager
             --
             + IcyRunWays()
             + checkRequirement(): boolean
@@ -324,6 +399,7 @@ package application {
           }
 
           class IceStorm extends Option {
+            - runwayManager_instance: RunwayManager
             --
             + IceStorm()
             + checkRequirement(): boolean
@@ -331,13 +407,16 @@ package application {
           }
 
           class LetThemLand extends Option {
+            - plane: Plane
+            - runwayManager_instance: RunwayManager
             --
-            + LetThemLand()
+            + LetThemLand(plane: Plane)
             + checkRequirement(): boolean
             + applyConsequence(): void
           }
 
           class RefuseThem extends Option {
+            - deadPassengerCountManager_instance: DeadPassengerCountManager
             --
             + RefuseThem()
             + checkRequirement(): boolean
@@ -345,6 +424,7 @@ package application {
           }
 
           class AllowThemTheSpaceToProtest extends Option {
+            - runwayManager_instance: RunwayManager
             --
             + AllowThemTheSpaceToProtest()
             + checkRequirement(): boolean
@@ -352,6 +432,7 @@ package application {
           }
 
           class GetPoliceInvolved extends Option {
+            - runwayManager_instance: RunwayManager
             --
             + GetPoliceInvolved()
             + checkRequirement(): boolean
@@ -359,6 +440,7 @@ package application {
           }
 
           class LetThePlanesLandAnyways extends Option {
+            - deadPassengerCountManager_instance: DeadPassengerCountManager
             --
             + LetThePlanesLandAnyways()
             + checkRequirement(): boolean
@@ -366,6 +448,7 @@ package application {
           }
 
           class LockdownTheRunway extends Option {
+            - runwayManager_instance: RunwayManager
             --
             + LockdownTheRunway()
             + checkRequirement(): boolean
@@ -373,6 +456,8 @@ package application {
           }
 
           class LetTheManGo extends Option {
+            - deadPassengerCountManager_instance: DeadPassengerCountManager
+            - waitingPlanesManager_instance: WaitingPlanesManager
             --
             + LetTheManGo()
             + checkRequirement(): boolean

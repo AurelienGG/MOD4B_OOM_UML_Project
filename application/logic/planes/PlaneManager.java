@@ -19,7 +19,6 @@ public class PlaneManager {
     /**
      * Constructor of Plane Manager
      */
-
     private PlaneManager() {
         this.planesDictionary =  new EnumMap<>(PlaneType.class);
 
@@ -45,7 +44,7 @@ public class PlaneManager {
      * get the singleton of the instance of the Plane Manager
      * @return planeManager_instance the singleton of the instance of the Plane Manager
      */
-    public PlaneManager getInstance() {
+    public static PlaneManager getInstance() {
         if (planeManager_instance == null)
             planeManager_instance = new PlaneManager();
         return planeManager_instance;

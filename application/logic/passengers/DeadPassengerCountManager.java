@@ -50,6 +50,5 @@ public class DeadPassengerCountManager {
      */
     public void decreaseDeadPassengers(int nbRescuedPassengers) {
         nbDeadPassengers -= nbRescuedPassengers;
-
     }
 }

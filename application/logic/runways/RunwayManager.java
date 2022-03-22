@@ -15,15 +15,15 @@ public class RunwayManager {
     private static RunwayManager runwayManager_instance = null;
     private ArrayList<Runway> runways;
 
-    final int INFINITY = 30;
-    final int nbRunways = 8;
+    private final int INFINITY = 30;
+    private final int NB_RUNWAYS = 8;
 
     /**
      * Constructor the Runway Manager
      */
     private RunwayManager() {
-        this.runways =  new ArrayList<>(nbRunways);
-        for(int i = 0; i<nbRunways ; i++)
+        this.runways =  new ArrayList<>(NB_RUNWAYS);
+        for(int i = 0; i < NB_RUNWAYS; i++)
             runways.add(new Runway());
     }
 

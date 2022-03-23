@@ -1,5 +1,7 @@
 package userInterface;
 
+import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -40,18 +42,38 @@ public class UserInputManager {
      * TODO
      * @return
      */
-    public int readOptionMenu() {
-        //TODO
-        return this.userInput.nextInt();
+    public int readOptionInteger(int minInteger, int maxInteger) {
+        int input = Integer.MAX_VALUE;
+        while(input > maxInteger) {
+            try {
+                System.out.println("Input an integer between " + minInteger + " and " + maxInteger);
+                input = userInput.nextInt();
+                // Eating nextInt forgotten "\n"
+                userInput.nextLine();
+            } catch(InputMismatchException e) {
+                System.err.println("Not a number !");
+                userInput.next();
+            }
+            if(input > maxInteger || input < minInteger)
+                System.err.println("Your input does not follow the range of integer allowed.");
+        }
+        return input;
     }
 
     /**
      * TODO
      * @return
      */
-    public char readOptionRequest() {
-        //TODO
-        return this.userInput.next().charAt(0);
+    public char readOptionChar(int nbOptions) {
+        int maxChar = 'A' + nbOptions - 1;
+        char input = Character.MAX_VALUE;
+        while(input > maxChar) {
+            System.out.println("Input a character between A and " + (char) maxChar + " (case sensitive)");
+            input = userInput.next().charAt(0);
+            if(input > maxChar)
+                System.err.println("Your input does not follow the range of characters allowed.");
+        }
+        return input;
     }
 
     /**

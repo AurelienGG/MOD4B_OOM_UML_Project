@@ -11,6 +11,8 @@ public class DeadPassengerCountManager {
     private static DeadPassengerCountManager deadPassengerCountManager_instance = null;
     private int nbDeadPassengers;
 
+    public static final int NB_MAX_PASSENGERS_DEAD = 350;
+
     /**
      * Constructor of Dead Passenger Count Manager
      */
@@ -26,6 +28,17 @@ public class DeadPassengerCountManager {
         if (deadPassengerCountManager_instance == null)
             deadPassengerCountManager_instance = new DeadPassengerCountManager();
         return deadPassengerCountManager_instance;
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    public boolean advanceHourPassengers() {
+        if(this.nbDeadPassengers >= NB_MAX_PASSENGERS_DEAD)
+            return false;
+        else
+            return true;
     }
 
     /**

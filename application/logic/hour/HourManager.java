@@ -8,6 +8,8 @@ public class HourManager {
     private static HourManager hourManager_instance = null;
     private int hour;
 
+    public static final int LAST_HOUR = 24;
+
     /**
      * TODO
      */
@@ -23,6 +25,18 @@ public class HourManager {
         if (hourManager_instance == null)
             hourManager_instance = new HourManager();
         return hourManager_instance;
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    public boolean advanceHourHour() {
+       increaseHour();
+       if(this.hour < LAST_HOUR)
+           return false;
+       else
+           return true;
     }
 
     /**

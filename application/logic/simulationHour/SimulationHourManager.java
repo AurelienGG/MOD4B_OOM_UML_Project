@@ -16,7 +16,7 @@ public class SimulationHourManager {
     private int pointer;
 
     /**
-     * TODO
+     * TODO DELETE THIS CLASS
      */
     private SimulationHourManager() {
         //TODO

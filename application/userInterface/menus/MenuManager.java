@@ -2,12 +2,18 @@ package userInterface.menus;
 
 import java.util.EnumMap;
 
+/**
+ * TODO
+ */
 public class MenuManager {
 
     private static MenuManager menuManager_instance = null;
 
     private EnumMap<MenuType, Menu> menusDictionary;
 
+    /**
+     * TODO
+     */
     private MenuManager() {
         //TODO
         EnumMap<MenuType, Menu> menusDictionary = new EnumMap<>(MenuType.class);
@@ -19,7 +25,11 @@ public class MenuManager {
         menusDictionary.put(MenuType.REQUEST, new RequestMenu());
     }
 
-    public MenuManager getInstance() {
+    /**
+     * TODO
+     * @return
+     */
+    public static MenuManager getInstance() {
         if (menuManager_instance == null)
             menuManager_instance = new MenuManager();
         return menuManager_instance;

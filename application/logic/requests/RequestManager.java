@@ -1,13 +1,10 @@
 package logic.requests;
 
 import logic.Tools;
-import logic.options.CrossWinds;
-import logic.options.IceStorm;
-import logic.options.IcyRunWays;
-import logic.options.Option;
+import logic.planes.Plane;
 import logic.planes.PlaneManager;
+import logic.planes.PlaneType;
 
-import javax.tools.Tool;
 import java.util.EnumMap;
 import java.util.Stack;
 
@@ -24,9 +21,9 @@ public class RequestManager {
     EnumMap<RequestType, Request> requestDictionary;
     EnumMap<RequestType, Double> requestRarityDictionary;
 
-    // TODO fix hard code, use (max nb request per hour * max nb hour)
+    // TODO fix hard code, use (NB_HOURS * NB_MAX_REQUESTS)
     // TODO maybe a class GameSettings with static final fields
-    private static final int NB_REQUESTS_MAX = 75;
+    private static final int NB_REQUESTS_MAX = 100;
 
     /**
      * TODO
@@ -51,7 +48,7 @@ public class RequestManager {
      * TODO
      * @return
      */
-    public Request generateRandomRequest() {
+    private Request generateRandomRequest() {
         PlaneManager planeManager_instance = PlaneManager.getInstance();
         int random = Tools.generateRandomNumber(1, 100);
         if(random <= 40)
@@ -74,5 +71,14 @@ public class RequestManager {
             // If for some reason we get here, Plane Landing will be the default request
             return new PlaneLanding(planeManager_instance.giveCommonPlane());
     }
+
+    /**
+     * Give a request which was generated randomly
+     * @return a request from the requestsStack
+     */
+    public Request giveRequest() {
+        return this.requestsStack.pop();
+    }
+
 
 }

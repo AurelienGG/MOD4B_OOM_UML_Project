@@ -121,4 +121,16 @@ public class WaitingPlanesManager {
         return waitingPlanes.get(Tools.generateRandomNumber(0, getNbWaitingPlanes()-1));
     }
 
+    /**
+     * TODO
+     * @return
+     */
+    public String displayWaitingPlanes() {
+        StringBuilder stringBuilder = new StringBuilder();
+        int idPlane = 0;
+        for(Plane plane: this.waitingPlanes)
+            stringBuilder.append("\t\t" + idPlane + ") " + plane.getName() + " " + plane.getHoursFuelLeft() + "\n");
+        return stringBuilder.toString();
+    }
+
 }

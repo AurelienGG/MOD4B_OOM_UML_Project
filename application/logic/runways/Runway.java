@@ -34,6 +34,22 @@ public class Runway {
     }
 
     /**
+     * TODO
+     * @return
+     */
+    public String getOccupantName() {
+        return occupantName;
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    public int getTimeBlocked() {
+        return timeBlocked;
+    }
+
+    /**
      * Hourly checks for a runway,
      * Decrease the time refueling,
      * Check if plane can leave

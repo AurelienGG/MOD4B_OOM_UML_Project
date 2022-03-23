@@ -38,6 +38,18 @@ public class RunwayManager {
     }
 
     /**
+     *
+     * @return
+     */
+    public String displayRunway() {
+       StringBuilder stringBuilder = new StringBuilder("\t\tRunway id, Name, Occupied time remaining");
+       int idRunway = 0;
+       for(Runway runway: runways)
+           stringBuilder.append("\t\tR" + idRunway++ + " " + runway.getOccupantName() + " " + runway.getTimeBlocked());
+       return stringBuilder.toString();
+    }
+
+    /**
      * Make the plane land on a free runway
      * @param plane the landing plane
      */

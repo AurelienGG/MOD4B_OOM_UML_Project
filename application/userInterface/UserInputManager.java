@@ -40,8 +40,26 @@ public class UserInputManager {
      * TODO
      * @return
      */
-    public int readChosedOption() {
+    public int readOptionMenu() {
         //TODO
         return this.userInput.nextInt();
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    public char readOptionRequest() {
+        //TODO
+        return this.userInput.next().charAt(0);
+    }
+
+    /**
+     * TODO
+     * @param charOption
+     * @return
+     */
+    public int convertCharOptionToArrayID(char charOption) {
+        return (int) charOption - ('A' - '0');
     }
 }

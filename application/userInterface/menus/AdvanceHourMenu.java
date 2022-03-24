@@ -3,7 +3,6 @@ package userInterface.menus;
 import logic.hour.HourManager;
 import logic.passengers.DeadPassengerCountManager;
 import logic.runways.RunwayManager;
-import logic.simulationRequests.SimulationRequests;
 import logic.simulationRequests.SimulationRequestsManager;
 import logic.waitingPlanes.WaitingPlanesManager;
 
@@ -28,23 +27,24 @@ public class AdvanceHourMenu extends Menu {
      */
     @Override
     protected String displayMenu() {
-        advanceHourFirst();
+        advanceHourDatas();
 
-        StringBuilder stringBuilder = new StringBuilder("AdvanceHourMenu\n");
+        StringBuilder stringBuilder = new StringBuilder("\nAdvanceHourMenu\n");
 
         stringBuilder.append("Curent time " + HourManager.getInstance().displayHour() + "\n");
         if(!HourManager.getInstance().isLastHour())
-            stringBuilder.append("Number of new requests coming in" + SimulationRequestsManager.getInstance().getNbRequestsIncomingHour() + "\n");
+            stringBuilder.append("Number of new requests coming in " + SimulationRequestsManager.getInstance().getNbRequestsIncomingHour() + "\n");
 
-        int nbPassengersDeadCurrentHour = DeadPassengerCountManager.getInstance().getNbDeadPassengersCurrentHour();
-        if(nbPassengersDeadCurrentHour > 0)
-            stringBuilder.append("Number of passengers dead this hour " + nbPassengersDeadCurrentHour + "\n");
-        else if(nbPassengersDeadCurrentHour < 0)
-            stringBuilder.append("Number of passengers saved this hour " + (nbPassengersDeadCurrentHour * -1) + "\n");
+        int nbDeadPassengers = DeadPassengerCountManager.getInstance().getNbDeadPassengers();
+        if(nbDeadPassengers > 0)
+            stringBuilder.append("Number of passengers dead" + nbDeadPassengers + "\n");
+        else if(nbDeadPassengers < 0)
+            stringBuilder.append("Number of passengers saved" + (nbDeadPassengers * -1) + "\n");
         else
-            stringBuilder.append("Passengers neither died nor was saved this hour\n");
+            stringBuilder.append("No passengers died or were saved from past events\n");
 
-        advanceHourSecond();
+        stringBuilder.append("\n");
+        HourManager.getInstance().increaseHour();
 
         if(DeadPassengerCountManager.getInstance().isGameOver())
             stringBuilder.append("Game Over, number of passengers killed >= 350");
@@ -70,19 +70,11 @@ public class AdvanceHourMenu extends Menu {
     }
 
     /**
-     * Update nimber of dead passengers from waiting planes crash of current hour
+     * Update number of dead passengers from waiting planes crash of current hour
      * Update leaving planes on runways
      */
-    private void advanceHourFirst() {
+    private void advanceHourDatas() {
         RunwayManager.getInstance().advanceHourAllRunways();
         WaitingPlanesManager.getInstance().advanceHourWaitingPlanes();
-    }
-
-    /**
-     * Update current hour and total passengers dead from crashing planes
-     */
-    private void advanceHourSecond() {
-        HourManager.getInstance().advanceHourHour();
-        DeadPassengerCountManager.getInstance().advanceHourPassengers();
     }
 }

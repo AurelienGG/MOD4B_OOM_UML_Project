@@ -25,8 +25,8 @@ public class RequestMenu extends Menu {
      */
     @Override
     protected String displayMenu() {
-        StringBuilder stringBuilder = new StringBuilder("Request menu\n");
-        stringBuilder.append("Select a request with its id\n");
+        StringBuilder stringBuilder = new StringBuilder("\nRequest menu\n");
+        stringBuilder.append("\nSelect a request with its id\n");
         stringBuilder.append(SimulationRequestsManager.getInstance().displayRequestsNameCurrentHour());
         return stringBuilder.toString();
     }

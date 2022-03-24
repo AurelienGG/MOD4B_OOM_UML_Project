@@ -10,7 +10,6 @@ public class DeadPassengerCountManager {
 
     private static DeadPassengerCountManager deadPassengerCountManager_instance = null;
     private int nbDeadPassengers;
-    private int nbDeadPassengersCurrentHour;
 
     public static final int NB_MAX_PASSENGERS_DEAD = 350;
 
@@ -19,7 +18,6 @@ public class DeadPassengerCountManager {
      */
     private DeadPassengerCountManager() {
         this.nbDeadPassengers = 0;
-        this.nbDeadPassengersCurrentHour = 0;
     }
 
     /**
@@ -41,15 +39,6 @@ public class DeadPassengerCountManager {
     }
 
     /**
-     * TODO
-     * @return
-     */
-    public void advanceHourPassengers() {
-        nbDeadPassengers += nbDeadPassengersCurrentHour;
-        nbDeadPassengersCurrentHour = 0;
-    }
-
-    /**
      * Get the number of dead passengers
      * @return the number of dead passengers
      */
@@ -58,19 +47,11 @@ public class DeadPassengerCountManager {
     }
 
     /**
-     * TODO
-     * @return
-     */
-    public int getNbDeadPassengersCurrentHour() {
-        return nbDeadPassengersCurrentHour;
-    }
-
-    /**
      * Add the number of dead passengers to the count
      * @param nbDeadPassengersFromCrash the number of passengers dead from the crash
      */
     public void addDeadPassengers(int nbDeadPassengersFromCrash) {
-        nbDeadPassengersCurrentHour += nbDeadPassengersFromCrash;
+        nbDeadPassengers += nbDeadPassengersFromCrash;
     }
 
     /**
@@ -78,6 +59,6 @@ public class DeadPassengerCountManager {
      * @param nbRescuedPassengers the number of passengers rescued from the crash
      */
     public void decreaseDeadPassengers(int nbRescuedPassengers) {
-        nbDeadPassengersCurrentHour -= nbRescuedPassengers;
+        nbDeadPassengers -= nbRescuedPassengers;
     }
 }

@@ -23,9 +23,9 @@ public class RunwayMenu extends Menu {
      */
     @Override
     protected String displayMenu() {
-        return "Runway menu\n" +
+        return "\nRunway menu\n" +
                 RunwayManager.getInstance().displayRunway() +
-                "Press \"Enter\" to return to Main menu";
+                "\nPress \"Enter\" to return to Main menu";
     }
 
     /**

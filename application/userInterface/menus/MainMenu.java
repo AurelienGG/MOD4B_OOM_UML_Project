@@ -35,9 +35,9 @@ public class MainMenu extends Menu {
     public String displayMenu() {
         StringBuilder mainMenuDisplay = new StringBuilder();
 
-        mainMenuDisplay.append("MainMenu\n");
+        mainMenuDisplay.append("\nMainMenu\n");
         mainMenuDisplay.append("\t\t\t\t\t\t\t\t\t\tcurrent hour " + HourManager.getInstance().displayHour() + "\n");
-        mainMenuDisplay.append("\t\t\t\t\t\t\t\t\t\t#passengers killed " + DeadPassengerCountManager.getInstance().getNbDeadPassengers() +"\n");
+        mainMenuDisplay.append("\t\t\t\t\t\t\t\t\t\t#passengers killed " + DeadPassengerCountManager.getInstance().getNbDeadPassengers() +"\n\n");
 
         if(areRequestsDone())
             mainMenuDisplay.append("Option 1: Advance to the next hour\n");

@@ -22,9 +22,9 @@ public class WaitingPlanesMenu extends Menu {
      */
     @Override
     protected String displayMenu() {
-        return "Waiting Planes menu\n" +
+        return "\nWaiting Planes menu\n" +
                 WaitingPlanesManager.getInstance().displayWaitingPlanes() +
-                "\nOption 1: Select a plane to land" +
+                "\n\nOption 1: Select a plane to land" +
                 "\nOption 2: Return to main menu";
     }
 

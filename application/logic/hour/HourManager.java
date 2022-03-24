@@ -31,14 +31,6 @@ public class HourManager {
      * TODO
      * @return
      */
-    public void advanceHourHour() {
-       increaseHour();
-    }
-
-    /**
-     * TODO
-     * @return
-     */
     public int getHour() {
         return this.hour;
     }

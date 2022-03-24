@@ -59,7 +59,7 @@ public abstract class Request {
      * @return
      */
     public String displayRequest() {
-        StringBuilder stringBuilder = new StringBuilder(TITLE + "\n" + DESCRIPTION + "\n");
+        StringBuilder stringBuilder = new StringBuilder(TITLE + "\n" + DESCRIPTION + "\n\n");
 
         char idRequest = 'A';
         for(Option option: options)

@@ -77,7 +77,7 @@ public class SimulationRequestsManager {
         return this.simulationRequests.get(hourManager_instance.getHour()).areAllRequestsDone();
     }
     /**
-     *
+     * TODO
      * @param idRequest
      */
     public void startRequest(int idRequest) {
@@ -85,11 +85,27 @@ public class SimulationRequestsManager {
     }
 
     /**
-     *
+     * TODO
      * @return
      */
     public String hourSummary() {
         //TODO
         return null;
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    public String displayRequestsCurrentHour() {
+        return this.simulationRequests.get(hourManager_instance.getHour()).displayRequests();
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    public String displayRequestsNameCurrentHour() {
+        return this.simulationRequests.get(hourManager_instance.getHour()).displayRequestsName();
     }
 }

@@ -1,6 +1,7 @@
 package logic.waitingPlanes;
 
 import logic.Tools;
+import logic.passengers.DeadPassengerCountManager;
 import logic.planes.Plane;
 import logic.runways.RunwayManager;
 
@@ -42,7 +43,7 @@ public class WaitingPlanesManager {
      * Communicate number of dead passengers from crash
      * @return number of dead passengers or 0
      */
-    public int advanceHourWaitingPlanes() {
+    public void advanceHourWaitingPlanes() {
         decreaseWaitingPlanesFuel();
         ArrayList<Plane> crashingPlanes = checkWaitingPlanesFuel();
         int deadPassenger = 0;
@@ -50,7 +51,7 @@ public class WaitingPlanesManager {
             for(Plane plane: crashingPlanes) {
                 deadPassenger += crashWaitingPlane(plane);
             }
-        return deadPassenger;
+        DeadPassengerCountManager.getInstance().addDeadPassengers(deadPassenger);
     }
 
     /**

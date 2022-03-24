@@ -38,14 +38,12 @@ public class MainMenu extends Menu {
      */
     @Override
     public String displayMenu() {
-        //TODO
         StringBuilder mainMenuDisplay = new StringBuilder();
 
         mainMenuDisplay.append("MainMenu\n");
         mainMenuDisplay.append("\t\t\t\t\tcurrent hour " + hourManager_instance.displayHour() );
         mainMenuDisplay.append("\t\t\t\t\t#passengers killed " + deadPassengerCountManager_instance.getNbDeadPassengers() );
 
-        // TODO
         if(areRequestsDone())
             mainMenuDisplay.append("\nOption 1: Advance to the next hour\n");
         else

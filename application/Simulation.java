@@ -4,6 +4,7 @@ import logic.requests.Request;
 import logic.requests.RequestManager;
 import logic.simulationRequests.SimulationRequestsManager;
 import userInterface.UserInputManager;
+import userInterface.menus.MainMenu;
 import userInterface.menus.Menu;
 import userInterface.menus.MenuManager;
 
@@ -39,9 +40,9 @@ public class Simulation {
     /**
      * TODO
      */
-    public void start() {
+    public void start() throws IOException {
         //TODO
-        Menu mainMenu = this.menuManager_instance.getMainMenu();
-
+        //Menu mainMenu = this.menuManager_instance.getMainMenu();
+        new MainMenu();
     }
 }

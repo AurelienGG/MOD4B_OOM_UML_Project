@@ -26,6 +26,8 @@ public class AdvanceHourMenu extends Menu {
 
     @Override
     protected String displayMenu() {
+        advanceHourFirst();
+
         StringBuilder stringBuilder = new StringBuilder("AdvanceHourMenu\n");
 
         stringBuilder.append("Curent time " + hourManager_instance.displayHour() + "\n");
@@ -40,7 +42,7 @@ public class AdvanceHourMenu extends Menu {
         else
             stringBuilder.append("Passengers neither died nor was saved this hour\n");
 
-        advanceHourEverywhere();
+        advanceHourSecond();
 
         if(deadPassengerCountManager_instance.isGameOver())
             stringBuilder.append("Game Over, number of passengers killed >= 350");
@@ -66,12 +68,19 @@ public class AdvanceHourMenu extends Menu {
     }
 
     /**
-     * TODO
+     * Update nimber of dead passengers from waiting planes crash of current hour
+     * Update leaving planes on runways
      */
-    private void advanceHourEverywhere() {
-        hourManager_instance.advanceHourHour();
-        deadPassengerCountManager_instance.advanceHourPassengers();
+    private void advanceHourFirst() {
         RunwayManager.getInstance().advanceHourAllRunways();
         WaitingPlanesManager.getInstance().advanceHourWaitingPlanes();
+    }
+
+    /**
+     * Update current hour and total passengers dead from crashing planes
+     */
+    private void advanceHourSecond() {
+        hourManager_instance.advanceHourHour();
+        deadPassengerCountManager_instance.advanceHourPassengers();
     }
 }

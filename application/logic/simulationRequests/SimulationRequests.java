@@ -70,4 +70,27 @@ public class SimulationRequests {
         //TODO
         return null;
     }
+
+    /**
+     * TODO
+     * @return
+     */
+    public String displayRequests() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for(Request request: hourRequests)
+            stringBuilder.append(request.displayRequest());
+        return stringBuilder.toString();
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    public String displayRequestsName() {
+        StringBuilder stringBuilder = new StringBuilder();
+        int idRequest = 0;
+        for(Request request: hourRequests)
+            stringBuilder.append(idRequest + ") " + request.getTITLE());
+        return stringBuilder.toString();
+    }
 }

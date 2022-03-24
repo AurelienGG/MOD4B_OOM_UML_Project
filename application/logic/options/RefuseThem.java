@@ -7,20 +7,27 @@ import logic.passengers.DeadPassengerCountManager;
  */
 public class RefuseThem extends Option {
 
-    private DeadPassengerCountManager deadPassengerCountManager_instance;
-
+    /**
+     * TODO
+     */
     public RefuseThem() {
         super("Refuse them");
-        this.deadPassengerCountManager_instance = DeadPassengerCountManager.getInstance();
     }
 
+    /**
+     * TODO
+     * @return
+     */
     @Override
     public boolean checkRequirement() {
         return true;
     }
 
+    /**
+     * TODO
+     */
     @Override
     public void applyConsequence() {
-        this.deadPassengerCountManager_instance.addDeadPassengers(50);
+        DeadPassengerCountManager.getInstance().addDeadPassengers(50);
     }
 }

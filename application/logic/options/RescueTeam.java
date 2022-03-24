@@ -7,20 +7,27 @@ import logic.passengers.DeadPassengerCountManager;
  */
 public class RescueTeam extends Option {
 
-    private DeadPassengerCountManager deadPassengerCountManager_instance;
-
+    /**
+     * TODO
+     */
     public RescueTeam() {
         super("Rescue Team");
-        deadPassengerCountManager_instance =DeadPassengerCountManager.getInstance();
     }
 
+    /**
+     * TODO
+     * @return
+     */
     @Override
     public boolean checkRequirement() {
         return true;
     }
 
+    /**
+     * TODO
+     */
     @Override
     public void applyConsequence() {
-        deadPassengerCountManager_instance.decreaseDeadPassengers(100);
+        DeadPassengerCountManager.getInstance().decreaseDeadPassengers(100);
     }
 }

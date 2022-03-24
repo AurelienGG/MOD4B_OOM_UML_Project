@@ -7,20 +7,27 @@ import logic.runways.RunwayManager;
  */
 public class IcyRunWays extends Option {
 
-    private RunwayManager runwayManager_instance;
-
+    /**
+     * TODO
+     */
     public IcyRunWays() {
         super("Icy run ways");
-        this.runwayManager_instance = RunwayManager.getInstance();
     }
 
+    /**
+     * TODO
+     * @return
+     */
     @Override
     public boolean checkRequirement() {
         return true;
     }
 
+    /**
+     * TODO
+     */
     @Override
     public void applyConsequence() {
-        this.runwayManager_instance.addTimeBlockedAllPlanes(2);
+        RunwayManager.getInstance().addTimeBlockedAllPlanes(2);
     }
 }

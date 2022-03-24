@@ -53,8 +53,9 @@ public class SimulationRequests {
      * @param idRequest
      */
     public void startRequest(int idRequest) {
-        Request request = this.hourRequests.get(idRequest);
-        request.displayRequest();
+        // -1 because idRequest start from 1 where the array start at 0
+        Request request = this.hourRequests.get(idRequest-1);
+        System.out.println(request.displayRequest());
         System.out.println("Select an option with its character");
         UserInputManager userInputManager_instance = UserInputManager.getInstance();
         char inputChar = userInputManager_instance.readOptionChar(request.getNbOptions());
@@ -97,9 +98,9 @@ public class SimulationRequests {
      */
     public String displayRequestsName() {
         StringBuilder stringBuilder = new StringBuilder();
-        int idRequest = 0;
+        int idRequest = 1;
         for(Request request: hourRequests)
-            stringBuilder.append(idRequest + ") " + request.getTITLE());
+            stringBuilder.append(idRequest++ + ") " + request.getTITLE() + "\n");
         return stringBuilder.toString();
     }
 }

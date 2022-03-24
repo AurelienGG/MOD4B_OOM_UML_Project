@@ -9,8 +9,6 @@ import java.io.IOException;
  */
 public abstract class Menu {
 
-    protected UserInputManager userInputManager_instance;
-
     private MenuType menuType;
 
     /**
@@ -18,7 +16,6 @@ public abstract class Menu {
      * @param menuType
      */
     public Menu(MenuType menuType) throws IOException {
-        this.userInputManager_instance = UserInputManager.getInstance();
         this.menuType = menuType;
     }
 

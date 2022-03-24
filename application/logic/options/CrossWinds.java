@@ -7,20 +7,27 @@ import logic.waitingPlanes.WaitingPlanesManager;
  */
 public class CrossWinds extends Option {
 
-    private WaitingPlanesManager waitingPlanesManager_instance;
-
+    /**
+     * TODO
+     */
     public CrossWinds() {
         super("Cross winds");
-        this.waitingPlanesManager_instance = WaitingPlanesManager.getInstance();
     }
 
+    /**
+     * TODO
+     * @return
+     */
     @Override
     public boolean checkRequirement() {
         return true;
     }
 
+    /**
+     * TODO
+     */
     @Override
     public void applyConsequence() {
-        this.waitingPlanesManager_instance.decreaseWaitingPlanesFuel();
+        WaitingPlanesManager.getInstance().decreaseWaitingPlanesFuel();
     }
 }

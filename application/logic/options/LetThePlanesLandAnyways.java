@@ -6,21 +6,27 @@ import logic.passengers.DeadPassengerCountManager;
  * TODO
  */
 public class LetThePlanesLandAnyways extends Option {
-
-    private DeadPassengerCountManager deadPassengerCountManager_instance;
-
+    /**
+     * TODO
+     */
     public LetThePlanesLandAnyways() {
         super("Let the planes land anyways");
-        this.deadPassengerCountManager_instance = DeadPassengerCountManager.getInstance();
     }
 
+    /**
+     * TODO
+     * @return
+     */
     @Override
     public boolean checkRequirement() {
         return true;
     }
 
+    /**
+     * TODO
+     */
     @Override
     public void applyConsequence() {
-        this.deadPassengerCountManager_instance.addDeadPassengers(100);
+        DeadPassengerCountManager.getInstance().addDeadPassengers(100);
     }
 }

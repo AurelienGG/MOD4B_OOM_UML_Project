@@ -120,6 +120,14 @@ public class WaitingPlanesManager {
 
     /**
      * TODO
+     * @return
+     */
+    public boolean isWaitingPlanesEmpty() {
+        return waitingPlanes.isEmpty();
+    }
+
+    /**
+     * TODO
      * @param idWaitingPlane
      * @return
      */

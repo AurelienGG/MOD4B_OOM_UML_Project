@@ -7,23 +7,30 @@ import logic.runways.RunwayManager;
  */
 public class EmptyRandomRunway extends Option {
 
-    private RunwayManager runwayManager_instance;
-
+    /**
+     * TODO
+     */
     public EmptyRandomRunway() {
         super("Empty random runway");
-        this.runwayManager_instance =RunwayManager.getInstance();
     }
 
+    /**
+     * TODO
+     * @return
+     */
     @Override
     public boolean checkRequirement() {
-        if(this.runwayManager_instance.getNbFullRunway() > 0)
+        if(RunwayManager.getInstance().getNbFullRunway() > 0)
             return true;
         else
             return false;
     }
 
+    /**
+     * TODO
+     */
     @Override
     public void applyConsequence() {
-        this.runwayManager_instance.emptyRandomRunway();
+        RunwayManager.getInstance().emptyRandomRunway();
     }
 }

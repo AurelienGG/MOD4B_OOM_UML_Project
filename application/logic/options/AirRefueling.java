@@ -7,23 +7,30 @@ import logic.waitingPlanes.WaitingPlanesManager;
  */
 public class AirRefueling extends Option {
 
-    private WaitingPlanesManager waitingPlanesManager_instance;
-
+    /**
+     * TODO
+     */
     public AirRefueling() {
         super("Air refueling");
-        this.waitingPlanesManager_instance = WaitingPlanesManager.getInstance();
     }
 
+    /**
+     * TODO
+     * @return
+     */
     @Override
     public boolean checkRequirement() {
-        if(this.waitingPlanesManager_instance.getNbWaitingPlanes() > 0)
+        if(WaitingPlanesManager.getInstance().getNbWaitingPlanes() > 0)
             return true;
         else
             return false;
     }
 
+    /**
+     * TODO
+     */
     @Override
     public void applyConsequence() {
-        this.waitingPlanesManager_instance.increaseWaitingPlanesFuel(2);
+        WaitingPlanesManager.getInstance().increaseWaitingPlanesFuel(2);
     }
 }

@@ -20,7 +20,7 @@ public class PlaneManager {
      * Constructor of Plane Manager
      */
     private PlaneManager() {
-        this.planesDictionary =  new EnumMap<>(PlaneType.class);
+        this.planesDictionary = new EnumMap<>(PlaneType.class);
 
         Stack<Plane> commonStack = new Stack<>();
         Stack<Plane> emergencyStack = new Stack<>();
@@ -111,10 +111,20 @@ public class PlaneManager {
     }
 
     /**
+     * TODO
+     * @return
+     */
+    public int getNbCommonPlane() {
+        return planesDictionary.get(PlaneType.COMMON).size();
+    }
+
+    /**
      * Give an emergency plane with random values
      * @return an emergency plane from the planesDictionary
      */
     public Plane giveEmergencyPlane() {
+        if(planesDictionary.get(PlaneType.EMERGENCY).size() == 0)
+            System.err.println("NO PLANES PlaneManager giveEmergencyPlane");
         return planesDictionary.get(PlaneType.EMERGENCY).pop();
     }
 

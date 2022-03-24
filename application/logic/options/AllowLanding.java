@@ -9,7 +9,6 @@ import logic.runways.RunwayManager;
 public class AllowLanding extends Option {
 
     private Plane plane;
-    private RunwayManager runwayManager_instance;
 
     /**
      * TODO
@@ -17,7 +16,8 @@ public class AllowLanding extends Option {
      */
     public AllowLanding(Plane plane) {
         super("Allow landing");
-        this.runwayManager_instance = RunwayManager.getInstance();
+        if(plane == null)
+            System.err.println("NO PLANE AllowLanding constructor");
         this.plane = plane;
     }
 
@@ -27,7 +27,7 @@ public class AllowLanding extends Option {
      */
     @Override
     public boolean checkRequirement() {
-        if(this.runwayManager_instance.getNbFreeRunway()>0)
+        if(RunwayManager.getInstance().getNbFreeRunway()>0)
             return true;
         else
             return false;
@@ -38,6 +38,8 @@ public class AllowLanding extends Option {
      */
     @Override
     public void applyConsequence() {
-        this.runwayManager_instance.planeLandOnFreeRunway(plane);
+        if(plane == null)
+            System.err.println("NO PLANE AllowLanding applyConsequence");
+        RunwayManager.getInstance().planeLandOnFreeRunway(plane);
     }
 }

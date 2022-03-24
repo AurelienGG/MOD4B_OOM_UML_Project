@@ -7,23 +7,30 @@ import logic.runways.RunwayManager;
  */
 public class LockdownTheRunway extends Option {
 
-    private RunwayManager runwayManager_instance;
-
+    /**
+     * TODO
+     */
     public LockdownTheRunway() {
         super("Lockdown the runway");
-        this.runwayManager_instance =RunwayManager.getInstance();
     }
 
+    /**
+     * TODO
+     * @return
+     */
     @Override
     public boolean checkRequirement() {
-        if(this.runwayManager_instance.getNbFreeRunway()>0)
+        if(RunwayManager.getInstance().getNbFreeRunway()>0)
             return true;
         else
             return false;
     }
 
+    /**
+     * TODO
+     */
     @Override
     public void applyConsequence() {
-        this.runwayManager_instance.blockFreeRunway("LOCKDOWN",8);
+        RunwayManager.getInstance().blockFreeRunway("LOCKDOWN",8);
     }
 }

@@ -9,21 +9,30 @@ import logic.waitingPlanes.WaitingPlanesManager;
 public class PlaceOnStandby extends Option {
 
     private Plane plane;
-    private WaitingPlanesManager waitingPlanesManager_instance;
 
+    /**
+     * TODO
+     * @param plane
+     */
     public PlaceOnStandby(Plane plane){
         super("Place on standby");
         this.plane = plane;
-        this.waitingPlanesManager_instance = WaitingPlanesManager.getInstance();
     }
 
+    /**
+     * TODO
+     * @return
+     */
     @Override
     public boolean checkRequirement() {
         return true;
     }
 
+    /**
+     * TODO
+     */
     @Override
     public void applyConsequence() {
-        this.waitingPlanesManager_instance.addPlaneToWaitingPlanes(this.plane);
+        WaitingPlanesManager.getInstance().addPlaneToWaitingPlanes(this.plane);
     }
 }

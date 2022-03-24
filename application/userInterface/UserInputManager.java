@@ -44,7 +44,8 @@ public class UserInputManager {
      */
     public int readOptionInteger(int minInteger, int maxInteger) {
         int input = Integer.MAX_VALUE;
-        while(input > maxInteger) {
+        boolean loop = true;
+        while(loop) {
             try {
                 System.out.println("Input an integer between " + minInteger + " and " + maxInteger);
                 input = userInput.nextInt();
@@ -56,6 +57,8 @@ public class UserInputManager {
             }
             if(input > maxInteger || input < minInteger)
                 System.err.println("Your input does not follow the range of integer allowed.");
+            else
+                loop = false;
         }
         return input;
     }
@@ -65,8 +68,8 @@ public class UserInputManager {
      * @return
      */
     public int readOptionIntegerWithExit(int minInteger, int maxInteger) {
-        int input = Integer.MAX_VALUE;
         boolean loop = true;
+        int input = Integer.MAX_VALUE;
         while(loop) {
             try {
                 System.out.println("Input an integer between " + minInteger + " and " + maxInteger + " input -1 to exit.");
@@ -90,13 +93,16 @@ public class UserInputManager {
      * @return
      */
     public char readOptionChar(int nbOptions) {
+        boolean loop = true;
         int maxChar = 'A' + nbOptions - 1;
         char input = Character.MAX_VALUE;
-        while(input > maxChar) {
+        while(loop) {
             System.out.println("Input a character between A and " + (char) maxChar + " (case sensitive)");
             input = userInput.next().charAt(0);
-            if(input > maxChar)
+            if(input > maxChar || input < 'A')
                 System.err.println("Your input does not follow the range of characters allowed.");
+            else
+                loop = false;
         }
         return input;
     }
@@ -107,6 +113,7 @@ public class UserInputManager {
      * @return
      */
     public int convertCharOptionToArrayID(char charOption) {
-        return (int) charOption - ('A' - '0');
+        //return (int) charOption - ('A' - '0');
+        return (int) charOption - 'A';
     }
 }

@@ -54,6 +54,9 @@ public class RunwayManager {
      * @param plane the landing plane
      */
     public void planeLandOnFreeRunway(Plane plane) {
+        if(plane == null)
+            System.err.println("NO PLANE RunwayManager planeLandOnFreeRunway");
+
         for(Runway r : runways)
             if(r.getRunwayStatus() == RunwayStatus.FREE) {
                 r.planeLand(plane);

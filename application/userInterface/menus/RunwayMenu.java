@@ -9,14 +9,11 @@ import java.io.IOException;
  */
 public class RunwayMenu extends Menu {
 
-    private RunwayManager runwayManager_instance;
-
     /**
      * TODO
      */
     public RunwayMenu() throws IOException {
         super(MenuType.RUNWAY);
-        this.runwayManager_instance = RunwayManager.getInstance();
         super.liveMenu();
     }
 
@@ -27,7 +24,7 @@ public class RunwayMenu extends Menu {
     @Override
     protected String displayMenu() {
         return "Runway menu\n" +
-                runwayManager_instance.displayRunway() +
+                RunwayManager.getInstance().displayRunway() +
                 "Press \"Enter\" to return to Main menu";
     }
 

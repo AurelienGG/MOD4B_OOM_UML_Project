@@ -7,24 +7,31 @@ import logic.runways.RunwayManager;
  */
 public class GetPoliceInvolved extends Option {
 
-    private RunwayManager runwayManager_instance;
-
+    /**
+     * TODO
+     */
     public GetPoliceInvolved() {
         super("Get police involved");
-        this.runwayManager_instance = RunwayManager.getInstance();
     }
 
+    /**
+     * TODO
+     * @return
+     */
     @Override
     public boolean checkRequirement() {
-        if(this.runwayManager_instance.getNbFreeRunway() >= 2)
+        if(RunwayManager.getInstance().getNbFreeRunway() >= 2)
             return true;
         else
             return false;
     }
 
+    /**
+     * TODO
+     */
     @Override
     public void applyConsequence() {
         for(int i = 0; i < 2; i++)
-            this.runwayManager_instance.blockFreeRunway("POLICE",4);
+            RunwayManager.getInstance().blockFreeRunway("POLICE",4);
     }
 }

@@ -7,23 +7,30 @@ import logic.runways.RunwayManager;
  */
 public class IceStorm extends Option {
 
-    private RunwayManager runwayManager_instance;
-
+    /**
+     * TODO
+     */
     public IceStorm() {
         super("Ice storm");
-        this.runwayManager_instance = RunwayManager.getInstance();
     }
 
+    /**
+     * TODO
+     * @return
+     */
     @Override
     public boolean checkRequirement() {
-        if(this.runwayManager_instance.getNbFreeRunway() > 0)
+        if(RunwayManager.getInstance().getNbFreeRunway() > 0)
             return true;
         else
             return false;
     }
 
+    /**
+     * TODO
+     */
     @Override
     public void applyConsequence() {
-        this.runwayManager_instance.removeRunway();
+        RunwayManager.getInstance().removeRunway();
     }
 }

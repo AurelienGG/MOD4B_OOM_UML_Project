@@ -7,23 +7,30 @@ import logic.runways.RunwayManager;
  */
 public class AllowThemTheSpaceToProtest extends Option {
 
-    private RunwayManager runwayManager_instance;
-
+    /**
+     * TODO
+     */
     public AllowThemTheSpaceToProtest() {
         super("Allow them the space to protest");
-        this.runwayManager_instance = RunwayManager.getInstance();
     }
 
+    /**
+     * TODO
+     * @return
+     */
     @Override
     public boolean checkRequirement() {
-        if(this.runwayManager_instance.getNbFreeRunway()>0)
+        if(RunwayManager.getInstance().getNbFreeRunway()>0)
             return true;
         else
             return false;
     }
 
+    /**
+     * TODO
+     */
     @Override
     public void applyConsequence() {
-        this.runwayManager_instance.blockFreeRunway("PROTEST",10);
+        RunwayManager.getInstance().blockFreeRunway("PROTEST",10);
     }
 }

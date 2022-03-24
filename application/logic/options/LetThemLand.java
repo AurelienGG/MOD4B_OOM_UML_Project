@@ -9,25 +9,34 @@ import logic.runways.RunwayManager;
 public class LetThemLand extends Option {
 
     private Plane plane;
-    private RunwayManager runwayManager_instance;
 
+    /**
+     * TODO
+     * @param plane
+     */
     public LetThemLand(Plane plane){
         super("Let them land");
-        this.runwayManager_instance = RunwayManager.getInstance();
         this.plane = plane;
     }
 
+    /**
+     * TODO
+     * @return
+     */
     @Override
     public boolean checkRequirement() {
-        if(this.runwayManager_instance.getNbFreeRunway() > 0)
+        if(RunwayManager.getInstance().getNbFreeRunway() > 0)
             return true;
         else
             return false;
     }
 
+    /**
+     * TODO
+     */
     @Override
     public void applyConsequence() {
-        this.runwayManager_instance.planeLandOnFreeRunway(plane);
+        RunwayManager.getInstance().planeLandOnFreeRunway(plane);
         //TODO add snaky plane in planeManager
     }
 }

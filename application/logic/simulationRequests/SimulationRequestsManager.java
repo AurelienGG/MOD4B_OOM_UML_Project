@@ -17,8 +17,6 @@ import java.util.ArrayList;
  */
 public class SimulationRequestsManager {
 
-    private HourManager hourManager_instance;
-
     private static SimulationRequestsManager simulationRequestsManager_instance = null;
     private ArrayList<SimulationRequests> simulationRequests;
 
@@ -27,7 +25,6 @@ public class SimulationRequestsManager {
      */
     private SimulationRequestsManager() {
         this.simulationRequests = new ArrayList<>(HourManager.LAST_HOUR);
-        this.hourManager_instance = HourManager.getInstance();
         for(int i = 0; i < HourManager.LAST_HOUR; i++)
             this.simulationRequests.add(new SimulationRequests());
     }
@@ -47,7 +44,7 @@ public class SimulationRequestsManager {
      * @return
      */
     public int getNbRequestsCurrentHour() {
-        return this.simulationRequests.get(hourManager_instance.getHour()).getNbRequests();
+        return this.simulationRequests.get(HourManager.getInstance().getHour()).getNbRequests();
     }
 
     /**
@@ -55,7 +52,7 @@ public class SimulationRequestsManager {
      * @return
      */
     public int getNbRequestsIncomingHour() {
-        return this.simulationRequests.get(hourManager_instance.getHour()+1).getNbRequests();
+        return this.simulationRequests.get(HourManager.getInstance().getHour()+1).getNbRequests();
     }
 
     /**
@@ -74,7 +71,7 @@ public class SimulationRequestsManager {
      * TODO
      */
     public boolean areAllCurentHourRequestsDone() {
-        return this.simulationRequests.get(hourManager_instance.getHour()).areAllRequestsDone();
+        return this.simulationRequests.get(HourManager.getInstance().getHour()).areAllRequestsDone();
     }
 
     /**
@@ -84,7 +81,7 @@ public class SimulationRequestsManager {
      */
     public void startRequestCurrentHour(int idRequest) {
         //TODO
-        this.simulationRequests.get(hourManager_instance.getHour()).startRequest(idRequest);
+        this.simulationRequests.get(HourManager.getInstance().getHour()).startRequest(idRequest);
     }
 
     /**
@@ -101,7 +98,7 @@ public class SimulationRequestsManager {
      * @return
      */
     public String displayRequestsCurrentHour() {
-        return this.simulationRequests.get(hourManager_instance.getHour()).displayRequests();
+        return this.simulationRequests.get(HourManager.getInstance().getHour()).displayRequests();
     }
 
     /**
@@ -109,6 +106,6 @@ public class SimulationRequestsManager {
      * @return
      */
     public String displayRequestsNameCurrentHour() {
-        return this.simulationRequests.get(hourManager_instance.getHour()).displayRequestsName();
+        return this.simulationRequests.get(HourManager.getInstance().getHour()).displayRequestsName();
     }
 }

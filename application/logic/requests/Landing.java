@@ -8,16 +8,13 @@ import logic.planes.Plane;
  */
 public abstract class Landing extends Request {
 
-    private Plane plane;
-
     /**
      *
      * @param plane
      */
     //TODO
     protected Landing(String TITLE, String DESCRIPTION, Plane plane) {
-        super(TITLE, DESCRIPTION);
-        this.plane = plane;
+        super(TITLE, DESCRIPTION, plane);
     }
 
     /**
@@ -25,6 +22,6 @@ public abstract class Landing extends Request {
      * @return
      */
     protected Option[] generateOptions() {
-        return new Option[] {new AllowLanding(this.plane), new PlaceOnStandby(this.plane)};
+        return new Option[] {new AllowLanding(super.plane), new PlaceOnStandby(super.plane)};
     }
 }

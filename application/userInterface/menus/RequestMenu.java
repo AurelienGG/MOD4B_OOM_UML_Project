@@ -1,6 +1,7 @@
 package userInterface.menus;
 
 import logic.simulationRequests.SimulationRequestsManager;
+import userInterface.UserInputManager;
 
 import java.io.IOException;
 
@@ -9,15 +10,12 @@ import java.io.IOException;
  */
 public class RequestMenu extends Menu {
 
-    private SimulationRequestsManager simulationRequestsManager_instance;
-
     /**
      * TODO
      * @throws IOException
      */
     public RequestMenu() throws IOException {
         super(MenuType.REQUEST);
-        this.simulationRequestsManager_instance = SimulationRequestsManager.getInstance();
         super.liveMenu();
     }
 
@@ -29,7 +27,7 @@ public class RequestMenu extends Menu {
     protected String displayMenu() {
         StringBuilder stringBuilder = new StringBuilder("Request menu\n");
         stringBuilder.append("Select a request with its id\n");
-        stringBuilder.append(simulationRequestsManager_instance.displayRequestsNameCurrentHour());
+        stringBuilder.append(SimulationRequestsManager.getInstance().displayRequestsNameCurrentHour());
         return stringBuilder.toString();
     }
 
@@ -38,8 +36,8 @@ public class RequestMenu extends Menu {
      */
     @Override
     protected void handleOptions() throws IOException {
-        int input = super.userInputManager_instance.readOptionInteger(1, simulationRequestsManager_instance.getNbRequestsCurrentHour());
-        simulationRequestsManager_instance.startRequestCurrentHour(input);
+        int input = UserInputManager.getInstance().readOptionInteger(1, SimulationRequestsManager.getInstance().getNbRequestsCurrentHour());
+        SimulationRequestsManager.getInstance().startRequestCurrentHour(input);
         System.out.println("Request done we go back to main menu");
         super.goToMainMenu();
     }

@@ -2,21 +2,17 @@ package userInterface.menus;
 
 import logic.runways.RunwayManager;
 import logic.waitingPlanes.WaitingPlanesManager;
+import userInterface.UserInputManager;
 
 import java.io.IOException;
 
 public class WaitingPlanesMenu extends Menu {
-
-    private WaitingPlanesManager waitingPlanesManager_instances;
-    private RunwayManager runwayManager_instance;
 
     /**
      * TODO
      */
     public WaitingPlanesMenu() throws IOException {
         super(MenuType.WAITING_PLANES);
-        this.waitingPlanesManager_instances = WaitingPlanesManager.getInstance();
-        this.runwayManager_instance = RunwayManager.getInstance();
         super.liveMenu();
     }
 
@@ -27,7 +23,7 @@ public class WaitingPlanesMenu extends Menu {
     @Override
     protected String displayMenu() {
         return "Waiting Planes menu\n" +
-                waitingPlanesManager_instances.displayWaitingPlanes() +
+                WaitingPlanesManager.getInstance().displayWaitingPlanes() +
                 "\nOption 1: Select a plane to land" +
                 "\nOption 2: Return to main menu";
     }
@@ -37,12 +33,14 @@ public class WaitingPlanesMenu extends Menu {
      */
     @Override
     protected void handleOptions() throws IOException {
-        int input = super.userInputManager_instance.readOptionInteger(1, 2);
+        int input = UserInputManager.getInstance().readOptionInteger(1, 2);
         switch(input) {
             case 1:
                 // TODO IF WAITING PLANE EMPTY
-                if(runwayManager_instance.areAllRunwaysFull())
+                if(RunwayManager.getInstance().areAllRunwaysFull())
                     System.out.println("Runways are full, you can't land a waiting plane");
+                else if(WaitingPlanesManager.getInstance().isWaitingPlanesEmpty())
+                    System.out.println("There is no Waiting Planes");
                 else
                     selectPlaneToLand();
                 new WaitingPlanesMenu();
@@ -58,7 +56,7 @@ public class WaitingPlanesMenu extends Menu {
      */
     private void selectPlaneToLand() {
         System.out.println("Input waiting plane id");
-        int input = super.userInputManager_instance.readOptionInteger(0, waitingPlanesManager_instances.getNbWaitingPlanes()-1);
-        waitingPlanesManager_instances.landWaitingPlanes(input);
+        int input = UserInputManager.getInstance().readOptionInteger(0, WaitingPlanesManager.getInstance().getNbWaitingPlanes()-1);
+        WaitingPlanesManager.getInstance().landWaitingPlanes(input);
     }
 }

@@ -49,27 +49,28 @@ public class RequestManager {
      * @return
      */
     private Request generateRandomRequest() {
-        PlaneManager planeManager_instance = PlaneManager.getInstance();
         int random = Tools.generateRandomNumber(1, 100);
         if(random <= 40)
-            return new PlaneLanding(planeManager_instance.giveCommonPlane());
+            //TODO delete
+            //System.out.println("Nb Plane RequestManager generateRandomRequest = " + PlaneManager.getInstance().getNbCommonPlane());
+            return new PlaneLanding(PlaneManager.getInstance().giveCommonPlane());
         else if (random <= 45)
-            return new EmergencyLanding(planeManager_instance.giveEmergencyPlane());
+            return new EmergencyLanding(PlaneManager.getInstance().giveEmergencyPlane());
         else if (random <= 55)
             return new FundingEvent();
         else if (random <= 70)
-            return new JumboJet(planeManager_instance.giveJumboPlane());
+            return new JumboJet(PlaneManager.getInstance().giveJumboPlane());
         else if (random <= 80)
             return new BadWeather();
         else if (random <= 90)
-            return new SnakesOnThePlane(planeManager_instance.giveSnakesPlane());
+            return new SnakesOnThePlane(PlaneManager.getInstance().giveSnakesPlane());
         else if (random <= 95)
             return new Protests();
         else if (random <= 100)
             return new JohnMcClain();
         else
             // If for some reason we get here, Plane Landing will be the default request
-            return new PlaneLanding(planeManager_instance.giveCommonPlane());
+            return new PlaneLanding(PlaneManager.getInstance().giveCommonPlane());
     }
 
     /**

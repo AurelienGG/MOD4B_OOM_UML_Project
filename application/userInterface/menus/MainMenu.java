@@ -12,16 +12,11 @@ import java.io.IOException;
  */
 public class MainMenu extends Menu {
 
-    private HourManager hourManager_instance;
-    private DeadPassengerCountManager deadPassengerCountManager_instance;
-
     /**
      * TODO
      */
     public MainMenu() throws IOException {
         super(MenuType.MAIN);
-        this.hourManager_instance = HourManager.getInstance();
-        this.deadPassengerCountManager_instance = DeadPassengerCountManager.getInstance();
         super.liveMenu();
     }
 
@@ -41,15 +36,15 @@ public class MainMenu extends Menu {
         StringBuilder mainMenuDisplay = new StringBuilder();
 
         mainMenuDisplay.append("MainMenu\n");
-        mainMenuDisplay.append("\t\t\t\t\tcurrent hour " + hourManager_instance.displayHour() );
-        mainMenuDisplay.append("\t\t\t\t\t#passengers killed " + deadPassengerCountManager_instance.getNbDeadPassengers() );
+        mainMenuDisplay.append("\t\t\t\t\t\t\t\t\t\tcurrent hour " + HourManager.getInstance().displayHour() + "\n");
+        mainMenuDisplay.append("\t\t\t\t\t\t\t\t\t\t#passengers killed " + DeadPassengerCountManager.getInstance().getNbDeadPassengers() +"\n");
 
         if(areRequestsDone())
-            mainMenuDisplay.append("\nOption 1: Advance to the next hour\n");
+            mainMenuDisplay.append("Option 1: Advance to the next hour\n");
         else
-            mainMenuDisplay.append("\nOption 1: Go to Request Menu\n");
+            mainMenuDisplay.append("Option 1: Go to Request Menu\n");
 
-        mainMenuDisplay.append("\nOption 2: Go to Waiting Planes menu\n");
+        mainMenuDisplay.append("Option 2: Go to Waiting Planes menu\n");
 
         return mainMenuDisplay.toString();
     }
@@ -60,7 +55,7 @@ public class MainMenu extends Menu {
     @Override
     public void handleOptions() throws IOException {
         //TODO
-        int input = super.userInputManager_instance.readOptionInteger(1, 2);
+        int input = UserInputManager.getInstance().readOptionInteger(1, 2);
         switch(input) {
             case 1:
                 if(areRequestsDone())

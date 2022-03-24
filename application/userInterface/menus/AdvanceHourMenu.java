@@ -9,32 +9,34 @@ import logic.waitingPlanes.WaitingPlanesManager;
 
 import java.io.IOException;
 
+/**
+ * TODO
+ */
 public class AdvanceHourMenu extends Menu {
-
-    private HourManager hourManager_instance;
-    private SimulationRequestsManager simulationRequestsManager_instance;
-    private DeadPassengerCountManager deadPassengerCountManager_instance;
-
-
+    /**
+     * TODO
+     * @throws IOException
+     */
     public AdvanceHourMenu() throws IOException {
         super(MenuType.ADVANCE_HOUR);
-        hourManager_instance = HourManager.getInstance();
-        simulationRequestsManager_instance = SimulationRequestsManager.getInstance();
-        deadPassengerCountManager_instance = DeadPassengerCountManager.getInstance();
         super.liveMenu();
     }
 
+    /**
+     * TODO
+     * @return
+     */
     @Override
     protected String displayMenu() {
         advanceHourFirst();
 
         StringBuilder stringBuilder = new StringBuilder("AdvanceHourMenu\n");
 
-        stringBuilder.append("Curent time " + hourManager_instance.displayHour() + "\n");
-        if(!hourManager_instance.isLastHour())
-            stringBuilder.append("Number of new requests coming in" + simulationRequestsManager_instance.getNbRequestsIncomingHour() + "\n");
+        stringBuilder.append("Curent time " + HourManager.getInstance().displayHour() + "\n");
+        if(!HourManager.getInstance().isLastHour())
+            stringBuilder.append("Number of new requests coming in" + SimulationRequestsManager.getInstance().getNbRequestsIncomingHour() + "\n");
 
-        int nbPassengersDeadCurrentHour = deadPassengerCountManager_instance.getNbDeadPassengersCurrentHour();
+        int nbPassengersDeadCurrentHour = DeadPassengerCountManager.getInstance().getNbDeadPassengersCurrentHour();
         if(nbPassengersDeadCurrentHour > 0)
             stringBuilder.append("Number of passengers dead this hour " + nbPassengersDeadCurrentHour + "\n");
         else if(nbPassengersDeadCurrentHour < 0)
@@ -44,9 +46,9 @@ public class AdvanceHourMenu extends Menu {
 
         advanceHourSecond();
 
-        if(deadPassengerCountManager_instance.isGameOver())
+        if(DeadPassengerCountManager.getInstance().isGameOver())
             stringBuilder.append("Game Over, number of passengers killed >= 350");
-        else if(hourManager_instance.isLastHour())
+        else if(HourManager.getInstance().isLastHour())
             stringBuilder.append("Victory, you successfully passed 24h");
         else
             stringBuilder.append("Press \"Enter\" to return to Main menu");
@@ -59,7 +61,7 @@ public class AdvanceHourMenu extends Menu {
      */
     @Override
     protected void handleOptions() throws IOException {
-        if(deadPassengerCountManager_instance.isGameOver() || hourManager_instance.isLastHour())
+        if(DeadPassengerCountManager.getInstance().isGameOver() || HourManager.getInstance().isLastHour())
             System.exit(0);
 
         // TODO delete if generate bug
@@ -80,7 +82,7 @@ public class AdvanceHourMenu extends Menu {
      * Update current hour and total passengers dead from crashing planes
      */
     private void advanceHourSecond() {
-        hourManager_instance.advanceHourHour();
-        deadPassengerCountManager_instance.advanceHourPassengers();
+        HourManager.getInstance().advanceHourHour();
+        DeadPassengerCountManager.getInstance().advanceHourPassengers();
     }
 }

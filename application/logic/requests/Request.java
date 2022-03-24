@@ -1,6 +1,7 @@
 package logic.requests;
 
 import logic.options.Option;
+import logic.planes.Plane;
 
 /**
  * Class for the request object
@@ -12,6 +13,7 @@ public abstract class Request {
 
     private final String TITLE;
     private final String DESCRIPTION;
+    protected final Plane plane;
     private Option[] options;
 
     /**
@@ -19,10 +21,14 @@ public abstract class Request {
      * @param TITLE
      * @param DESCRIPTION
      */
-    protected Request(String TITLE, String DESCRIPTION) {
-        //TODO
+    protected Request(String TITLE, String DESCRIPTION, Plane plane) {
         this.TITLE = TITLE;
         this.DESCRIPTION = DESCRIPTION;
+        // TODO fix
+        // Because generateOptions is called here, we need Plane to be initialise HERE
+        // not after super constructor called in child
+        // Landing will give a Plane reference where the other request will give null
+        this.plane = plane;
         this.options = generateOptions();
     }
 

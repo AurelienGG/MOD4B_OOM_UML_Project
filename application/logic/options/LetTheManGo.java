@@ -8,13 +8,8 @@ import logic.waitingPlanes.WaitingPlanesManager;
  */
 public class LetTheManGo extends Option {
 
-    private DeadPassengerCountManager deadPassengerCountManager_instance;
-    private WaitingPlanesManager waitingPlanesManager_instance;
-
     public LetTheManGo() {
         super("Let the man go");
-        this.deadPassengerCountManager_instance = DeadPassengerCountManager.getInstance();
-        this.waitingPlanesManager_instance = WaitingPlanesManager.getInstance();
     }
 
     @Override
@@ -24,8 +19,8 @@ public class LetTheManGo extends Option {
 
     @Override
     public void applyConsequence() {
-        if(this.waitingPlanesManager_instance.getNbWaitingPlanes() >= 1)
-            this.waitingPlanesManager_instance.crashWaitingPlane(this.waitingPlanesManager_instance.getRandomWaitingPlane());
-        this.deadPassengerCountManager_instance.addDeadPassengers(100);
+        if(WaitingPlanesManager.getInstance().getNbWaitingPlanes() >= 1)
+            WaitingPlanesManager.getInstance().crashWaitingPlane(WaitingPlanesManager.getInstance().getRandomWaitingPlane());
+        DeadPassengerCountManager.getInstance().addDeadPassengers(100);
     }
 }

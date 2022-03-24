@@ -19,7 +19,7 @@ public class Simulation {
 
     private HourManager hourManager_instance;
     private UserInputManager userInputManager_instance;
-    private MenuManager menuManager_instance;
+    //private MenuManager menuManager_instance;
     private SimulationRequestsManager simulationRequestsManager_instance;
 
 
@@ -33,7 +33,7 @@ public class Simulation {
     public Simulation(Scanner scanner) throws IOException {
         this.hourManager_instance = HourManager.getInstance();
         this.userInputManager_instance = UserInputManager.getInstance();
-        this.menuManager_instance = MenuManager.getInstance();
+        //this.menuManager_instance = MenuManager.getInstance();
         this.simulationRequestsManager_instance = SimulationRequestsManager.getInstance();
     }
 

@@ -11,7 +11,7 @@ public class AllowThemTheSpaceToProtest extends Option {
      * TODO
      */
     public AllowThemTheSpaceToProtest() {
-        super("Allow them the space to protest");
+        super("Allow them the space to protest", "One runway will be blocked for 10 hours");
     }
 
     /**

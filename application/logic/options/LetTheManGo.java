@@ -9,7 +9,7 @@ import logic.waitingPlanes.WaitingPlanesManager;
 public class LetTheManGo extends Option {
 
     public LetTheManGo() {
-        super("Let the man go");
+        super("Let the man go", "He crashes the plane into another random Waiting plane and saves christmas. Remove the  waiting plane (no cost) and kill 100 passengers");
     }
 
     @Override

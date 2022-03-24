@@ -11,7 +11,7 @@ public class IcyRunWays extends Option {
      * TODO
      */
     public IcyRunWays() {
-        super("Icy run ways");
+        super("Icy run ways", "Add 2 hours wait time to all planes waiting in runway");
     }
 
     /**

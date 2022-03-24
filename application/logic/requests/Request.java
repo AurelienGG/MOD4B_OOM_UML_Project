@@ -63,7 +63,7 @@ public abstract class Request {
 
         char idRequest = 'A';
         for(Option option: options)
-            stringBuilder.append("Option " + idRequest++ + ") " + option.getDESCRIPTION() + "\n");
+            stringBuilder.append("Option " + idRequest++ + ") " + option.displayOption() + "\n");
 
         return stringBuilder.toString();
     }

@@ -11,7 +11,7 @@ public class IceStorm extends Option {
      * TODO
      */
     public IceStorm() {
-        super("Ice storm");
+        super("Ice storm", "Remove a runway");
     }
 
     /**

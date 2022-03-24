@@ -11,7 +11,7 @@ public class LockdownTheRunway extends Option {
      * TODO
      */
     public LockdownTheRunway() {
-        super("Lockdown the runway");
+        super("Lockdown the runway", "One runway will be blocked for 8 hours");
     }
 
     /**

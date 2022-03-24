@@ -11,7 +11,7 @@ public class EmptyRandomRunway extends Option {
      * TODO
      */
     public EmptyRandomRunway() {
-        super("Empty random runway");
+        super("Empty random runway", "Empties a random runway");
     }
 
     /**

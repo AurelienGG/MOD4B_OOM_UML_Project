@@ -42,10 +42,10 @@ public class RunwayManager {
      * @return
      */
     public String displayRunway() {
-       StringBuilder stringBuilder = new StringBuilder("\t\tRunway id, Name, Occupied time remaining\n");
+       StringBuilder stringBuilder = new StringBuilder("\t\tRunway id \t Name \t Occupied time remaining\n");
        int idRunway = 0;
        for(Runway runway: runways)
-           stringBuilder.append("\t\tR" + idRunway++ + " " + runway.displayRunway() + "\n");
+           stringBuilder.append("\t\tR" + idRunway++ + " \t " + runway.displayRunway() + "\n");
        return stringBuilder.toString();
     }
 
@@ -54,9 +54,6 @@ public class RunwayManager {
      * @param plane the landing plane
      */
     public void planeLandOnFreeRunway(Plane plane) {
-        if(plane == null)
-            System.err.println("NO PLANE RunwayManager planeLandOnFreeRunway");
-
         for(Runway r : runways)
             if(r.getRunwayStatus() == RunwayStatus.FREE) {
                 r.planeLand(plane);

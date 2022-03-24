@@ -15,9 +15,7 @@ public class AllowLanding extends Option {
      * @param plane
      */
     public AllowLanding(Plane plane) {
-        super("Allow landing");
-        if(plane == null)
-            System.err.println("NO PLANE AllowLanding constructor");
+        super("Allow landing", "Plane lands and occupies the runway for stated time");
         this.plane = plane;
     }
 

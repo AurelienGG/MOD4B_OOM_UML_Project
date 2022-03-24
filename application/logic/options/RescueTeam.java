@@ -11,7 +11,7 @@ public class RescueTeam extends Option {
      * TODO
      */
     public RescueTeam() {
-        super("Rescue Team");
+        super("Rescue Team", "Reduces number of dead passengers by 100");
     }
 
     /**

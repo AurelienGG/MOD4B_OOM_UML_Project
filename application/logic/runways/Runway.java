@@ -87,7 +87,7 @@ public class Runway {
         if(runwayStatus == RunwayStatus.FREE)
             return "Runway is Free";
         else
-            return this.occupantName + " " + this.timeBlocked;
+            return this.occupantName + " \t " + this.timeBlocked;
     }
 
     /**

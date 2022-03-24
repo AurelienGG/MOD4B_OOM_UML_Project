@@ -11,7 +11,7 @@ public class CrossWinds extends Option {
      * TODO
      */
     public CrossWinds() {
-        super("Cross winds");
+        super("Cross winds", "Remove 1 hour of fuel from all waiting planes in air");
     }
 
     /**

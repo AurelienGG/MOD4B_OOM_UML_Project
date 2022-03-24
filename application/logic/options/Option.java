@@ -9,13 +9,15 @@ package logic.options;
 public abstract class Option {
 
     private final String DESCRIPTION;
+    private final String CONSEQUENCES;
 
     /**
      * TODO
      * @param DESCRIPTION
      */
-    protected Option(String DESCRIPTION) {
+    protected Option(String DESCRIPTION, String CONSEQUENCES) {
         this.DESCRIPTION = DESCRIPTION;
+        this.CONSEQUENCES = CONSEQUENCES;
     }
 
     /**
@@ -30,10 +32,18 @@ public abstract class Option {
     public abstract void applyConsequence();
 
     /**
-     * TODO
+     * TODO Delete if not used
      * @return
      */
     public String getDESCRIPTION() {
         return this.DESCRIPTION;
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    public String displayOption() {
+        return this.DESCRIPTION + " (" + this.CONSEQUENCES + ")";
     }
 }

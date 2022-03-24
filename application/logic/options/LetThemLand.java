@@ -15,7 +15,7 @@ public class LetThemLand extends Option {
      * @param plane
      */
     public LetThemLand(Plane plane){
-        super("Let them land");
+        super("Let them land", "Plane will occupy runway for 7 hours");
         this.plane = plane;
     }
 

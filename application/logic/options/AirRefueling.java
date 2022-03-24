@@ -11,7 +11,7 @@ public class AirRefueling extends Option {
      * TODO
      */
     public AirRefueling() {
-        super("Air refueling");
+        super("Air refueling", "All waiting airplanes get 2 more hours of fuel");
     }
 
     /**

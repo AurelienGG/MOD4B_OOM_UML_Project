@@ -15,7 +15,7 @@ public class PlaceOnStandby extends Option {
      * @param plane
      */
     public PlaceOnStandby(Plane plane){
-        super("Place on standby");
+        super("Place on standby", "Airplane joins “waiting” planes");
         this.plane = plane;
     }
 

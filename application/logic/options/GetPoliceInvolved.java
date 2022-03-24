@@ -11,7 +11,7 @@ public class GetPoliceInvolved extends Option {
      * TODO
      */
     public GetPoliceInvolved() {
-        super("Get police involved");
+        super("Get police involved", "Two run ways will be blocked for 4 hours");
     }
 
     /**

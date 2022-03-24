@@ -42,7 +42,7 @@ public class RunwayManager {
      * @return
      */
     public String displayRunway() {
-       StringBuilder stringBuilder = new StringBuilder("\t\tRunway id, Name, Occupied time remaining");
+       StringBuilder stringBuilder = new StringBuilder("\t\tRunway id, Name, Occupied time remaining\n");
        int idRunway = 0;
        for(Runway runway: runways)
            stringBuilder.append("\t\tR" + idRunway++ + " " + runway.displayRunway() + "\n");

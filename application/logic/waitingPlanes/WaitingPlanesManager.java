@@ -150,10 +150,13 @@ public class WaitingPlanesManager {
      */
     public String displayWaitingPlanes() {
         StringBuilder stringBuilder = new StringBuilder();
-        int idPlane = 0;
-        for(Plane plane: this.waitingPlanes)
-            stringBuilder.append("\t\t" + idPlane + ") " + plane.getName() + " " + plane.getHoursFuelLeft() + "\n");
+        if(waitingPlanes.isEmpty())
+            stringBuilder.append("There is no Waiting Planes");
+        else {
+            int idPlane = 0;
+            for(Plane plane: this.waitingPlanes)
+                stringBuilder.append("\t\t" + idPlane + ") " + plane.getName() + " " + plane.getHoursFuelLeft() + "\n");
+        }
         return stringBuilder.toString();
     }
-
 }

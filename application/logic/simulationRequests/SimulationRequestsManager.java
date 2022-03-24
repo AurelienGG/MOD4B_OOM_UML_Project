@@ -62,7 +62,7 @@ public class SimulationRequestsManager {
      * TODO
      */
     public void doRequests() {
-        //TODO
+        //TODO DELETE IF NOT USED
         int nbRequestCurrentHour = getNbRequestsCurrentHour();
         for(int i = 0; i < (nbRequestCurrentHour); i++) {
 
@@ -76,12 +76,15 @@ public class SimulationRequestsManager {
     public boolean areAllCurentHourRequestsDone() {
         return this.simulationRequests.get(hourManager_instance.getHour()).areAllRequestsDone();
     }
+
     /**
-     * TODO
+     * TODO FIX We use UI and print things which wasn't what we wanted
+     *
      * @param idRequest
      */
-    public void startRequest(int idRequest) {
+    public void startRequestCurrentHour(int idRequest) {
         //TODO
+        this.simulationRequests.get(hourManager_instance.getHour()).startRequest(idRequest);
     }
 
     /**

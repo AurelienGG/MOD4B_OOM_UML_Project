@@ -1,8 +1,10 @@
 package logic.simulationRequests;
 
 import logic.Tools;
+import logic.options.Option;
 import logic.requests.Request;
 import logic.requests.RequestManager;
+import userInterface.UserInputManager;
 
 import java.util.ArrayList;
 
@@ -47,12 +49,19 @@ public class SimulationRequests {
     }
 
     /**
-     * TODO
+     * TODO FIX We use UI and print things which wasn't what we wanted
      * @param idRequest
      */
     public void startRequest(int idRequest) {
-        //TODO
-        deleteRequest(this.hourRequests.get(idRequest));
+        Request request = this.hourRequests.get(idRequest);
+        request.displayRequest();
+        System.out.println("Select an option with its character");
+        UserInputManager userInputManager_instance = UserInputManager.getInstance();
+        char inputChar = userInputManager_instance.readOptionChar(request.getNbOptions());
+        int inputInt = userInputManager_instance.convertCharOptionToArrayID(inputChar);
+        request.doOption(inputInt);
+        // Now that the request is done we can remove it
+        deleteRequest(request);
     }
 
     /**

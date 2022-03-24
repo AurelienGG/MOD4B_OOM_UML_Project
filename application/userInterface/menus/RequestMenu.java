@@ -39,8 +39,14 @@ public class RequestMenu extends Menu {
     @Override
     protected void handleOptions() throws IOException {
         int input = super.userInputManager_instance.readOptionInteger(1, simulationRequestsManager_instance.getNbRequestsCurrentHour());
-        simulationRequestsManager_instance.startRequest(input);
+        simulationRequestsManager_instance.startRequestCurrentHour(input);
         System.out.println("Request done we go back to main menu");
         super.goToMainMenu();
+    }
+
+    /**
+     * TODO
+     */
+    private void doRequest() {
     }
 }

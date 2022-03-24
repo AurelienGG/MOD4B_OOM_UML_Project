@@ -18,8 +18,8 @@ public class RequestManager {
 
     private static RequestManager requestManager_instance = null;
     private Stack<Request> requestsStack;
-    EnumMap<RequestType, Request> requestDictionary;
-    EnumMap<RequestType, Double> requestRarityDictionary;
+    //EnumMap<RequestType, Request> requestDictionary;
+    //EnumMap<RequestType, Double> requestRarityDictionary;
 
     // TODO fix hard code, use (NB_HOURS * NB_MAX_REQUESTS)
     // TODO maybe a class GameSettings with static final fields

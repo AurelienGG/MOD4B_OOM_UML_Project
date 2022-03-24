@@ -1,5 +1,6 @@
 package userInterface.menus;
 
+import java.io.IOException;
 import java.util.EnumMap;
 
 /**
@@ -14,7 +15,7 @@ public class MenuManager {
     /**
      * TODO
      */
-    private MenuManager() {
+    private MenuManager() throws IOException {
         //TODO
         EnumMap<MenuType, Menu> menusDictionary = new EnumMap<>(MenuType.class);
 
@@ -29,9 +30,49 @@ public class MenuManager {
      * TODO
      * @return
      */
-    public static MenuManager getInstance() {
+    public static MenuManager getInstance() throws IOException {
         if (menuManager_instance == null)
             menuManager_instance = new MenuManager();
         return menuManager_instance;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Menu getMainMenu() {
+        return this.menusDictionary.get(MenuType.MAIN);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Menu getRunwayMenu() {
+        return this.menusDictionary.get(MenuType.RUNWAY);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Menu getWaitingPlanesMenu() {
+        return this.menusDictionary.get(MenuType.WAITING_PLANES);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Menu getAdvanceHourMenu() {
+        return this.menusDictionary.get(MenuType.ADVANCE_HOUR);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Menu getRequestMenu() {
+        return this.menusDictionary.get(MenuType.REQUEST);
     }
 }

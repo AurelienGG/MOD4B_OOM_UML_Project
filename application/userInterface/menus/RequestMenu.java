@@ -1,18 +1,24 @@
 package userInterface.menus;
 
+import java.io.IOException;
+
 public class RequestMenu extends Menu {
 
-    public RequestMenu() {
+    public RequestMenu() throws IOException {
         super(MenuType.REQUEST);
+        super.liveMenu();
     }
 
     @Override
-    public void goToMenu(Menu menu) {
-
-    }
-
-    @Override
-    public String displayMenu() {
+    protected String displayMenu() {
         return "RequestMenu";
+    }
+
+    /**
+     * TODO
+     */
+    @Override
+    protected void handleOptions() {
+        //TODO
     }
 }

@@ -55,8 +55,8 @@ public class Runway {
      * Check if plane can leave
      * Make plane leaves
      */
-    public void runwayAdvanceHour() {
-        if(!(runwayStatus ==RunwayStatus.FREE)){
+    public void advanceHourRunway() {
+        if((runwayStatus != RunwayStatus.FREE)) {
             decreaseTimeBlocked();
             if(checkTimeBlocked())
                 emptyRunway();
@@ -67,7 +67,7 @@ public class Runway {
      * TODO
      */
     protected void decreaseTimeBlocked() {
-        if(this.runwayStatus == RunwayStatus.OCCUPIED)
+        if(this.runwayStatus != RunwayStatus.FREE)
             this.timeBlocked--;
     }
 
@@ -107,14 +107,6 @@ public class Runway {
     protected void emptyRunway() {
         this.runwayStatus = RunwayStatus.FREE;
         this.timeBlocked = 0;
-    }
-
-    /**
-     * Add more wait time to the plane holding the runway
-     * @param hoursToWait the added time to wait
-     */
-    protected void addTimeBlocked(int hoursToWait) {
-        this.timeBlocked+=hoursToWait;
     }
 
     /**

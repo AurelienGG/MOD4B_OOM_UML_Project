@@ -2,6 +2,8 @@ package logic.waitingPlanes;
 
 import logic.Tools;
 import logic.planes.Plane;
+import logic.runways.RunwayManager;
+
 import java.util.ArrayList;
 
 /**
@@ -40,14 +42,13 @@ public class WaitingPlanesManager {
      * Communicate number of dead passengers from crash
      * @return number of dead passengers or 0
      */
-    public int waitingPlanesAdvanceHour() {
+    public int advanceHourWaitingPlanes() {
         decreaseWaitingPlanesFuel();
         ArrayList<Plane> crashingPlanes = checkWaitingPlanesFuel();
         int deadPassenger = 0;
         if(crashingPlanes != null)
             for(Plane plane: crashingPlanes) {
-                deadPassenger += plane.getNbPassengers();
-                crashWaitingPlane(plane);
+                deadPassenger += crashWaitingPlane(plane);
             }
         return deadPassenger;
     }
@@ -91,12 +92,15 @@ public class WaitingPlanesManager {
     /**
      * Crash the waiting plane without fuels left
      * @param crashingPlane the plane crashing
+     * @return number of passengers dead from the crash
      */
-    public void crashWaitingPlane(Plane crashingPlane) {
+    public int crashWaitingPlane(Plane crashingPlane) {
         this.waitingPlanes.remove(crashingPlane);
+        return crashingPlane.getNbPassengers();
     }
 
     /**
+     * TODO METHOD USED ?
      * The number of people dying from the crash
      * @param crashingPlane the plane crashing
      * @return the number of people dying from the crash
@@ -111,6 +115,16 @@ public class WaitingPlanesManager {
      */
     public int getNbWaitingPlanes() {
         return waitingPlanes.size();
+    }
+
+    /**
+     * TODO
+     * @param idWaitingPlane
+     * @return
+     */
+    public void landWaitingPlanes(int idWaitingPlane) {
+        RunwayManager runwayManager_instance = RunwayManager.getInstance();
+        runwayManager_instance.planeLandOnFreeRunway(waitingPlanes.get(idWaitingPlane));
     }
 
     /**

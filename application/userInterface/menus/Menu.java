@@ -1,18 +1,57 @@
 package userInterface.menus;
 
+import userInterface.UserInputManager;
+
+import java.io.IOException;
+
+/**
+ * TODO
+ */
 public abstract class Menu {
+
+    protected UserInputManager userInputManager_instance;
 
     private MenuType menuType;
 
-    public Menu(MenuType menuType) {
+    /**
+     * TODO
+     * @param menuType
+     */
+    public Menu(MenuType menuType) throws IOException {
+        this.userInputManager_instance = UserInputManager.getInstance();
         this.menuType = menuType;
     }
 
-    public abstract void goToMenu(Menu menu);
+    /**
+     * TODO
+     */
+    protected void liveMenu() throws IOException {
+        printMenuToOutput();
+        handleOptions();
+    }
 
-    public abstract String displayMenu();
-
-    public void printMenuToOutput() {
+    /**
+     * TODO
+     */
+    protected void printMenuToOutput() {
         System.out.println(displayMenu());
     }
+
+    /**
+     * TODO
+     */
+    protected void goToMainMenu() throws IOException {
+        new MainMenu();
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    protected abstract String displayMenu();
+
+    /**
+     * TODO
+     */
+    protected abstract void handleOptions() throws IOException;
 }

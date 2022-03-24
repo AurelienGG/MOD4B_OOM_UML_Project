@@ -31,12 +31,8 @@ public class HourManager {
      * TODO
      * @return
      */
-    public boolean advanceHourHour() {
+    public void advanceHourHour() {
        increaseHour();
-       if(this.hour < LAST_HOUR)
-           return false;
-       else
-           return true;
     }
 
     /**
@@ -45,6 +41,16 @@ public class HourManager {
      */
     public int getHour() {
         return this.hour;
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    public boolean isLastHour() {
+        // >= 24 or > 24
+        // total hour = 24 or 25 ?
+        return this.hour >= LAST_HOUR;
     }
 
     /**

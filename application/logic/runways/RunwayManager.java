@@ -55,7 +55,7 @@ public class RunwayManager {
      */
     public void planeLandOnFreeRunway(Plane plane) {
         for(Runway r : runways)
-            if(r.getRunwayStatus()==RunwayStatus.FREE) {
+            if(r.getRunwayStatus() == RunwayStatus.FREE) {
                 r.planeLand(plane);
                 break;
             }
@@ -67,9 +67,17 @@ public class RunwayManager {
      * Check if planes can leave
      * Make planes leaves
      */
-    public void runwayAdvanceHourAll() {
+    public void advanceHourAllRunways() {
         for (Runway r : runways)
-            r.runwayAdvanceHour();
+            r.advanceHourRunway();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public boolean areAllRunwaysFull() {
+        return getNbFullRunway() == NB_RUNWAYS;
     }
 
     /**
@@ -79,7 +87,7 @@ public class RunwayManager {
     public int getNbFullRunway() {
         int nbFullRunway = 0;
         for(Runway r : runways)
-            if(!(r.getRunwayStatus()==RunwayStatus.FREE))
+            if(!(r.getRunwayStatus() == RunwayStatus.FREE))
                 nbFullRunway++;
         return nbFullRunway;
     }
@@ -91,7 +99,7 @@ public class RunwayManager {
     public int getNbFreeRunway() {
         int nbFreeRunway = 0;
         for(Runway r : runways)
-            if(r.getRunwayStatus()==RunwayStatus.FREE)
+            if(r.getRunwayStatus() == RunwayStatus.FREE)
                 nbFreeRunway++;
         return nbFreeRunway;
     }
@@ -101,7 +109,7 @@ public class RunwayManager {
      */
     public void emptyRandomRunway() {
         for(Runway r : runways)
-            if(!(r.getRunwayStatus()==RunwayStatus.FREE)){
+            if(!(r.getRunwayStatus() == RunwayStatus.FREE)){
                 r.emptyRunway();
                 break;
             }
@@ -112,8 +120,8 @@ public class RunwayManager {
      */
     public void removeRunway() {
         for(Runway r : runways)
-            if(r.getRunwayStatus()==RunwayStatus.FREE){
-                r.blockRunway("CLOSED",INFINITY);
+            if(r.getRunwayStatus() == RunwayStatus.FREE){
+                r.blockRunway("CLOSED", INFINITY);
                 break;
             }
     }
@@ -124,7 +132,7 @@ public class RunwayManager {
      */
     public void addTimeBlockedAllPlanes(int hoursToWait) {
         for(Runway r : runways)
-            if(r.getRunwayStatus()==RunwayStatus.OCCUPIED)
+            if(r.getRunwayStatus() == RunwayStatus.OCCUPIED)
                 r.increaseTimeBlocked(hoursToWait);
 
     }

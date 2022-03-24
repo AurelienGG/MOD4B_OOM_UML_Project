@@ -64,6 +64,31 @@ public class UserInputManager {
      * TODO
      * @return
      */
+    public int readOptionIntegerWithExit(int minInteger, int maxInteger) {
+        int input = Integer.MAX_VALUE;
+        boolean loop = true;
+        while(loop) {
+            try {
+                System.out.println("Input an integer between " + minInteger + " and " + maxInteger + " input -1 to exit.");
+                input = userInput.nextInt();
+                // Eating nextInt forgotten "\n"
+                userInput.nextLine();
+            } catch(InputMismatchException e) {
+                System.err.println("Not a number !");
+                userInput.next();
+            }
+            if(input == -1 || (input >= minInteger && input <= maxInteger))
+                loop = false;
+            else
+                System.err.println("Your input does not follow the range of integer allowed.");
+        }
+        return input;
+    }
+
+    /**
+     * TODO
+     * @return
+     */
     public char readOptionChar(int nbOptions) {
         int maxChar = 'A' + nbOptions - 1;
         char input = Character.MAX_VALUE;

@@ -84,8 +84,10 @@ public class Runway {
      * @return
      */
     protected String displayRunway() {
-        //TODO
-        return "Runway";
+        if(runwayStatus == RunwayStatus.FREE)
+            return "Runway is Free";
+        else
+            return this.occupantName + " " + this.timeBlocked;
     }
 
     /**

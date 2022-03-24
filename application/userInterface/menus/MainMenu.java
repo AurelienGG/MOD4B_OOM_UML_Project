@@ -45,6 +45,8 @@ public class MainMenu extends Menu {
             mainMenuDisplay.append("Option 1: Go to Request Menu\n");
 
         mainMenuDisplay.append("Option 2: Go to Waiting Planes menu\n");
+        // Not asked but there was no clear scenario where we have to go to Runway menu so we just added it as an option in Main menu
+        mainMenuDisplay.append("Option 3: Go to Runway menu\n");
 
         return mainMenuDisplay.toString();
     }
@@ -55,7 +57,7 @@ public class MainMenu extends Menu {
     @Override
     public void handleOptions() throws IOException {
         //TODO
-        int input = UserInputManager.getInstance().readOptionInteger(1, 2);
+        int input = UserInputManager.getInstance().readOptionInteger(1, 3);
         switch(input) {
             case 1:
                 if(areRequestsDone())
@@ -65,6 +67,9 @@ public class MainMenu extends Menu {
                 break;
             case 2:
                 new WaitingPlanesMenu();
+                break;
+            case 3:
+                new RunwayMenu();
                 break;
         }
     }

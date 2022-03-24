@@ -45,7 +45,7 @@ public class RunwayManager {
        StringBuilder stringBuilder = new StringBuilder("\t\tRunway id, Name, Occupied time remaining");
        int idRunway = 0;
        for(Runway runway: runways)
-           stringBuilder.append("\t\tR" + idRunway++ + " " + runway.getOccupantName() + " " + runway.getTimeBlocked());
+           stringBuilder.append("\t\tR" + idRunway++ + " " + runway.displayRunway() + "\n");
        return stringBuilder.toString();
     }
 

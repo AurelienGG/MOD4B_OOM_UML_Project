@@ -40,6 +40,7 @@ public class WaitingPlanesMenu extends Menu {
         int input = super.userInputManager_instance.readOptionInteger(1, 2);
         switch(input) {
             case 1:
+                // TODO IF WAITING PLANE EMPTY
                 if(runwayManager_instance.areAllRunwaysFull())
                     System.out.println("Runways are full, you can't land a waiting plane");
                 else

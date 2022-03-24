@@ -56,10 +56,18 @@ public class SimulationRequests {
         // -1 because idRequest start from 1 where the array start at 0
         Request request = this.hourRequests.get(idRequest-1);
         System.out.println(request.displayRequest());
-        System.out.println("Select an option with its character");
-        UserInputManager userInputManager_instance = UserInputManager.getInstance();
-        char inputChar = userInputManager_instance.readOptionChar(request.getNbOptions());
-        int inputInt = userInputManager_instance.convertCharOptionToArrayID(inputChar);
+
+        int inputInt = 0; //If value not changed code might crash
+        boolean loop = true;
+        while(loop) {
+            System.out.println("Select an option with its character");
+            char inputChar = UserInputManager.getInstance().readOptionChar(request.getNbOptions());
+            inputInt = UserInputManager.getInstance().convertCharOptionToArrayID(inputChar);
+            if(request.isOptionDoable(inputInt))
+                loop = false;
+            else
+                System.out.println("WARNING Option requirement aren't met");
+        }
         request.doOption(inputInt);
         // Now that the request is done we can remove it
         deleteRequest(request);

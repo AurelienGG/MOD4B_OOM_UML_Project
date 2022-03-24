@@ -60,11 +60,9 @@ public abstract class Request {
      */
     public String displayRequest() {
         StringBuilder stringBuilder = new StringBuilder(TITLE + "\n" + DESCRIPTION + "\n\n");
-
         char idRequest = 'A';
         for(Option option: options)
             stringBuilder.append("Option " + idRequest++ + ") " + option.displayOption() + "\n");
-
         return stringBuilder.toString();
     }
 
@@ -81,11 +79,17 @@ public abstract class Request {
      * @param idOption
      * @return
      */
-    public boolean doOption(int idOption) {
-        if(this.options[idOption].checkRequirement()) {
+    public boolean isOptionDoable(int idOption) {
+        return this.options[idOption].checkRequirement();
+    }
+
+    /**
+     * TODO
+     * @param idOption
+     * @return
+     */
+    public void doOption(int idOption) {
+        if(isOptionDoable(idOption))
             this.options[idOption].applyConsequence();
-            return true;
-        } else
-            return false;
     }
 }

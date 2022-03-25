@@ -35,7 +35,7 @@ public class DeadPassengerCountManager {
      * @return
      */
     public boolean isGameOver() {
-        return nbDeadPassengers == NB_MAX_PASSENGERS_DEAD;
+        return nbDeadPassengers >= NB_MAX_PASSENGERS_DEAD;
     }
 
     /**

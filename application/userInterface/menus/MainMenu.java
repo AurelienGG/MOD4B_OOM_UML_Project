@@ -22,13 +22,6 @@ public class MainMenu extends Menu {
 
     /**
      * TODO
-     */
-    public void advanceHour() {
-        //TODO
-    }
-
-    /**
-     * TODO
      * @return
      */
     @Override
@@ -56,7 +49,6 @@ public class MainMenu extends Menu {
      */
     @Override
     public void handleOptions() throws IOException {
-        //TODO
         int input = UserInputManager.getInstance().readOptionInteger(1, 3);
         switch(input) {
             case 1:

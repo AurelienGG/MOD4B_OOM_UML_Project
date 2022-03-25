@@ -41,10 +41,4 @@ public class RequestMenu extends Menu {
         System.out.println("Request done we go back to main menu");
         super.goToMainMenu();
     }
-
-    /**
-     * TODO
-     */
-    private void doRequest() {
-    }
 }

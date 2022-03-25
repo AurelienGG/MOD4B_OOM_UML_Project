@@ -111,14 +111,6 @@ public class PlaneManager {
     }
 
     /**
-     * TODO
-     * @return
-     */
-    public int getNbCommonPlane() {
-        return planesDictionary.get(PlaneType.COMMON).size();
-    }
-
-    /**
      * Give an emergency plane with random values
      * @return an emergency plane from the planesDictionary
      */

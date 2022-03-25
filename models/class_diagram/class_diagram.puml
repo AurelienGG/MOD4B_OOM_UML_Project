@@ -7,12 +7,12 @@ package application {
   class MainApplication {
     --
     + main(args: String[]): void
-    + startSimulation(userInput: Scanner)
   }
 
   class Simulation {
     --
     + Simulation(userInput: Scanner)
+    + start(): void
   }
 
   package userInterface {
@@ -23,19 +23,12 @@ package application {
         --
         - UserInputManager()
         + {static} getInstance(): UserInputManager
-        + displayOptions(): void
-        + readChosedOption(): int
+        + readOptionInteger(minInteger: int, maxInteger: int): int
+        + readOptionChar(nbOptions: int): char
+        + convertCharOptionToArrayID(charOption: char): int
     }
 
       package menus {
-
-        class MenuManager << (S,#FF7700) Singleton >> {
-            - {static} menuManager_instance: MenuManager
-            - menusDictionary: EnumMap<MenuType, Menu>
-            --
-            - MenuManager()
-            + {static} getInstance(): MenuManager
-        }
 
         enum MenuType {
             MAIN
@@ -49,46 +42,49 @@ package application {
           - menuType: MenuType
           --
           + Menu(MenuType menuType)
-          {abstract} + goToMenu(Menu menu): void
-          {abstract} + displayMenu(): String
-          + printMenuToOutput(): void
+          # liveMenu(): void
+          # printMenuToOutput(): void
+          # goToMainMenu(): void
+          # {abstract} displayMenu(): String
+          # {abstract} handleOptions(): void
         }
 
         class MainMenu extends Menu {
           --
           + MainMenu()
-          + advanceHour(): void
-          + goToMenu(Menu menu): void
           + displayMenu(): String
-          + checkVisibility(): boolean
+          + handleOptions(): void
+          + areRequestsDone(): boolean
         }
 
         class RunwayMenu extends Menu {
             --
             + RunwayMenu()
-            + goToMenu(Menu menu): void
             + displayMenu(): String
+            + handleOptions(): void
         }
 
         class WaitingPlanesMenu extends Menu {
             --
             + WaitingPlanesMenu()
-            + goToMenu(Menu menu): void
             + displayMenu(): String
+            + handleOptions(): void
+            - selectPlaneToLand(): void
         }
 
         class AdvanceHourMenu extends Menu {
             --
             + AdvanceHourMenu()
-            + goToMenu(Menu menu): void
             + displayMenu(): String
+            + handleOptions(): void
+            - advanceHourDatas(): void
         }
 
         class RequestMenu extends Menu {
             --
             + RequestMenu()
-            + goToMenu(Menu menu): void
             + displayMenu(): String
+            + handleOptions(): void
         }
 
       }
@@ -101,28 +97,31 @@ package application {
         + {static} generateRandomNumber(int minimum, int maximum): int
     }
 
-    package simulationHour {
+    package simulationRequests {
 
-        class SimulationHourManager << (S,#FF7700) Singleton >> {
-            - {static} simulationHourManager_instance: SimulationHourManager
-            - simulationHours: SimulationHour[24]
-            - pointer: int
+        class SimulationRequestsManager << (S,#FF7700) Singleton >> {
+            - {static} simulationRequestsManager_instance: SimulationRequestsManager
+            - simulationRequests: ArrayList<SimulationRequests>
             --
-            - SimulationHourManager()
-            + {static} getInstance(): SimulationHourManager
-            - initialiseSimulationHours(): void
-            - generateRandomRequest(): Request
-            + getCurrentHour(): int
+            - SimulationRequestsManager()
+            + {static} getInstance(): SimulationRequestsManager
+            + getNbRequestsCurrentHour(): int
+            + getNbRequestsCurrentHour(): int
+            + areAllCurentHourRequestsDone(): boolean
+            + startRequestCurrentHour(idRequest: int): void
+            + displayRequestsNameCurrentHour(): String
         }
 
-        class SimulationHour {
-            - currentHour: int
-            - requests: ArrayList<Request>
+        class SimulationRequests {
+            - hourRequests: ArrayList<Request>
+            + {static} NB_MAX_REQUESTS: int
             --
-            + SimulationHour(currentHour: int)
-            + getCurrentHour(): int
-            + startRequest(request: Request): void
-            + hourSummary(): String
+            + SimulationRequests()
+            + getNbRequests(): int
+            + areAllRequestsDone(): boolean
+            + startRequest(idRequest: int)): void
+            + deleteRequest(request: Request): void
+            + displayRequestsName(): String
         }
       }
 
@@ -136,8 +135,10 @@ package application {
             --
             - RunwayManager()
             + {static} getInstance(): RunwayManager
+            + displayRunway(): String
             + planeLandOnFreeRunway(plane: Plane): void
-            + runwayAdvanceHourAll(): void
+            + advanceHourAllRunways(): void
+            + areAllRunwaysFull(): boolean
             + getNbFullRunway(): int
             + getNbFreeRunway(): int
             + emptyRandomRunway(): void
@@ -159,13 +160,12 @@ package application {
           --
           # Runway()
           # planeLand(plane: Plane): void
-          # runwayAdvanceHour(): void
+          # advanceHourRunway(): void
           # decreaseTimeBlocked(): void
           # increaseTimeBlocked(hoursTimeBlocked: int): void
           # displayRunway(): String
           - checkTimeBlocked(): boolean
           # emptyRunway(): void
-          # addTimeBlocked(hoursToWait: int): void
           # blockRunway(occupantName: String, hoursBlocked: int): void
           # getRunwayStatus(): RunwayStatus
         }
@@ -245,6 +245,7 @@ package application {
             --
             - DeadPassengerCountManager()
             + {static} getInstance(): DeadPassengerCountManager
+            + isGameOver(): boolean
             + getNbDeadPassengers(): int
             + addDeadPassengers(nbDeadPassengersFromCrash: int): void
             + decreaseDeadPassengers(nbRescuedPassengers: int)
@@ -256,10 +257,15 @@ package application {
           abstract Request {
             - TITLE: String
             - DESCRIPTION: String
+            # Plane plane
             - options: Option[]
             --
-            # Request(TITLE: String, DESCRIPTION: String, options: Option[])
+            # Request(TITLE: String, DESCRIPTION: String, Plane plane)
             # {abstract} generateOptions(): Option[]
+            + displayRequest(): String
+            + getNbOptions(): int
+            + isOptionDoable(): boolean
+            + doOption(): void
           }
 
           abstract Landing extends Request {
@@ -333,6 +339,7 @@ package application {
 
           abstract Option {
             - DESCRIPTION: String
+            - CONSEQUENCES: String
             --
             # Option(DESCRIPTION: String)
             + {abstract} checkRequirement(): Boolean
@@ -471,7 +478,7 @@ package application {
 
   MainApplication "1" *-- "1" Simulation
   Menu ..> UserInputManager : use
-  Request "1..3" -up-o "1" SimulationHour
+  Request "1..3" -up-o "1" SimulationRequests
   Request "1..*" o-- "2..*" Option
   Runway "0..1" o-- "0..1" Plane
 
@@ -481,7 +488,7 @@ package application {
 
   Simulation ..> UserInputManager : use
   Simulation ..> DeadPassengerCountManager : use
-  Simulation ..> SimulationHourManager : use
+  Simulation ..> SimulationRequestsManager : use
   Simulation ..> RunwayManager : use
   Simulation ..> WaitingPlanesManager : use
 
@@ -492,7 +499,7 @@ package application {
 
   Menu "*" -right- "1" MenuType
 
-  SimulationHourManager "1" *-- "24" SimulationHour
+  SimulationRequestsManager "1" *-- "24" SimulationRequests
   RunwayManager "1" *-- "8" Runway
   WaitingPlanesManager "0..1" *-- "*" Plane
 

@@ -32,14 +32,6 @@ public abstract class Option {
     public abstract void applyConsequence();
 
     /**
-     * TODO Delete if not used
-     * @return
-     */
-    public String getDESCRIPTION() {
-        return this.DESCRIPTION;
-    }
-
-    /**
      * TODO
      * @return
      */

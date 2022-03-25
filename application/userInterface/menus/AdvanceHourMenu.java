@@ -12,6 +12,7 @@ import java.io.IOException;
  * TODO
  */
 public class AdvanceHourMenu extends Menu {
+
     /**
      * TODO
      * @throws IOException

@@ -1,7 +1,5 @@
 package userInterface.menus;
 
-import userInterface.UserInputManager;
-
 import java.io.IOException;
 
 /**
@@ -15,7 +13,7 @@ public abstract class Menu {
      * TODO
      * @param menuType
      */
-    public Menu(MenuType menuType) throws IOException {
+    public Menu(MenuType menuType) {
         this.menuType = menuType;
     }
 

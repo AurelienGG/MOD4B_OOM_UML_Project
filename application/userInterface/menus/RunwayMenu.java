@@ -33,7 +33,6 @@ public class RunwayMenu extends Menu {
      */
     @Override
     protected void handleOptions() throws IOException {
-        // TODO delete if generate bug
         System.in.read();
         super.goToMainMenu();
     }

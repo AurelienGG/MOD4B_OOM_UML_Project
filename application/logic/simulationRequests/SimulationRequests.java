@@ -1,7 +1,6 @@
 package logic.simulationRequests;
 
 import logic.Tools;
-import logic.options.Option;
 import logic.requests.Request;
 import logic.requests.RequestManager;
 import userInterface.UserInputManager;
@@ -78,26 +77,6 @@ public class SimulationRequests {
      */
     public void deleteRequest(Request request) {
         this.hourRequests.remove(request);
-    }
-
-    /**
-     * TODO
-     * @return
-     */
-    public String hourSummary() {
-        //TODO
-        return null;
-    }
-
-    /**
-     * TODO
-     * @return
-     */
-    public String displayRequests() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for(Request request: hourRequests)
-            stringBuilder.append(request.displayRequest());
-        return stringBuilder.toString();
     }
 
     /**

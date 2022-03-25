@@ -9,6 +9,6 @@ public class Tools {
      * @return a random number between 2 values
      */
     public static int generateRandomNumber(int minimum, int maximum) {
-        return (int) (Math.random()*(maximum-minimum)+minimum);
+        return (int) (Math.random() * ((maximum - minimum) + 1)) + minimum;
     }
 }

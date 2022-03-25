@@ -45,59 +45,17 @@ public class SimulationRequestsManager {
 
     /**
      * TODO
-     * @return
-     */
-    public int getNbRequestsIncomingHour() {
-        if(HourManager.getInstance().isLastHour())
-            return 0;
-        else
-            return this.simulationRequests.get(HourManager.getInstance().getHour()+1).getNbRequests();
-    }
-
-    /**
-     * TODO
-     */
-    public void doRequests() {
-        //TODO DELETE IF NOT USED
-        int nbRequestCurrentHour = getNbRequestsCurrentHour();
-        for(int i = 0; i < (nbRequestCurrentHour); i++) {
-
-
-        }
-    }
-
-    /**
-     * TODO
      */
     public boolean areAllCurentHourRequestsDone() {
         return this.simulationRequests.get(HourManager.getInstance().getHour()).areAllRequestsDone();
     }
 
     /**
-     * TODO FIX We use UI and print things which wasn't what we wanted
      *
      * @param idRequest
      */
     public void startRequestCurrentHour(int idRequest) {
-        //TODO
         this.simulationRequests.get(HourManager.getInstance().getHour()).startRequest(idRequest);
-    }
-
-    /**
-     * TODO
-     * @return
-     */
-    public String hourSummary() {
-        //TODO
-        return null;
-    }
-
-    /**
-     * TODO
-     * @return
-     */
-    public String displayRequestsCurrentHour() {
-        return this.simulationRequests.get(HourManager.getInstance().getHour()).displayRequests();
     }
 
     /**

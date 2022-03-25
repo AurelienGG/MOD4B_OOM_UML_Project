@@ -32,19 +32,20 @@ public class AdvanceHourMenu extends Menu {
         StringBuilder stringBuilder = new StringBuilder("\nAdvanceHourMenu\n");
 
         stringBuilder.append("Curent time " + HourManager.getInstance().displayHour() + "\n");
-        if(!HourManager.getInstance().isLastHour())
-            stringBuilder.append("Number of new requests coming in " + SimulationRequestsManager.getInstance().getNbRequestsIncomingHour() + "\n");
 
+        HourManager.getInstance().increaseHour();
+        if(!HourManager.getInstance().isLastHour()) {
+            stringBuilder.append("Number of new requests coming in " + SimulationRequestsManager.getInstance().getNbRequestsCurrentHour() + "\n");
+        }
         int nbDeadPassengers = DeadPassengerCountManager.getInstance().getNbDeadPassengers();
         if(nbDeadPassengers > 0)
             stringBuilder.append("Number of passengers dead " + nbDeadPassengers + "\n");
         else if(nbDeadPassengers < 0)
             stringBuilder.append("Number of passengers saved " + (nbDeadPassengers * -1) + "\n");
         else
-            stringBuilder.append("No passengers died or were saved from past events\n");
+            stringBuilder.append("Definitely no passengers died or were saved from past events\n");
 
         stringBuilder.append("\n");
-        HourManager.getInstance().increaseHour();
 
         if(DeadPassengerCountManager.getInstance().isGameOver())
             stringBuilder.append("Game Over, number of passengers killed >= 350");

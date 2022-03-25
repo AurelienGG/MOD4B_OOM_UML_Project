@@ -36,8 +36,6 @@ public class AllowLanding extends Option {
      */
     @Override
     public void applyConsequence() {
-        if(plane == null)
-            System.err.println("NO PLANE AllowLanding applyConsequence");
         RunwayManager.getInstance().planeLandOnFreeRunway(plane);
     }
 }

@@ -1,11 +1,6 @@
 package logic.simulationRequests;
 
-import logic.Tools;
 import logic.hour.HourManager;
-import logic.requests.Request;
-import logic.requests.RequestManager;
-import logic.simulationHour.SimulationHour;
-import logic.simulationHour.SimulationHourManager;
 
 import java.util.ArrayList;
 
@@ -24,8 +19,9 @@ public class SimulationRequestsManager {
      * TODO
      */
     private SimulationRequestsManager() {
-        this.simulationRequests = new ArrayList<>(HourManager.LAST_HOUR);
-        for(int i = 0; i < HourManager.LAST_HOUR; i++)
+        // last hour is 24 but we start at 0 so there is 25 hours
+        this.simulationRequests = new ArrayList<>(HourManager.LAST_HOUR+1);
+        for(int i = 0; i < HourManager.LAST_HOUR+1; i++)
             this.simulationRequests.add(new SimulationRequests());
     }
 
@@ -52,7 +48,10 @@ public class SimulationRequestsManager {
      * @return
      */
     public int getNbRequestsIncomingHour() {
-        return this.simulationRequests.get(HourManager.getInstance().getHour()+1).getNbRequests();
+        if(HourManager.getInstance().isLastHour())
+            return 0;
+        else
+            return this.simulationRequests.get(HourManager.getInstance().getHour()+1).getNbRequests();
     }
 
     /**

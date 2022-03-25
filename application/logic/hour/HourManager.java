@@ -40,9 +40,7 @@ public class HourManager {
      * @return
      */
     public boolean isLastHour() {
-        // >= 24 or > 24
-        // total hour = 24 or 25 ?
-        return this.hour >= LAST_HOUR;
+        return this.hour > LAST_HOUR;
     }
 
     /**

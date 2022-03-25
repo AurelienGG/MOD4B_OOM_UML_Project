@@ -97,7 +97,7 @@ public class Runway {
      * or false if its still need time
      */
     private boolean checkTimeBlocked() {
-        if(this.runwayStatus == RunwayStatus.OCCUPIED && this.timeBlocked <= 0)
+        if(this.runwayStatus != RunwayStatus.FREE && this.timeBlocked <= 0)
             return true;
         else
             return false;

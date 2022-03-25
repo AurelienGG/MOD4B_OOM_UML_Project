@@ -48,9 +48,8 @@ public class WaitingPlanesManager {
         ArrayList<Plane> crashingPlanes = checkWaitingPlanesFuel();
         int deadPassenger = 0;
         if(crashingPlanes != null)
-            for(Plane plane: crashingPlanes) {
+            for(Plane plane: crashingPlanes)
                 deadPassenger += crashWaitingPlane(plane);
-            }
         DeadPassengerCountManager.getInstance().addDeadPassengers(deadPassenger);
     }
 

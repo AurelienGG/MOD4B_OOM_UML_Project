@@ -37,9 +37,9 @@ public class AdvanceHourMenu extends Menu {
 
         int nbDeadPassengers = DeadPassengerCountManager.getInstance().getNbDeadPassengers();
         if(nbDeadPassengers > 0)
-            stringBuilder.append("Number of passengers dead" + nbDeadPassengers + "\n");
+            stringBuilder.append("Number of passengers dead " + nbDeadPassengers + "\n");
         else if(nbDeadPassengers < 0)
-            stringBuilder.append("Number of passengers saved" + (nbDeadPassengers * -1) + "\n");
+            stringBuilder.append("Number of passengers saved " + (nbDeadPassengers * -1) + "\n");
         else
             stringBuilder.append("No passengers died or were saved from past events\n");
 
